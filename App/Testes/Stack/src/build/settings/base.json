@@ -1,0 +1,6 @@
+{
+    "app_name": "Teste2",
+    "author": "Wesley",
+    "main_module": "src/main/python/main.py",
+    "version": "0.0.0"
+}
