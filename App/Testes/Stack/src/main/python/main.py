@@ -6,12 +6,11 @@ from mainwindow import MyApp
 
 class AppContext(ApplicationContext):
     def run(self):
-        self.window.resize(640, 480)
-        self.window.show()
+        self.window.showFullScreen()
         return appctxt.app.exec_()
 
     def get_design(self):
-        qtCreatorFile = self.get_resource("C:\\Users\\wesle\\Documents\\TCC\\App\\Testes\\Stack\\src\\main\\python\\main.ui")
+        qtCreatorFile = self.get_resource("C:\\Users\\wesle\\Documents\\TCC\\App\\Testes\\Stack\\src\\main\\python\\main_window1.ui")
         return qtCreatorFile
 
     @cached_property
