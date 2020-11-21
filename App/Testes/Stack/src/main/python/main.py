@@ -10,7 +10,7 @@ class AppContext(ApplicationContext):
         return appctxt.app.exec_()
 
     def get_design(self):
-        qtCreatorFile = self.get_resource("C:\\Users\\wesle\\Documents\\TCC\\App\\Testes\\Stack\\src\\main\\python\\main_window1.ui")
+        qtCreatorFile = self.get_resource("C:\\Users\\wesle\\Documents\\TCC\\App\\Testes\\Stack\\src\\main\\python\\main_window.ui")
         return qtCreatorFile
 
     @cached_property
