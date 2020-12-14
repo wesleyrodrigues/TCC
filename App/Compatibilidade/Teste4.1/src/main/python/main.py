@@ -34,7 +34,7 @@ if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
     window = QMainWindow()
     db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-    db.setDatabaseName('sports.db')
+    db.setDatabaseName('imagens.db')
 
     model = QtSql.QSqlTableModel()
     delrow = -1

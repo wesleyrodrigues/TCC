@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'TelaInicial.ui'
+# Form implementation generated from reading ui file 'example_center2.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
 #
@@ -30,6 +30,7 @@ class Ui_MainWindow(object):
         self.verticalLayoutButtons = QtWidgets.QVBoxLayout()
         self.verticalLayoutButtons.setObjectName("verticalLayoutButtons")
         self.btnCadastrar = QtWidgets.QPushButton(self.centralwidget)
+        # self.btnCadastrar.setStyleSheet('QPushButton {background-color: #A3C1DA; color: #ffffff; border: none}')
         self.btnCadastrar.setMinimumSize(QtCore.QSize(200, 31))
         self.btnCadastrar.setMaximumSize(QtCore.QSize(16777212, 16777215))
         palette = QtGui.QPalette()
@@ -176,8 +177,6 @@ class Ui_MainWindow(object):
         self.btnCadastrar.setFont(font)
         self.btnCadastrar.setObjectName("btnCadastrar")
         self.verticalLayoutButtons.addWidget(self.btnCadastrar)
-        spacerItem2 = QtWidgets.QSpacerItem(2, 8, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayoutButtons.addItem(spacerItem2)
         self.btnLogin = QtWidgets.QPushButton(self.centralwidget)
         self.btnLogin.setMinimumSize(QtCore.QSize(200, 31))
         font = QtGui.QFont()
@@ -186,11 +185,11 @@ class Ui_MainWindow(object):
         self.btnLogin.setObjectName("btnLogin")
         self.verticalLayoutButtons.addWidget(self.btnLogin)
         self.horizontalLayoutMain.addLayout(self.verticalLayoutButtons)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayoutMain.addItem(spacerItem3)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayoutMain.addItem(spacerItem2)
         self.verticalLayoutMain.addLayout(self.horizontalLayoutMain)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayoutMain.addItem(spacerItem4)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayoutMain.addItem(spacerItem3)
         self.gridLayout.addLayout(self.verticalLayoutMain, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -213,7 +212,6 @@ stylesheet = """
     }
 """
 
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -223,4 +221,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.showFullScreen()
     sys.exit(app.exec_())
-
