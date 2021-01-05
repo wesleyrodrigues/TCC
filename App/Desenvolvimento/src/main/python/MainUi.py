@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'TelaInicial.ui'
+# Form implementation generated from reading ui file 'main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.1
 #
@@ -29,14 +29,32 @@ class Ui_MainWindow(object):
         self.horizontalLayoutMain.addItem(spacerItem1)
         self.verticalLayoutButtons = QtWidgets.QVBoxLayout()
         self.verticalLayoutButtons.setObjectName("verticalLayoutButtons")
-        self.btnCadastrar = QtWidgets.QPushButton(self.centralwidget)
+        self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.stackedWidget.sizePolicy().hasHeightForWidth())
+        self.stackedWidget.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setStrikeOut(False)
+        self.stackedWidget.setFont(font)
+        self.stackedWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.btnCadastrar = QtWidgets.QPushButton(self.page)
+        self.btnCadastrar.setGeometry(QtCore.QRect(0, 30, 256, 37))
         self.btnCadastrar.setMinimumSize(QtCore.QSize(200, 31))
         self.btnCadastrar.setMaximumSize(QtCore.QSize(16777212, 16777215))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(127, 170, 255))
@@ -60,10 +78,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -81,7 +99,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(127, 170, 255))
@@ -105,10 +123,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -126,7 +144,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 42, 127))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
         brush = QtGui.QBrush(QtGui.QColor(127, 170, 255))
@@ -150,10 +168,10 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(0, 42, 127))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 85, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 170, 255))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -174,27 +192,35 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setWeight(50)
         self.btnCadastrar.setFont(font)
+        self.btnCadastrar.setStyleSheet("background-color: rgb(0, 170, 255)")
         self.btnCadastrar.setObjectName("btnCadastrar")
-        self.verticalLayoutButtons.addWidget(self.btnCadastrar)
-        spacerItem2 = QtWidgets.QSpacerItem(2, 8, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayoutButtons.addItem(spacerItem2)
-        self.btnLogin = QtWidgets.QPushButton(self.centralwidget)
+        self.btnLogin = QtWidgets.QPushButton(self.page)
+        self.btnLogin.setGeometry(QtCore.QRect(0, 90, 256, 37))
         self.btnLogin.setMinimumSize(QtCore.QSize(200, 31))
         font = QtGui.QFont()
         font.setPointSize(18)
         self.btnLogin.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("seta-de-login.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnLogin.setIcon(icon)
+        self.btnLogin.setIconSize(QtCore.QSize(40, 35))
         self.btnLogin.setObjectName("btnLogin")
-        self.verticalLayoutButtons.addWidget(self.btnLogin)
+        self.stackedWidget.addWidget(self.page)
+        self.page_2 = QtWidgets.QWidget()
+        self.page_2.setObjectName("page_2")
+        self.stackedWidget.addWidget(self.page_2)
+        self.verticalLayoutButtons.addWidget(self.stackedWidget)
         self.horizontalLayoutMain.addLayout(self.verticalLayoutButtons)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayoutMain.addItem(spacerItem3)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayoutMain.addItem(spacerItem2)
         self.verticalLayoutMain.addLayout(self.horizontalLayoutMain)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayoutMain.addItem(spacerItem4)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayoutMain.addItem(spacerItem3)
         self.gridLayout.addLayout(self.verticalLayoutMain, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -203,24 +229,12 @@ class Ui_MainWindow(object):
         self.btnCadastrar.setText(_translate("MainWindow", "Cadastrar"))
         self.btnLogin.setText(_translate("MainWindow", "Login"))
 
-# Stylesheet para adicionar imagem de fundo da aplicação
-stylesheet = """
-    QMainWindow {
-        background-image: url("tela_principal_correta_2.jpg");
-	border-image: url("tela_principal_correta_2.jpg") 0 0 0 0 stretch stretch; 
-        background-repeat: no-repeat; 
-        background-position: center;
-    }
-"""
-
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    app.setStyleSheet(stylesheet)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    MainWindow.showFullScreen()
+    MainWindow.show()
     sys.exit(app.exec_())
-
