@@ -1,7 +1,7 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from os import environ
-from MainUi import Ui_MainWindow
+from mainUi import Ui_MainWindow
 
 import sys
 
