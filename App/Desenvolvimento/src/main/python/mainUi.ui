@@ -143,8 +143,9 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page"/>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="QWidget" name="pagina_cadastro"/>
+      <widget class="QWidget" name="pagina_cadastro_aluno"/>
+      <widget class="QWidget" name="pagina_login"/>
      </widget>
     </item>
    </layout>
