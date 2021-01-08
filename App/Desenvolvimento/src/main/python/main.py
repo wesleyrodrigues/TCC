@@ -5,30 +5,37 @@ from mainUi import Ui_MainWindow
 
 import sys
 
-#
-def suppress_qt_warnings():
-    environ["QT_DEVICE_PIXEL_RATIO"] = "0"
-    environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
-    environ["QT_SCREEN_SCALE_FACTORS"] = "1"
-    environ["QT_SCALE_FACTOR"] = "1"
+
+class AlfaEdu:
+    def __init__(self):
+        pass
+
+    def suppress_qt_warnings():
+        environ["QT_DEVICE_PIXEL_RATIO"] = "0"
+        environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+        environ["QT_SCREEN_SCALE_FACTORS"] = "1"
+        environ["QT_SCALE_FACTOR"] = "1"
+    
+    def returnstylesheet():
+        # TODO acessar banco de dados salvar, stylesheet no mesmo.
+        
+        return """
+            QMainWindow {
+                background-image: url("MainWindow.png");
+            border-image: url("MainWindow.png") 0 0 0 0 stretch stretch; 
+                background-repeat: no-repeat; 
+                background-position: center;
+            }
+        """
 
 
-# Stylesheet para adicionar imagem de fundo da aplicação
-stylesheet = """
-    QMainWindow {
-        background-image: url("MainWindow.png");
-	border-image: url("MainWindow.png") 0 0 0 0 stretch stretch; 
-        background-repeat: no-repeat; 
-        background-position: center;
-    }
-"""
 
 if __name__ == '__main__':
-    suppress_qt_warnings()
+    AlfaEdu.suppress_qt_warnings()
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
     app = QApplication(sys.argv)
-    app.setStyleSheet(stylesheet)
+    app.setStyleSheet(AlfaEdu.returnstylesheet())
 
     window = QMainWindow()
 

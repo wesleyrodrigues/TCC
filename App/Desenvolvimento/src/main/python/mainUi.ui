@@ -152,5 +152,22 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnSair</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>322</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>521</x>
+     <y>-10</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
