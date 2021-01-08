@@ -70,7 +70,7 @@ class Ui_MainWindow(object):
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem3)
         self.gridLayout1.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        self.gridLayout_2.addLayout(self.gridLayout1, 0, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.gridLayout1, 9, 0, 1, 1)
         self.stackedWidget.addWidget(self.pagina_inicial)
         self.pagina_cadastro = QtWidgets.QWidget()
         self.pagina_cadastro.setObjectName("pagina_cadastro")
@@ -81,7 +81,12 @@ class Ui_MainWindow(object):
         self.pagina_login = QtWidgets.QWidget()
         self.pagina_login.setObjectName("pagina_login")
         self.stackedWidget.addWidget(self.pagina_login)
-        self.gridLayout.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.stackedWidget, 2, 0, 1, 1)
+        self.btnsair2 = QtWidgets.QPushButton(self.centralwidget)
+        self.btnsair2.setMaximumSize(QtCore.QSize(130, 25))
+        self.btnsair2.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.btnsair2.setObjectName("btnsair2")
+        self.gridLayout.addWidget(self.btnsair2, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -95,6 +100,7 @@ class Ui_MainWindow(object):
         self.btnProfessor.setText(_translate("MainWindow", "Professor"))
         self.btnAluno.setText(_translate("MainWindow", "Aluno"))
         self.btnSair.setText(_translate("MainWindow", "Sair"))
+        self.btnsair2.setText(_translate("MainWindow", "voltar para página inicial"))
 
 
 if __name__ == "__main__":

@@ -15,14 +15,14 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="2" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
        <number>0</number>
       </property>
       <widget class="QWidget" name="pagina_inicial">
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
+        <item row="9" column="0">
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
            <layout class="QVBoxLayout" name="verticalLayout">
@@ -148,6 +148,22 @@
       <widget class="QWidget" name="pagina_login"/>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QPushButton" name="btnsair2">
+      <property name="maximumSize">
+       <size>
+        <width>130</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="text">
+       <string>voltar para página inicial</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
@@ -161,7 +177,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>503</x>
-     <y>322</y>
+     <y>335</y>
     </hint>
     <hint type="destinationlabel">
      <x>521</x>
