@@ -15,21 +15,22 @@ class VoltarParaTelaInicial(QDialog):
         self.ui.setupUi(self)
         self.ui.lerror.hide()
     
+    # Abre caixa de dialogo para voltar para tela inicial
     def open_dialog(self):
-        # voltar_para_tela_inicial = VoltarParaTelaInicial()
         self.exec_()
 
     # TODO mudar depois para melhorar
+    # verifica a senha do professor ou pai do aluno para poder sair das atividades
     def verifica_password(self, alfa_edu):
         text = str(self.ui.lineEdit.text())
         
         # TODO buscar senha no BD.
         if(text == "123"):
             alfa_edu.mudar_pagina(0)
+            self.ui.lineEdit.clear()
             self.accept()
         else:
             self.ui.lerror.show()
-            print("senha errada")
 
 
 
