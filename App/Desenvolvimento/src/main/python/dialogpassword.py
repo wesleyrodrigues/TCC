@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(448, 239)
+        Dialog.resize(448, 176)
         Dialog.setAutoFillBackground(False)
         Dialog.setStyleSheet("")
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
@@ -54,7 +54,12 @@ class Ui_Dialog(object):
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel)
         self.buttonBox.setObjectName("buttonBox")
         self.horizontalLayout.addWidget(self.buttonBox)
-        self.gridLayout.addLayout(self.horizontalLayout, 4, 2, 1, 1)
+        self.gridLayout.addLayout(self.horizontalLayout, 5, 2, 1, 1)
+        self.lerror = QtWidgets.QLabel(Dialog)
+        self.lerror.setMaximumSize(QtCore.QSize(16777215, 10))
+        self.lerror.setStyleSheet("color: rgb(255, 0, 0)")
+        self.lerror.setObjectName("lerror")
+        self.gridLayout.addWidget(self.lerror, 2, 2, 1, 1)
 
         self.retranslateUi(Dialog)
         self.buttonBox.rejected.connect(Dialog.reject)
@@ -66,6 +71,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "voltar para tela inicial"))
         self.label.setText(_translate("Dialog", "Digite a senha para voltar para tela inicial"))
         self.btnOk.setText(_translate("Dialog", "Ok"))
+        self.lerror.setText(_translate("Dialog", "Senha errada!! Por favor digite novamente"))
 
 
 if __name__ == "__main__":

@@ -13,12 +13,24 @@ class VoltarParaTelaInicial(QDialog):
         super(VoltarParaTelaInicial, self).__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.ui.lerror.hide()
     
+    def open_dialog(self):
+        # voltar_para_tela_inicial = VoltarParaTelaInicial()
+        self.exec_()
+
     # TODO mudar depois para melhorar
-    def verifica_password(self):
+    def verifica_password(self, alfa_edu):
         text = str(self.ui.lineEdit.text())
-        print("testando")
-        print(text)
+        
+        # TODO buscar senha no BD.
+        if(text == "123"):
+            alfa_edu.mudar_pagina(0)
+            self.accept()
+        else:
+            self.ui.lerror.show()
+            print("senha errada")
+
 
 
 class AlfaEdu(QMainWindow):
@@ -45,9 +57,6 @@ class AlfaEdu(QMainWindow):
         self.stack.setCurrentIndex(index)
         self.hide_button(index)
 
-    def open_dialog(self):
-        voltar_para_tela_inicial = VoltarParaTelaInicial()
-        voltar_para_tela_inicial.exec_()
 
     # TODO melhorar depois
     def return_stylesheet(self):
@@ -76,12 +85,10 @@ def suppress_qt_warnings():
 # TODO tentar colocar dentro da class depois
 def buttons(alfa_edu, volt_p_t_i):
     alfa_edu.ui.btnProfessor.clicked.connect(lambda: alfa_edu.mudar_pagina(1))
-    alfa_edu.ui.btnsair2.clicked.connect(lambda: alfa_edu.open_dialog())
+    alfa_edu.ui.btnsair2.clicked.connect(lambda: volt_p_t_i.open_dialog())
     
-    #TODO corrigir botão Dialog não funciona.
-    volt_p_t_i.ui.btnOk.clicked.connect(lambda: volt_p_t_i.verifica_password())
-    # volt_p_t_i.ui.buttonBox.button(QtGui.QDialogButtonBox.Ok).clicked.connect(
-    #     lambda: alfa_edu.verifica_password(volt_p_t_i))
+    volt_p_t_i.ui.btnOk.clicked.connect(lambda: volt_p_t_i.verifica_password(alfa_edu))
+
 
 
 if __name__ == '__main__':
@@ -93,6 +100,7 @@ if __name__ == '__main__':
     app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
     voltar_para_tela_inicial = VoltarParaTelaInicial()
+
     buttons(alfa_edu_app, voltar_para_tela_inicial)
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
