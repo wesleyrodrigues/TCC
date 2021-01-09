@@ -1,9 +1,24 @@
+from PyQt5 import QtGui
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog
 from os import environ
 from mainUi import Ui_MainWindow
+from dialogpassword import Ui_Dialog
 
 import sys
+
+
+class VoltarParaTelaInicial(QDialog):
+    def __init__(self):
+        super(VoltarParaTelaInicial, self).__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+    
+    # TODO mudar depois para melhorar
+    def verifica_password(self):
+        text = str(self.ui.lineEdit.text())
+        print("testando")
+        print(text)
 
 
 class AlfaEdu(QMainWindow):
@@ -11,20 +26,44 @@ class AlfaEdu(QMainWindow):
         super(AlfaEdu, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
         self.stack = self.ui.stackedWidget
         self.ui.btnsair2.hide()
+
+        self.background_imagem = "MainWindow.png"
+        self.background_cor = "#ADD8E6"
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
-    
-    def hide_buttons(self, index):
+
+    def hide_button(self, index):
         if(index == 0):
             self.ui.btnsair2.hide()
         else:
             self.ui.btnsair2.show()
-    
+
     def mudar_pagina(self, index):
         self.stack.setCurrentIndex(index)
-        self.hide_buttons(index)
+        self.hide_button(index)
+
+    def open_dialog(self):
+        voltar_para_tela_inicial = VoltarParaTelaInicial()
+        voltar_para_tela_inicial.exec_()
+
+    # TODO melhorar depois
+    def return_stylesheet(self):
+
+        return """
+            QMainWindow {
+                background-image: url("%s");
+                background-color: "%s";
+            border-image: url("%s") 0 0 0 0 stretch stretch; 
+                background-repeat: no-repeat; 
+                background-position: center;
+            }""" % (
+            self.background_imagem,
+            self.background_cor,
+            self.background_imagem
+        )
 
 
 def suppress_qt_warnings():
@@ -33,37 +72,33 @@ def suppress_qt_warnings():
     environ["QT_SCREEN_SCALE_FACTORS"] = "1"
     environ["QT_SCALE_FACTOR"] = "1"
 
-def returnstylesheet():
-    # TODO acessar banco de dados salvar, stylesheet no mesmo.
-    
-    return """
-        QMainWindow {
-            background-image: url("MainWindow.png");
-        border-image: url("MainWindow.png") 0 0 0 0 stretch stretch; 
-            background-repeat: no-repeat; 
-            background-position: center;
-        }
-    """
 
-
-def buttons(alfa_edu):
+# TODO tentar colocar dentro da class depois
+def buttons(alfa_edu, volt_p_t_i):
     alfa_edu.ui.btnProfessor.clicked.connect(lambda: alfa_edu.mudar_pagina(1))
-    alfa_edu.ui.btnsair2.clicked.connect(lambda: alfa_edu.mudar_pagina(0))
+    alfa_edu.ui.btnsair2.clicked.connect(lambda: alfa_edu.open_dialog())
+    
+    #TODO corrigir botão Dialog não funciona.
+    volt_p_t_i.ui.btnOk.clicked.connect(lambda: volt_p_t_i.verifica_password())
+    # volt_p_t_i.ui.buttonBox.button(QtGui.QDialogButtonBox.Ok).clicked.connect(
+    #     lambda: alfa_edu.verifica_password(volt_p_t_i))
 
 
 if __name__ == '__main__':
     suppress_qt_warnings()
-    
+
     app = QApplication(sys.argv)
-    app.setStyleSheet(returnstylesheet())
-    
+
     alfa_edu_app = AlfaEdu()
-    buttons(alfa_edu_app)
+    app.setStyleSheet(alfa_edu_app.return_stylesheet())
+
+    voltar_para_tela_inicial = VoltarParaTelaInicial()
+    buttons(alfa_edu_app, voltar_para_tela_inicial)
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
-    
 
     alfa_edu_app.showFullScreen()
+
 
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)
