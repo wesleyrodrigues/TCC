@@ -1,6 +1,6 @@
 from PyQt5 import QtGui
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
-from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog
+from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog, QWidget
 from os import environ
 from mainUi import Ui_MainWindow
 from dialogpassword import Ui_Dialog
@@ -24,12 +24,14 @@ class VoltarParaTelaInicial(QDialog):
     def verifica_password(self, alfa_edu):
         text = str(self.ui.lineEdit.text())
         
-        # TODO buscar senha no BD.
+        # TODO buscar senha no BD, pedi senha apenas em atividades e feedback.
         if(text == "123"):
-            alfa_edu.mudar_pagina(0)
+            alfa_edu.mudar_pagina("pagina_inicial")
             self.ui.lineEdit.clear()
+            self.ui.lerror.hide()
             self.accept()
         else:
+            self.ui.lineEdit.clear()
             self.ui.lerror.show()
 
 
@@ -45,18 +47,22 @@ class AlfaEdu(QMainWindow):
 
         self.background_imagem = "MainWindow.png"
         self.background_cor = "#ADD8E6"
+        self.stack.setCurrentWidget(self.stack.findChild(QWidget, "pagina_inicial"))
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
 
-    def hide_button(self, index):
-        if(index == 0):
+    def hide_button(self, stack_name):
+        if(stack_name == "pagina_inicial"):
             self.ui.btnsair2.hide()
         else:
             self.ui.btnsair2.show()
 
-    def mudar_pagina(self, index):
-        self.stack.setCurrentIndex(index)
-        self.hide_button(index)
+    def mudar_pagina(self, stack_name):
+        # TODO Melhorar 
+        stack_passado = self.stack.findChild(QWidget, stack_name)
+        self.stack.setCurrentWidget(stack_passado)
+        # self.stack.setCurrentIndex(index)
+        self.hide_button(stack_name)
 
 
     # TODO melhorar depois
@@ -85,7 +91,7 @@ def suppress_qt_warnings():
 
 # TODO tentar colocar dentro da class depois
 def buttons(alfa_edu, volt_p_t_i):
-    alfa_edu.ui.btnProfessor.clicked.connect(lambda: alfa_edu.mudar_pagina(1))
+    alfa_edu.ui.btnProfessor.clicked.connect(lambda: alfa_edu.mudar_pagina("pagina_cadastro"))
     alfa_edu.ui.btnsair2.clicked.connect(lambda: volt_p_t_i.open_dialog())
     
     volt_p_t_i.ui.btnOk.clicked.connect(lambda: volt_p_t_i.verifica_password(alfa_edu))
