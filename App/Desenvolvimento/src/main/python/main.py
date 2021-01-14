@@ -14,6 +14,7 @@ class VoltarParaTelaInicial(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.lerror.hide()
+        self.ui.label_2.setPixmap(QtGui.QPixmap("src/main/app_imagens/dialog1.png"))
     
     # Abre caixa de dialogo para voltar para tela inicial
     def open_dialog(self):
@@ -77,9 +78,9 @@ class AlfaEdu(QMainWindow):
 
         return """
             QMainWindow {
-                background-image: url("%s");
+                background-image: url("src/main/app_imagens/%s");
                 background-color: "%s";
-            border-image: url("%s") 0 0 0 0 stretch stretch; 
+            border-image: url("src/main/app_imagens/%s") 0 0 0 0 stretch stretch; 
                 background-repeat: no-repeat; 
                 background-position: center;
             }""" % (

@@ -28,7 +28,7 @@ class Ui_Dialog(object):
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setMaximumSize(QtCore.QSize(50, 50))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("dialog1.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("../app_imagens/dialog1.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
