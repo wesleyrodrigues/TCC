@@ -27,7 +27,7 @@ class VoltarParaTelaInicial(QDialog):
         
         # TODO buscar senha no BD, pedi senha apenas em atividades e feedback.
         if(text == "123"):
-            alfa_edu.mudar_pagina("pagina_inicial")
+            alfa_edu.mudar_tela("tela_inicial")
             self.ui.lineEdit.clear()
             self.ui.lerror.hide()
             self.accept()
@@ -48,7 +48,7 @@ class AlfaEdu(QMainWindow):
 
         self.background_imagem = "MainWindow.png"
         self.background_cor = "#ADD8E6"
-        self.stack.setCurrentWidget(self.stack.findChild(QWidget, "pagina_inicial"))
+        self.stack.setCurrentWidget(self.stack.findChild(QWidget, "tela_inicial"))
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
         self.pular = 1
@@ -60,12 +60,12 @@ class AlfaEdu(QMainWindow):
             self.pular = 0
 
     def hide_button(self, stack_name):
-        if(stack_name == "pagina_inicial"):
+        if(stack_name == "tela_inicial"):
             self.ui.btn_sair2.hide()
         else:
             self.ui.btn_sair2.show()
 
-    def mudar_pagina(self, stack_name):
+    def mudar_tela(self, stack_name):
         # TODO Melhorar 
         stack_passado = self.stack.findChild(QWidget, stack_name)
         self.stack.setCurrentWidget(stack_passado)
@@ -99,7 +99,7 @@ def suppress_qt_warnings():
 
 # TODO tentar colocar dentro da class depois
 def buttons(alfa_edu, volt_p_t_i):
-    alfa_edu.ui.btn_professor.clicked.connect(lambda: alfa_edu.mudar_pagina("pagina_cadastro"))
+    alfa_edu.ui.btn_tela_cadastro.clicked.connect(lambda: alfa_edu.mudar_tela("tela_cadastro"))
     alfa_edu.ui.btn_sair2.clicked.connect(lambda: volt_p_t_i.open_dialog())
     alfa_edu.ui.btn_pular.clicked.connect(lambda: alfa_edu.pularfun())
     

@@ -34,9 +34,9 @@
     <item row="3" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
-      <widget class="QWidget" name="pagina_inicial">
+      <widget class="QWidget" name="tela_inicial">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="9" column="0">
          <layout class="QGridLayout" name="gridLayout">
@@ -83,7 +83,7 @@
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_2">
                 <item>
-                 <widget class="QPushButton" name="btn_professor">
+                 <widget class="QPushButton" name="btn_tela_cadastro">
                   <property name="minimumSize">
                    <size>
                     <width>200</width>
@@ -98,12 +98,12 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Professor</string>
+                   <string>Cadastrar</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_aluno">
+                 <widget class="QPushButton" name="btn_tela_login">
                   <property name="font">
                    <font>
                     <pointsize>15</pointsize>
@@ -112,7 +112,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string>Aluno</string>
+                   <string>Login</string>
                   </property>
                  </widget>
                 </item>
@@ -169,7 +169,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pagina_cadastro">
+      <widget class="QWidget" name="tela_cadastro">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="9" column="0">
          <layout class="QGridLayout" name="gridLayout">
@@ -218,12 +218,30 @@
                 <item>
                  <widget class="QLabel" name="lnome">
                   <property name="text">
-                   <string>Nome Completo</string>
+                   <string>Nome do Aluno</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="input_nome"/>
+                 <widget class="QLineEdit" name="input_nome">
+                  <property name="inputMethodHints">
+                   <set>Qt::ImhUrlCharactersOnly</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lsobrenome">
+                  <property name="text">
+                   <string>Sobrenome do Aluno</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="input_sobrenome">
+                  <property name="inputMethodHints">
+                   <set>Qt::ImhUrlCharactersOnly</set>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="lsenha">
@@ -233,7 +251,11 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="input_senha"/>
+                 <widget class="QLineEdit" name="input_senha">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="lconfsenha">
@@ -243,27 +265,39 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="input_conf_senha"/>
+                 <widget class="QLineEdit" name="input_conf_senha">
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="lemail">
                   <property name="text">
-                   <string>E-mail</string>
+                   <string>E-mail do Professor</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="input_email"/>
+                 <widget class="QLineEdit" name="input_email">
+                  <property name="inputMethodHints">
+                   <set>Qt::ImhEmailCharactersOnly</set>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="lconfemail">
                   <property name="text">
-                   <string>Confirme o e-mail</string>
+                   <string>Confirme o e-mail do Professor</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="input_conf_email"/>
+                 <widget class="QLineEdit" name="input_conf_email">
+                  <property name="inputMethodHints">
+                   <set>Qt::ImhEmailCharactersOnly</set>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QPushButton" name="btn_cadastrar">
@@ -321,7 +355,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pagina_login">
+      <widget class="QWidget" name="tela_login">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="9" column="0">
          <layout class="QGridLayout" name="gridLayout">
@@ -368,17 +402,17 @@
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_2">
                 <item>
-                 <widget class="QLabel" name="label_2">
+                 <widget class="QLabel" name="lnome_aluno">
                   <property name="text">
-                   <string>nome? emai?</string>
+                   <string>Nome do Aluno</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="lineEdit"/>
+                 <widget class="QLineEdit" name="input_nome_aluno_login"/>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_3">
+                 <widget class="QLabel" name="lsenha_login">
                   <property name="text">
                    <string>Senha</string>
                   </property>
@@ -392,7 +426,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_login">
+                 <widget class="QPushButton" name="btn_logar">
                   <property name="font">
                    <font>
                     <pointsize>15</pointsize>
@@ -441,7 +475,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pagina_escolher_atividades">
+      <widget class="QWidget" name="tela_escolher_atividades">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="9" column="0">
          <layout class="QGridLayout" name="gridLayout">
