@@ -9,6 +9,17 @@ import sys
 
 
 class VoltarParaTelaInicial(QDialog):
+    """
+        TODO melhorar descrição
+        Descrição:
+            Esta clase será chamada por meio do botão btn_sair2,
+            que irá aparecer nas telas de atividades, ela é uma tela
+            de Dialog para poder voltar para tela inicial.
+
+        Parâmetros:
+            QDialog
+                Tela do tipo Dialogo
+    """
     def __init__(self):
         super(VoltarParaTelaInicial, self).__init__()
         self.ui = Ui_Dialog()
@@ -18,7 +29,11 @@ class VoltarParaTelaInicial(QDialog):
     
     # Abre caixa de dialogo para voltar para tela inicial
     def open_dialog(self):
-        self.exec_()
+        """ Descrição: 
+            Executa a tela de Diálogo
+        """
+        self.exec()
+
 
     # TODO mudar depois para melhorar
     # verifica a senha do professor ou pai do aluno para poder sair das atividades
