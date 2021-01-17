@@ -9,7 +9,8 @@ smtp_ssl_port = 465
 
 # username ou email para logar no servidor
 username = 'alfaedu001@gmail.com'
-password = '6eXQ|&Mm3l@4r}B&4'
+#TODO Acessar BD
+password = ''
 
 from_addr = 'alfaedu001@gmail.com'
 # TODO acesso a BD e email do professor default 

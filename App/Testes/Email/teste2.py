@@ -15,7 +15,8 @@ port = 465
 user = 'alfaedu001@gmail.com'
 # TODO criptografar senha
 
-password = '6eXQ|&Mm3l@4r}B&4'
+#TODO Acessar BD
+password = ''
 
 try:
     # Criando objeto
@@ -37,15 +38,15 @@ try:
     email_msg['From'] = user
 
     # TODO acessar BD
-    email_msg['To'] = 'default@hotmail.com'
+    email_msg['To'] = 'wesleyrg2000@gmail.com'
     email_msg['Subject'] = 'enviando imagem'
     print('Adicionando texto...')
     email_msg.attach(MIMEText(message, 'plain'))
 
     print('Obtendo arquivo...')
     #TODO verificar localização do arquivo depois
-    filename = 'binoculo.png' 
-    filepath = 'binoculo.png'
+    filename = 'testando.bmp' 
+    filepath = 'testando.bmp'
     attachment = open(filepath, 'rb')
 
     print('Lendo arquivo...')
