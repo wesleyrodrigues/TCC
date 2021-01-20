@@ -223,7 +223,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="input_nome">
+                 <widget class="QLineEdit" name="input_nome_aluno">
                   <property name="inputMethodHints">
                    <set>Qt::ImhUrlCharactersOnly</set>
                   </property>
@@ -270,6 +270,16 @@
                    <enum>QLineEdit::Password</enum>
                   </property>
                  </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lnomeprofessor">
+                  <property name="text">
+                   <string>Nome do Professor</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="input_nome_professor"/>
                 </item>
                 <item>
                  <widget class="QLabel" name="lemail">
