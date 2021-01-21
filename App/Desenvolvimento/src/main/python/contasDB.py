@@ -41,10 +41,23 @@ class Contas(QtSql.QSqlDatabase):
         self.db.close()
         return True
 
-    def add_conta(self, list_conta):
+    def add_conta(self, input_conta):
         self.db.open()
+
         t = self.query.exec(
-            f"""INSERT INTO contas values(1, '{list_conta[0]}','{list_conta[1]}', '{list_conta[2]}', '{list_conta[3]}', '{list_conta[4]}')"""
+            f"""INSERT INTO contas(
+                nome_aluno,
+                sobrenome_aluno,
+                senha,
+                nome_professor,
+                email_professor
+            ) values(
+                '{input_conta["nome_aluno"]}',
+                '{input_conta["sobrenome_aluno"]}', 
+                '{input_conta["senha"]}', 
+                '{input_conta["nome_professor"]}', 
+                '{input_conta["email_professor"]}'
+                )"""
         )
         print(t)
         self.db.close()
@@ -63,5 +76,4 @@ if __name__ == '__main__':
     suppress_qt_warnings()
     app = QtWidgets.QApplication(sys.argv)
     contas = Contas()
-    # contas.createDB()
-    contas.add_conta(["joao", "pasquim", "123", "prof", "prof@gmail"])
+    contas.createDB()
