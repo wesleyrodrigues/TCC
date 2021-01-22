@@ -6,8 +6,9 @@ class Contas(QtSql.QSqlDatabase):
 
     def __init__(self) -> None:
         super(Contas, self).__init__()
+        # TODO verificar depois essa conexão
         self.db = self.addDatabase('QSQLITE')
-        self.db.setDatabaseName('contas.db')
+        self.db.setDatabaseName('contas_alunos.db')
         self.query = QtSql.QSqlQuery()
 
     def createDB(self) -> bool:
@@ -26,7 +27,7 @@ class Contas(QtSql.QSqlDatabase):
 
         # TODO criptografar senha.
         self.query.exec(
-            """CREATE TABLE contas(
+            """CREATE TABLE IF NOT EXISTS contas_alunos(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
                 nome_aluno varchar,
                 sobrenome_aluno varchar,
@@ -43,9 +44,9 @@ class Contas(QtSql.QSqlDatabase):
 
     def add_conta(self, input_conta):
         self.db.open()
-
+        # TODO verificar por que não está salvando
         t = self.query.exec(
-            f"""INSERT INTO contas(
+            f"""INSERT INTO contas_alunos(
                 nome_aluno,
                 sobrenome_aluno,
                 senha,
@@ -61,7 +62,15 @@ class Contas(QtSql.QSqlDatabase):
         )
         print(t)
         self.db.close()
-
+        return t
+    
+    # def seleciona_tudo(self):
+    #     self.db.open()
+    #     query = QtSql.QSqlQuery("SELECT nome_aluno FROM contas_alunos where id=1")
+    #     print("contas")
+    #     query.next()
+    #     print(query.value(0))
+    #     self.db.close()
 
 def suppress_qt_warnings():
     environ["QT_DEVICE_PIXEL_RATIO"] = "0"
@@ -77,3 +86,4 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     contas = Contas()
     contas.createDB()
+    contas.seleciona_tudo()

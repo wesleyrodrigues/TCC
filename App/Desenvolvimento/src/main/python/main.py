@@ -94,10 +94,11 @@ class AlfaEdu(QMainWindow):
         contas = Contas()
         nome_aluno = str(self.ui.input_nome_aluno.text())
         sobrenome = str(self.ui.input_sobrenome.text())
-        senha = str(self.ui.input_senha.text()) 
+        senha = str(self.ui.input_senha.text())
+        # TODO senha criptografada não funciona
         senha_cript = Cript.criptografa_senha(senha)
         # TODO conferir senha
-        # conf_senha = input_conf_senha 
+        # conf_senha = input_conf_senha
         nome_professor = str(self.ui.input_nome_professor.text())
         email = str(self.ui.input_email.text())
         # TODO conferir email
