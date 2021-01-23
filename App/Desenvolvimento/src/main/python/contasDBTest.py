@@ -1,14 +1,13 @@
 from contasDB import Contas
 from criptografia import Cript
+
 contasTests = Contas()
 
-
 def retorna_dic_conta():
-    nome_aluno = "Mabel123"
+    nome_aluno = "Mabel1234"
     sobrenome = "Park"
-    #TODO senha criptografada não funciona
-    # senha_cript = str(Cript.criptografa_senha("RuIVyzVFC8"))
-    senha_cript = "RfdsjkalsdjljasdfkljadskjdsakjdfsakuIVyzVFC8"
+    senha_cript = Cript.criptografa_senha("RuIVyzVFC8")
+    # senha_cript = "RfdsjkalsdjljasdfkljadskjdsakjdfsakuIVyzVFC8"
     nome_professor = "Mason"
     email = "ra@ko.nr"
 

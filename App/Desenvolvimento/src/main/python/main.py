@@ -70,6 +70,8 @@ class AlfaEdu(QMainWindow):
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
         self.pular = 1
+        self.contas = Contas()
+        self.contas.createDB()
 
     def pularfun(self):
         self.stack.setCurrentIndex(self.pular)
@@ -91,7 +93,7 @@ class AlfaEdu(QMainWindow):
         self.hide_button(stack_name)
 
     def input_conta(self):
-        contas = Contas()
+
         nome_aluno = str(self.ui.input_nome_aluno.text())
         sobrenome = str(self.ui.input_sobrenome.text())
         senha = str(self.ui.input_senha.text())
@@ -103,7 +105,7 @@ class AlfaEdu(QMainWindow):
         email = str(self.ui.input_email.text())
         # TODO conferir email
         # input_conf_email
-        contas.add_conta(
+        self.contas.add_conta(
             {
                 "nome_aluno": nome_aluno,
                 "sobrenome_aluno": sobrenome,

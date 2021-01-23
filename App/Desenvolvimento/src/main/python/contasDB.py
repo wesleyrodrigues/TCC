@@ -12,6 +12,7 @@ class Contas(QtSql.QSqlDatabase):
         self.query = QtSql.QSqlQuery()
 
     def createDB(self) -> bool:
+        print("teste")
         # db = self.addDatabase('QSQLITE')
         # db.setDatabaseName('contas.db')
 
@@ -43,6 +44,7 @@ class Contas(QtSql.QSqlDatabase):
         return True
 
     def add_conta(self, input_conta):
+
         self.db.open()
         # TODO verificar por que não está salvando
         t = self.query.exec(
@@ -63,14 +65,24 @@ class Contas(QtSql.QSqlDatabase):
         print(t)
         self.db.close()
         return t
-    
-    # def seleciona_tudo(self):
-    #     self.db.open()
-    #     query = QtSql.QSqlQuery("SELECT nome_aluno FROM contas_alunos where id=1")
-    #     print("contas")
-    #     query.next()
-    #     print(query.value(0))
-    #     self.db.close()
+
+    def seleciona_tudo(self):
+        self.db.open()
+        query = QtSql.QSqlQuery("SELECT * FROM contas_alunos")
+        print("contas")
+        while(query.next()):
+            print(
+                f"""
+                {query.value("nome_aluno")},
+                {query.value("sobrenome_aluno")},
+                {query.value("senha")},
+                {query.value("nome_professor")},
+                {query.value("email_professor")},
+                 """
+            )
+        # print(query.value(0))
+        self.db.close()
+
 
 def suppress_qt_warnings():
     environ["QT_DEVICE_PIXEL_RATIO"] = "0"
