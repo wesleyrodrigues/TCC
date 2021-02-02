@@ -52,9 +52,11 @@
     <item>
      <widget class="QFrame" name="frame_2">
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/FUNDO/FUNDO.png);
+       <string notr="true">QFrame {
+background-image: url(:/atvimg/pato.png);
 background-position: center;
 background-repeat:no-repeat;
+}
 </string>
       </property>
       <property name="frameShape">

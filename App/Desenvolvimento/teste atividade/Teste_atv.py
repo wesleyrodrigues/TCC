@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(949, 728)
+        MainWindow.resize(1090, 837)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -26,9 +26,11 @@ class Ui_MainWindow(object):
         self.frame.setObjectName("frame")
         self.verticalLayout.addWidget(self.frame)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setStyleSheet("background-image: url(:/FUNDO/FUNDO.png);\n"
+        self.frame_2.setStyleSheet("QFrame {\n"
+"background-image: url(:/atvimg/pato.png);\n"
 "background-position: center;\n"
 "background-repeat:no-repeat;\n"
+"}\n"
 "")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
