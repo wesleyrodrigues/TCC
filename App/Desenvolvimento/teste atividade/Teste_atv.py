@@ -26,8 +26,7 @@ class Ui_MainWindow(object):
         self.frame.setObjectName("frame")
         self.verticalLayout.addWidget(self.frame)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setStyleSheet("background-color: rgb(100, 100, 100);\n"
-"background-image: url(:/FUNDO/MAIN.png);\n"
+        self.frame_2.setStyleSheet("background-image: url(:/FUNDO/FUNDO.png);\n"
 "background-position: center;\n"
 "background-repeat:no-repeat;\n"
 "")
@@ -53,13 +52,15 @@ class Ui_MainWindow(object):
         self.frame_4.setObjectName("frame_4")
         self.lineEdit = QtWidgets.QLineEdit(self.frame_3)
         self.lineEdit.setGeometry(QtCore.QRect(30, 400, 280, 55))
-        self.lineEdit.setStyleSheet("QLineEdit{\n"
+        self.lineEdit.setStyleSheet("QLineEdit {\n"
 "    border: 2px solid rgb(107, 107, 107);\n"
 "    border-radius: 5px;\n"
 "    padding: 30px;\n"
-"    background-color:rgb(141, 141, 141);\n"
+"    background-color:rgb(0, 127, 0)\n"
+"    \n"
 "\n"
 "}")
+        self.lineEdit.setFrame(True)
         self.lineEdit.setObjectName("lineEdit")
         self.pushButton = QtWidgets.QPushButton(self.frame_3)
         self.pushButton.setGeometry(QtCore.QRect(335, 397, 61, 61))

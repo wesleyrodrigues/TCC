@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>949</width>
-    <height>728</height>
+    <width>1090</width>
+    <height>837</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,8 +52,7 @@
     <item>
      <widget class="QFrame" name="frame_2">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(100, 100, 100);
-background-image: url(:/FUNDO/MAIN.png);
+       <string notr="true">background-image: url(:/FUNDO/FUNDO.png);
 background-position: center;
 background-repeat:no-repeat;
 </string>
@@ -119,13 +118,17 @@ backgroung-position: center;</string>
            </rect>
           </property>
           <property name="styleSheet">
-           <string notr="true">QLineEdit{
+           <string notr="true">QLineEdit {
 	border: 2px solid rgb(107, 107, 107);
 	border-radius: 5px;
 	padding: 30px;
-	background-color:rgb(141, 141, 141);
+	background-color:rgb(0, 127, 0)
+	
 
 }</string>
+          </property>
+          <property name="frame">
+           <bool>true</bool>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton">
