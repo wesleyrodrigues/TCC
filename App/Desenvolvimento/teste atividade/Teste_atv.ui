@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
-    <height>746</height>
+    <width>949</width>
+    <height>728</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,11 @@
     <item>
      <widget class="QFrame" name="frame_2">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(100, 100, 100);</string>
+       <string notr="true">background-color: rgb(100, 100, 100);
+background-image: url(:/FUNDO/MAIN.png);
+background-position: center;
+background-repeat:no-repeat;
+</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -70,7 +74,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 248, 167);</string>
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>

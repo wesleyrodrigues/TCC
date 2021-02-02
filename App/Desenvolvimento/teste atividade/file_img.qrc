@@ -2,6 +2,9 @@
   <qresource prefix="atvimg">
     <file>ARVORE.png</file>
   </qresource>
+  <qresource prefix="FUNDO">
+    <file>MAIN.png</file>
+  </qresource>
   <qresource prefix="botao">
     <file>button-156707_1280.png</file>
   </qresource>

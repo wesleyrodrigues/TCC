@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(870, 746)
+        MainWindow.resize(949, 728)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -26,7 +26,11 @@ class Ui_MainWindow(object):
         self.frame.setObjectName("frame")
         self.verticalLayout.addWidget(self.frame)
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setStyleSheet("background-color: rgb(100, 100, 100);")
+        self.frame_2.setStyleSheet("background-color: rgb(100, 100, 100);\n"
+"background-image: url(:/FUNDO/MAIN.png);\n"
+"background-position: center;\n"
+"background-repeat:no-repeat;\n"
+"")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -34,7 +38,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_3 = QtWidgets.QFrame(self.frame_2)
         self.frame_3.setMaximumSize(QtCore.QSize(450, 550))
-        self.frame_3.setStyleSheet("background-color: rgb(255, 248, 167);")
+        self.frame_3.setStyleSheet("")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
