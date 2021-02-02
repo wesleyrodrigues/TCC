@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.frame_4.setMaximumSize(QtCore.QSize(360, 360))
         self.frame_4.setStyleSheet("background-image: url(:/atvimg/ARVORE.png);\n"
 "background-repeat: no-repeat;\n"
-"backgroung-position: center;")
+"background-position: center;")
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_4.setObjectName("frame_4")
