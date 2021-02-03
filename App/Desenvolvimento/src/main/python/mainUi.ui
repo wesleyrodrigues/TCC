@@ -670,7 +670,7 @@ border: 2px solid rgb(0, 255, 0);
        </layout>
       </widget>
       <widget class="QWidget" name="tela_cadastro">
-       <layout class="QGridLayout" name="gridLayout_2">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item row="9" column="0">
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
