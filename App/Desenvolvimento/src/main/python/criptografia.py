@@ -1,4 +1,6 @@
 # import bcrypt
+import hashlib
+import os
 
 #TODO não funciona em produção
 class Cript():
@@ -7,6 +9,6 @@ class Cript():
         # return hashed.decode("utf-8")
         return senha
 
-    def verifica_senha(senha, senha_cript):
+    def verifica_usuario_e_senha(usuario, senha, senha_cript):
         # return bcrypt.checkpw(senha.encode('utf_8'), senha_cript)
         return senha

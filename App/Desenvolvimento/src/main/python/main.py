@@ -156,7 +156,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     alfa_edu_app = AlfaEdu()
-    app.setStyleSheet(alfa_edu_app.return_stylesheet())
+    # app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
     voltar_para_tela_inicial = VoltarParaTelaInicial()
 
