@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="atvimg">
+    <file>pato.png</file>
+    <file>ARVORE.png</file>
+  </qresource>
+  <qresource prefix="botao">
+    <file>button-156707_1280.png</file>
+  </qresource>
+</RCC>

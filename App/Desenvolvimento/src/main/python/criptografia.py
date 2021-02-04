@@ -14,6 +14,7 @@ class Cript():
         return senha_cript.decode('latin-1')
 
     def verifica_usuario_e_senha(usuario, senha, senha_cript):
+        
         senha_cript = senha_cript.encode('latin-1')
         salt = senha_cript[:32]
         key = senha_cript[32:]
