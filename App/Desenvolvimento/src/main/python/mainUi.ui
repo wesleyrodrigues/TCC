@@ -542,7 +542,7 @@ background-color: rgb(0, 85, 0);</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tela_inicial">
        <property name="styleSheet">
@@ -748,7 +748,7 @@ border: 2px solid rgb(0, 255, 0);
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit"/>
+               <widget class="QLineEdit" name="input_nome_aluno"/>
               </item>
               <item>
                <widget class="QLabel" name="label_3">
@@ -767,7 +767,7 @@ border: 2px solid rgb(0, 255, 0);
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_2"/>
+               <widget class="QLineEdit" name="input_sobrenome"/>
               </item>
               <item>
                <widget class="QLabel" name="label_7">
@@ -786,7 +786,7 @@ border: 2px solid rgb(0, 255, 0);
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_3"/>
+               <widget class="QLineEdit" name="input_senha"/>
               </item>
               <item>
                <widget class="QLabel" name="label_8">
@@ -800,7 +800,7 @@ border: 2px solid rgb(0, 255, 0);
                  </size>
                 </property>
                 <property name="text">
-                 <string>Confirmarr Senha</string>
+                 <string>Confirmar Senha</string>
                 </property>
                </widget>
               </item>
@@ -819,12 +819,12 @@ border: 2px solid rgb(0, 255, 0);
                  <string notr="true"/>
                 </property>
                 <property name="text">
-                 <string>Nome do Professo</string>
+                 <string>Nome do Professor ou Responsável </string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_5"/>
+               <widget class="QLineEdit" name="input_nome_professor"/>
               </item>
               <item>
                <widget class="QLabel" name="label_11">
@@ -838,12 +838,12 @@ border: 2px solid rgb(0, 255, 0);
                  <string notr="true"/>
                 </property>
                 <property name="text">
-                 <string>E-Mail do Professor</string>
+                 <string>E-mail do Professor ou responsável</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit_6"/>
+               <widget class="QLineEdit" name="input_email"/>
               </item>
               <item>
                <widget class="QLabel" name="label_10">
@@ -857,7 +857,7 @@ border: 2px solid rgb(0, 255, 0);
                  <string notr="true"/>
                 </property>
                 <property name="text">
-                 <string>Confirme o E-Mail do Professor</string>
+                 <string>Confirme o e-mail</string>
                 </property>
                </widget>
               </item>
@@ -865,7 +865,7 @@ border: 2px solid rgb(0, 255, 0);
                <widget class="QLineEdit" name="lineEdit_7"/>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_7">
+               <widget class="QPushButton" name="btn_cadastrar">
                 <property name="maximumSize">
                  <size>
                   <width>350</width>
