@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="atvimg">
     <file>pato.png</file>
+    <file>../imagens_atividades/ARVORE.png</file>
     <file>ARVORE.png</file>
   </qresource>
   <qresource prefix="botao">
