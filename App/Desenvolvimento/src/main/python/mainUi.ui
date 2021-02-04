@@ -542,7 +542,7 @@ background-color: rgb(0, 85, 0);</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tela_inicial">
        <property name="styleSheet">
@@ -743,31 +743,12 @@ border: 2px solid rgb(0, 255, 0);
                  <string notr="true"/>
                 </property>
                 <property name="text">
-                 <string>Nome do Aluno</string>
+                 <string>Nome e sobrenome do aluno</string>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QLineEdit" name="input_nome_aluno"/>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_3">
-                <property name="maximumSize">
-                 <size>
-                  <width>350</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string>Sobrenome do Aluno</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="input_sobrenome"/>
               </item>
               <item>
                <widget class="QLabel" name="label_7">

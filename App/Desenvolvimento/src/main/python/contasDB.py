@@ -66,6 +66,20 @@ class Contas(QtSql.QSqlDatabase):
         self.db.close()
         return t
 
+    def seleciona_usuario(self, nome_usuario):
+        self.db.open()
+        query = QtSql.QSqlQuery(
+            f"SELECT * FROM contas_alunos WHERE nome_aluno = '{nome_usuario}'")
+        query.next()
+        usuario = {
+            "nome_aluno": query.value("nome_aluno"),
+            "sobrenome_aluno": query.value("sobrenome_aluno"),
+            "senha": query.value("senha"),
+            "nome_professor": query.value("nome_professor"),
+            "email_professor": query.value("email_professor")}
+        self.db.close()
+        return usuario
+
     def seleciona_tudo(self):
         self.db.open()
         query = QtSql.QSqlQuery("SELECT * FROM contas_alunos")
@@ -98,4 +112,5 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     contas = Contas()
     contas.createDB()
-    contas.seleciona_tudo()
+    # contas.seleciona_tudo()
+    # contas.seleciona_usuario("Mabel1234")
