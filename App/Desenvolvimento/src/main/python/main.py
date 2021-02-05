@@ -112,7 +112,18 @@ class AlfaEdu(QMainWindow):
 
     def input_conta(self):
         texto_lines = self.get_text()
-        self.contas.add_conta(texto_lines)
+        message = ""
+        if(texto_lines["senha"] != texto_lines["conf_senha"]):
+            message += "As senhas não são iguais. Tente novamente.\n"
+        if(texto_lines["email_professor"] != texto_lines["conf_email"]):
+            message += "Os emails não são iguais. Tente novamente."
+        
+        self.ui.lverifica_senha_email.setText(message)
+
+        if(not(message)):
+            print("adicionado")
+            self.contas.add_conta(texto_lines)
+
 
     # TODO melhorar depois
 
