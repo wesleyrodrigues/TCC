@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
-    <height>769</height>
+    <width>1010</width>
+    <height>786</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -543,7 +543,7 @@ background-color: rgb(0, 85, 0);</string>
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1379,7 +1379,13 @@ border: 2px solid rgb(0, 255, 0);
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <item>
-               <widget class="QFrame" name="frame_7">
+               <widget class="QFrame" name="centralizador">
+                <property name="maximumSize">
+                 <size>
+                  <width>610</width>
+                  <height>500</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(170, 255, 127);</string>
                 </property>
@@ -1389,6 +1395,64 @@ border: 2px solid rgb(0, 255, 0);
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
+                <widget class="QLabel" name="l_texto">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>600</width>
+                   <height>71</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>600</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Clique na &lt;/span&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; text-decoration: underline;&quot;&gt;CASA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_alter_1">
+                 <property name="geometry">
+                  <rect>
+                   <x>40</x>
+                   <y>200</y>
+                   <width>150</width>
+                   <height>150</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>PushButton</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_alter_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>230</x>
+                   <y>200</y>
+                   <width>150</width>
+                   <height>150</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>PushButton</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_alter_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>420</x>
+                   <y>200</y>
+                   <width>150</width>
+                   <height>150</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>PushButton</string>
+                 </property>
+                </widget>
                </widget>
               </item>
              </layout>
