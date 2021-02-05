@@ -91,8 +91,8 @@ class AlfaEdu(QMainWindow):
         self.stack.setCurrentWidget(stack_passado)
         # self.stack.setCurrentIndex(index)
         self.hide_button(stack_name)
-    
-    def get_text(self, nome_line = "tudo"):
+
+    def get_text(self, nome_line="tudo"):
         nomes_dict = {
             "nome_aluno": str(self.ui.input_nome_aluno.text()),
             "sobrenome_aluno": str(self.ui.input_sobrenome.text()),
@@ -108,22 +108,26 @@ class AlfaEdu(QMainWindow):
         else:
             return nomes_dict[nome_line]
 
-    
-
     def input_conta(self):
         texto_lines = self.get_text()
         message = ""
         if(texto_lines["senha"] != texto_lines["conf_senha"]):
             message += "As senhas não são iguais. Tente novamente.\n"
         if(texto_lines["email_professor"] != texto_lines["conf_email"]):
-            message += "Os emails não são iguais. Tente novamente."
-        
-        self.ui.lverifica_senha_email.setText(message)
+            message += "Os emails não são iguais. Tente novamente.\n"
 
-        if(not(message)):
+
+        campos = True
+        for i in texto_lines:
+            if(not(texto_lines[i])):
+                message += "Verifique se todos dados estão preenchidos"
+                campos = False
+                break
+
+        self.ui.lverifica_senha_email.setText(message)
+        if(not(message) and campos):
             print("adicionado")
             self.contas.add_conta(texto_lines)
-
 
     # TODO melhorar depois
 

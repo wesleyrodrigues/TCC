@@ -533,7 +533,7 @@ background-color: rgb(0, 85, 0);</string>
        <item>
         <widget class="QLabel" name="lnome_aluno_logado">
          <property name="text">
-          <string>Nome do aluno logado</string>
+          <string>Nome do aluno logad</string>
          </property>
         </widget>
        </item>
