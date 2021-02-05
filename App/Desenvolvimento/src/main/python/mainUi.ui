@@ -650,14 +650,16 @@ border: 2px solid rgb(0, 255, 0);
              <widget class="QFrame" name="Logo">
               <property name="geometry">
                <rect>
-                <x>120</x>
+                <x>20</x>
                 <y>40</y>
-                <width>120</width>
-                <height>80</height>
+                <width>300</width>
+                <height>101</height>
                </rect>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(170, 170, 127);</string>
+               <string notr="true">background-image: url(:/tela/app_imagens/imagem logo falso.png);
+backgroung-imagem :center;
+background-repeat : no-repeat;</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
