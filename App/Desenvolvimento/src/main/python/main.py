@@ -91,28 +91,28 @@ class AlfaEdu(QMainWindow):
         self.stack.setCurrentWidget(stack_passado)
         # self.stack.setCurrentIndex(index)
         self.hide_button(stack_name)
+    
+    def get_text(self, nome_line = "tudo"):
+        nomes_dict = {
+            "nome_aluno": str(self.ui.input_nome_aluno.text()),
+            "sobrenome_aluno": str(self.ui.input_sobrenome.text()),
+            "senha": str(self.ui.input_senha.text()),
+            "conf_senha": str(self.ui.input_conf_senha.text()),
+            "nome_professor": str(self.ui.input_nome_professor.text()),
+            "email_professor": str(self.ui.input_email.text()),
+            "conf_email": str(self.ui.input_conf_email.text())
+        }
+
+        if (nome_line == "tudo"):
+            return nomes_dict
+        else:
+            return nomes_dict[nome_line]
+
+    
 
     def input_conta(self):
-
-        nome_aluno = str(self.ui.input_nome_aluno.text())
-        sobrenome = str(self.ui.input_sobrenome.text())
-        senha = str(self.ui.input_senha.text())
-        # TODO senha criptografada não funciona
-        senha_cript = Cript.criptografa_senha(senha)
-        # TODO conferir senha
-        # conf_senha = input_conf_senha
-        nome_professor = str(self.ui.input_nome_professor.text())
-        email = str(self.ui.input_email.text())
-        # TODO conferir email
-        # input_conf_email
-        self.contas.add_conta(
-            {
-                "nome_aluno": nome_aluno,
-                "sobrenome_aluno": sobrenome,
-                "senha": senha_cript,
-                "nome_professor": nome_professor,
-                "email_professor": email}
-        )
+        texto_lines = self.get_text()
+        self.contas.add_conta(texto_lines)
 
     # TODO melhorar depois
 

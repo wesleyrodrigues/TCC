@@ -531,12 +531,19 @@ background-color: rgb(0, 85, 0);</string>
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="lnome_aluno_logado">
+         <property name="text">
+          <string>Nome do aluno logado</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QStackedWidget" name="stackedWidget">
          <property name="styleSheet">
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -737,12 +744,16 @@ border: 2px solid rgb(0, 255, 0);
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Nome do Aluno</string>
+                    <string>Nome do aluno</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_nome_aluno"/>
+                  <widget class="QLineEdit" name="input_nome_aluno">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_3">
@@ -761,7 +772,11 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_sobrenome"/>
+                  <widget class="QLineEdit" name="input_sobrenome">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_7">
@@ -780,7 +795,11 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_senha"/>
+                  <widget class="QLineEdit" name="input_senha">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_8">
@@ -799,7 +818,11 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_4"/>
+                  <widget class="QLineEdit" name="input_conf_senha">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_9">
@@ -818,7 +841,11 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_nome_professor"/>
+                  <widget class="QLineEdit" name="input_nome_professor">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_11">
@@ -837,7 +864,11 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="input_email"/>
+                  <widget class="QLineEdit" name="input_email">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhEmailCharactersOnly|Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_10">
@@ -856,7 +887,28 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_7"/>
+                  <widget class="QLineEdit" name="input_conf_email">
+                   <property name="inputMethodHints">
+                    <set>Qt::ImhEmailCharactersOnly|Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lverifica_senha_email">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                     <stylestrategy>PreferDefault</stylestrategy>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 0, 0)</string>
+                   </property>
+                   <property name="text">
+                    <string>Verifica se senha emais são iguais.</string>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btn_cadastrar">
@@ -942,7 +994,7 @@ border: 2px solid rgb(0, 255, 0);
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="label_12">
+                  <widget class="QLabel" name="lnome_aluno">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -955,17 +1007,10 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_2">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </widget>
+                  <widget class="QComboBox" name="cb_nome_aluno"/>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_13">
+                  <widget class="QLabel" name="lsenha">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -978,7 +1023,7 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_3">
+                  <widget class="QLineEdit" name="input_senha_login">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -988,7 +1033,7 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_4">
+                  <widget class="QPushButton" name="btn_login">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>

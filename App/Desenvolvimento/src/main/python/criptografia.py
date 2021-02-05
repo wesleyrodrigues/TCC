@@ -19,5 +19,4 @@ class Cript():
         salt = senha_cript[:32]
         key = senha_cript[32:]
         new_key = hashlib.pbkdf2_hmac('sha256', senha.encode('latin-1'), salt, 100000)
-        print(new_key)
         return key == new_key

@@ -30,11 +30,11 @@ class Contas(QtSql.QSqlDatabase):
         self.query.exec(
             """CREATE TABLE IF NOT EXISTS contas_alunos(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
-                nome_aluno varchar,
-                sobrenome_aluno varchar,
-                senha varchar,
-                nome_professor varchar,
-                email_professor varchar
+                nome_aluno varchar NOT NULL,
+                sobrenome_aluno varchar NOT NULL,
+                senha varchar NOT NULL,
+                nome_professor varchar NOT NULL,
+                email_professor varchar NOT NULL
                 )"""
         )
 
