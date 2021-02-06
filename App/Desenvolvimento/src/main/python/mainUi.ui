@@ -543,7 +543,7 @@ background-color: rgb(0, 85, 0);</string>
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -647,25 +647,23 @@ border: 2px solid rgb(0, 255, 0);
                <string>Login</string>
               </property>
              </widget>
-             <widget class="QFrame" name="Logo">
+             <widget class="QLabel" name="label_3">
               <property name="geometry">
                <rect>
-                <x>20</x>
-                <y>40</y>
-                <width>300</width>
-                <height>101</height>
+                <x>75</x>
+                <y>50</y>
+                <width>200</width>
+                <height>61</height>
                </rect>
               </property>
-              <property name="styleSheet">
-               <string notr="true">background-image: url(:/tela/app_imagens/imagem logo falso.png);
-background-image :center;
-background-repeat : no-repeat;</string>
+              <property name="text">
+               <string/>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+              <property name="pixmap">
+               <pixmap resource="img_fixas.qrc">:/tela/app_imagens/teste_img.png</pixmap>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
+              <property name="scaledContents">
+               <bool>true</bool>
               </property>
              </widget>
             </widget>
