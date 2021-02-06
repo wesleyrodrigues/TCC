@@ -12,7 +12,7 @@ class Contas(QtSql.QSqlDatabase):
         self.query = QtSql.QSqlQuery()
 
     def createDB(self) -> bool:
-        print("teste")
+        print("createDB iniciado")
         # db = self.addDatabase('QSQLITE')
         # db.setDatabaseName('contas.db')
 
@@ -30,8 +30,7 @@ class Contas(QtSql.QSqlDatabase):
         self.query.exec(
             """CREATE TABLE IF NOT EXISTS contas_alunos(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
-                nome_aluno varchar NOT NULL,
-                sobrenome_aluno varchar NOT NULL,
+                nome_aluno varchar NOT NULL UNIQUE,
                 senha varchar NOT NULL,
                 nome_professor varchar NOT NULL,
                 email_professor varchar NOT NULL
@@ -50,13 +49,11 @@ class Contas(QtSql.QSqlDatabase):
         t = self.query.exec(
             f"""INSERT INTO contas_alunos(
                 nome_aluno,
-                sobrenome_aluno,
                 senha,
                 nome_professor,
                 email_professor
             ) values(
                 '{input_conta["nome_aluno"]}',
-                '{input_conta["sobrenome_aluno"]}', 
                 '{input_conta["senha"]}', 
                 '{input_conta["nome_professor"]}', 
                 '{input_conta["email_professor"]}'
@@ -73,12 +70,26 @@ class Contas(QtSql.QSqlDatabase):
         query.next()
         usuario = {
             "nome_aluno": query.value("nome_aluno"),
-            "sobrenome_aluno": query.value("sobrenome_aluno"),
             "senha": query.value("senha"),
             "nome_professor": query.value("nome_professor"),
             "email_professor": query.value("email_professor")}
         self.db.close()
         return usuario
+    
+    # TODO salvar nome e sobrenome junto mesmo aaargh
+    def seleciona_nomes(self):
+        self.db.open()
+        query = QtSql.QSqlQuery("SELECT * FROM contas_alunos")
+        nomes = []
+        # query.next()
+        # print(query.value("nome_aluno"))
+        while(query.next()):
+            nomes.append(query.value("nome_aluno"))
+        print(nomes)
+        self.db.close()
+        return nomes
+        # print(query.value(0))
+
 
     def seleciona_tudo(self):
         self.db.open()
@@ -88,7 +99,6 @@ class Contas(QtSql.QSqlDatabase):
             print(
                 f"""
                 {query.value("nome_aluno")},
-                {query.value("sobrenome_aluno")},
                 {query.value("senha")},
                 {query.value("nome_professor")},
                 {query.value("email_professor")},

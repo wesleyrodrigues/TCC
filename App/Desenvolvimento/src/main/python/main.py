@@ -72,6 +72,7 @@ class AlfaEdu(QMainWindow):
         self.pular = 1
         self.contas = Contas()
         self.contas.createDB()
+        self.ui.cb_nome_aluno.addItems(self.contas.seleciona_nomes())
 
     def pularfun(self):
         self.stack.setCurrentIndex(self.pular)
@@ -95,7 +96,6 @@ class AlfaEdu(QMainWindow):
     def get_text(self, nome_line="tudo"):
         nomes_dict = {
             "nome_aluno": str(self.ui.input_nome_aluno.text()),
-            "sobrenome_aluno": str(self.ui.input_sobrenome.text()),
             "senha": str(self.ui.input_senha.text()),
             "conf_senha": str(self.ui.input_conf_senha.text()),
             "nome_professor": str(self.ui.input_nome_professor.text()),
@@ -110,24 +110,34 @@ class AlfaEdu(QMainWindow):
 
     def input_conta(self):
         texto_lines = self.get_text()
-        message = ""
+        message = True
         if(texto_lines["senha"] != texto_lines["conf_senha"]):
-            message += "As senhas não são iguais. Tente novamente.\n"
+            msg = "As senhas não são iguais. Tente novamente.\n"
+            self.ui.lverifica_senha.setText(msg)
+            message = False
         if(texto_lines["email_professor"] != texto_lines["conf_email"]):
-            message += "Os emails não são iguais. Tente novamente.\n"
+            msg = "Os emails não são iguais. Tente novamente.\n"
+            self.ui.lverifica_email.setText(msg)
+            message = False
 
-
-        campos = True
         for i in texto_lines:
             if(not(texto_lines[i])):
-                message += "Verifique se todos dados estão preenchidos"
-                campos = False
+                msg = "Verifique se todos dados estão preenchidos\n"
+                self.ui.lcampos.setText(msg)
+                message = False
                 break
 
-        self.ui.lverifica_senha_email.setText(message)
-        if(not(message) and campos):
+        for count in range(self.ui.cb_nome_aluno.count()):
+            if(texto_lines["nome_aluno"] == self.ui.cb_nome_aluno.itemText(count)):
+                msg = "Nome do(a) aluno(a), já cadastrado\n"
+                self.ui.lverifica_nome.setText(msg)
+                message = False
+                break
+
+        if(message):
             print("adicionado")
             self.contas.add_conta(texto_lines)
+            self.ui.cb_nome_aluno.addItem(texto_lines["nome_aluno"])
 
     # TODO melhorar depois
 
@@ -156,8 +166,12 @@ def suppress_qt_warnings():
 
 # TODO tentar colocar dentro da class depois
 def buttons(alfa_edu, volt_p_t_i):
+    # telas
     alfa_edu.ui.btn_tela_cadastro.clicked.connect(
         lambda: alfa_edu.mudar_tela("tela_cadastro"))
+    alfa_edu.ui.btn_tela_login.clicked.connect(
+        lambda: alfa_edu.mudar_tela("tela_login"))
+
     alfa_edu.ui.btn_sair2.clicked.connect(lambda: volt_p_t_i.open_dialog())
     alfa_edu.ui.btn_pular.clicked.connect(lambda: alfa_edu.pularfun())
     alfa_edu.ui.btn_cadastrar.clicked.connect(lambda: alfa_edu.input_conta())
@@ -179,7 +193,8 @@ if __name__ == '__main__':
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
 
-    alfa_edu_app.showFullScreen()
+    alfa_edu_app.show()
+    # alfa_edu_app.showFullScreen()
 
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)
