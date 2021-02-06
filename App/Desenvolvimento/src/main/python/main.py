@@ -87,7 +87,7 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_sair2.show()
     
     def login(self):
-        
+        pass
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
