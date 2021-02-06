@@ -660,7 +660,7 @@ border: 2px solid rgb(0, 255, 0);
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap resource="img_fixas.qrc">:/tela/app_imagens/teste_img.png</pixmap>
+               <pixmap resource="img_fixas.qrc">:/tela/app_imagens/tentativa.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
