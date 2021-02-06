@@ -5,7 +5,7 @@ from os import environ
 from mainUi import Ui_MainWindow
 from dialogpassword import Ui_Dialog
 from contasDB import Contas
-from criptografia import Cript
+# from criptografia import Cript
 import sys
 
 
@@ -85,6 +85,9 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_sair2.hide()
         else:
             self.ui.btn_sair2.show()
+    
+    def login(self):
+        
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
@@ -136,8 +139,14 @@ class AlfaEdu(QMainWindow):
 
         if(message):
             print("adicionado")
-            self.contas.add_conta(texto_lines)
-            self.ui.cb_nome_aluno.addItem(texto_lines["nome_aluno"])
+            #TODO criptografia não funciona
+            # texto_lines["senha"] = Cript.criptografa_senha(texto_lines["senha"])
+            t = self.contas.add_conta(texto_lines)
+            if(t):
+                self.ui.cb_nome_aluno.addItem(texto_lines["nome_aluno"])
+            else:
+                msg = "Dados não salvos erro Banco de dados\n"
+                self.ui.lcampos.setText(msg)
 
     # TODO melhorar depois
 

@@ -31,7 +31,7 @@ class Contas(QtSql.QSqlDatabase):
             """CREATE TABLE IF NOT EXISTS contas_alunos(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
                 nome_aluno varchar NOT NULL UNIQUE,
-                senha varchar NOT NULL,
+                senha TEXT NOT NULL,
                 nome_professor varchar NOT NULL,
                 email_professor varchar NOT NULL
                 )"""

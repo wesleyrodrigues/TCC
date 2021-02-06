@@ -2,6 +2,7 @@
 import hashlib
 import os
 
+# TODO não funciona no banco de dados
 class Cript():
     def criptografa_senha(senha):
         
