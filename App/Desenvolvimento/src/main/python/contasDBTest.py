@@ -1,8 +1,10 @@
 from contasDB import Contas
 from criptografia import Cript
+import os
 
 contasTests = Contas()
-
+# Remove para novos testes
+os.remove("contas_alunos.db")
 
 def retorna_dic_conta():
     nome_aluno = "Mabel1234"
@@ -25,6 +27,9 @@ def test_createDB():
 
 def test_add_conta():
     assert contasTests.add_conta(retorna_dic_conta()) == True
+
+def test_add_conta_novamente():
+    assert contasTests.add_conta(retorna_dic_conta()) == False
 
 
 # def test_seleciona_usuario():

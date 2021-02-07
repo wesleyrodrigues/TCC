@@ -59,11 +59,11 @@ class Contas(QtSql.QSqlDatabase):
                 '{input_conta["email_professor"]}'
                 )"""
         )
-        print(t)
+        print(f"Resultado adicionado = {t}")
         self.db.close()
         return t
 
-    def seleciona_usuario(self, nome_usuario):
+    def seleciona_usuario_por_nome(self, nome_usuario):
         self.db.open()
         query = QtSql.QSqlQuery(
             f"SELECT * FROM contas_alunos WHERE nome_aluno = '{nome_usuario}'")

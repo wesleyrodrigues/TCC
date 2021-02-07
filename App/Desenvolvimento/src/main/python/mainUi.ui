@@ -69,7 +69,7 @@ background-color: rgb(85, 255, 255);
         <number>0</number>
        </property>
        <item>
-        <widget class="QPushButton" name="btn_sair2">
+        <widget class="QPushButton" name="btn_voltar_tela_inicial">
          <property name="maximumSize">
           <size>
            <width>130</width>
@@ -543,7 +543,7 @@ background-color: rgb(0, 85, 0);</string>
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -974,7 +974,7 @@ border: 2px solid rgb(0, 255, 0);
                     <enum>QFrame::Plain</enum>
                    </property>
                    <property name="text">
-                    <string>Verifica se senha e emails são iguais.</string>
+                    <string/>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -1105,6 +1105,28 @@ border: 2px solid rgb(0, 255, 0);
                    </property>
                    <property name="echoMode">
                     <enum>QLineEdit::Password</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lerro_login">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 0, 0)</string>
+                   </property>
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
                  </item>
