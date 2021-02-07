@@ -17,7 +17,7 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_voltar_tela_inicial.hide()
 
         self.background_imagem = "MainWindow.png"
-        self.background_cor = "#ADD8E6"
+        self.background_cor = "#add8e6"
         self.stack.setCurrentWidget(
             self.stack.findChild(QWidget, "tela_inicial"))
         # self.ui.stackedWidget.setCurrentIndex(0)
@@ -172,7 +172,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     alfa_edu_app = AlfaEdu()
-    # app.setStyleSheet(alfa_edu_app.return_stylesheet())
+    app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
     buttons(alfa_edu_app)
 
