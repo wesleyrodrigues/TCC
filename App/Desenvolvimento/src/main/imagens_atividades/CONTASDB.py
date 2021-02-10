@@ -1,5 +1,6 @@
-from PyQt5 import QtSql, QtWidgets
+from PyQt5 import QtSql, QtWidgets, QtCore
 from os import environ, path, listdir
+import pyperclip
 
 
 class Contas(QtSql.QSqlDatabase):
@@ -31,7 +32,7 @@ class Contas(QtSql.QSqlDatabase):
             """CREATE TABLE IF NOT EXISTS imagens_atividades(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
                 nome_imagem varchar NOT NULL UNIQUE,
-                imagem BLOB
+                imagem BLOB NOT NULL
                 )"""
         )
 
@@ -57,6 +58,7 @@ class Contas(QtSql.QSqlDatabase):
 
         with open(filename, 'rb') as file:
             blobData = file.read()
+        # print(type(blobData))
         return blobData
     
     def add_imagem(self, input_conta):
@@ -68,11 +70,12 @@ class Contas(QtSql.QSqlDatabase):
                 nome_imagem,
                 imagem
             ) values(
-                '{input_conta["nome_imagem"]}',
-                '{input_conta["imagem"]}' 
+                "{input_conta["nome_imagem"]}",
+                "{input_conta["imagem"]}" 
                 )"""
         )
-        print(f"Resultado imagem adicionado = {t}")
+        print(f"""Resultado {input_conta["nome_imagem"]} = {t}""")
+        print(self.query.lastError().text())
         self.db.close()
         return t
     
@@ -83,10 +86,23 @@ class Contas(QtSql.QSqlDatabase):
         arquivos = [arq for arq in caminhos if path.isfile(arq) and arq.lower().endswith(".png")]
         # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
         arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
-
+        
         for arq in arquivos:
-            self.add_imagem({"nome_imagem": arq[77:][:-4], "imagem": self.convertToBinaryData(arq)})
-
+            blobinary = self.convertToBinaryData(arq)
+            #TODO not working
+            self.add_imagem({"nome_imagem": arq[77:][:-4], "imagem": blobinary})
+            print(arq[77:][:-4])
+    
+    def seleciona_imagem_por_id(self, id_i):
+        self.db.open()
+        query = QtSql.QSqlQuery(
+            f"SELECT * FROM imagens_atividades WHERE id = '{id_i}'")
+        query.next()
+        imagem = {
+            "nome_imagem": query.value("nome_imagem"),
+            "imagem": query.value("imagem")}
+        self.db.close()
+        return imagem
 
     def add_conta(self, input_conta):
 
