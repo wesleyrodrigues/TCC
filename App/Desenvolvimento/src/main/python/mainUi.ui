@@ -543,7 +543,7 @@ background-color: rgb(0, 85, 0);</string>
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -591,8 +591,31 @@ background-color: rgb(0, 85, 0);</string>
                 <height>41</height>
                </rect>
               </property>
+              <property name="font">
+               <font>
+                <family>Schoolwork</family>
+                <pointsize>26</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(121, 121, 121);</string>
+               <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(181, 181, 181);
+
+
+}
+QPushButton:hover {
+background-color: rgb(71, 71, 71);
+border: 2px solid rgb(117, 117, 117);
+
+}
+QPushButton:pressed {
+background-color: rgb(0, 255, 8);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
               </property>
               <property name="text">
                <string>Sair</string>
@@ -607,6 +630,12 @@ background-color: rgb(0, 85, 0);</string>
                 <height>41</height>
                </rect>
               </property>
+              <property name="font">
+               <font>
+                <family>Schoolwork</family>
+                <pointsize>26</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {
 
@@ -618,11 +647,11 @@ background-color: rgb(181, 181, 181);
 }
 QPushButton:hover {
 background-color: rgb(71, 71, 71);
-border: 2px solid rgb(49, 111, 255)
+border: 2px solid rgb(117, 117, 117);
 
 }
 QPushButton:pressed {
-background-color: rgb(247, 1, 255);
+background-color: rgb(0, 255, 8);
 border: 2px solid rgb(0, 255, 0);
 
 }</string>
@@ -640,8 +669,31 @@ border: 2px solid rgb(0, 255, 0);
                 <height>41</height>
                </rect>
               </property>
+              <property name="font">
+               <font>
+                <family>Schoolwork</family>
+                <pointsize>26</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(121, 121, 121);</string>
+               <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(181, 181, 181);
+
+
+}
+QPushButton:hover {
+background-color: rgb(71, 71, 71);
+border: 2px solid rgb(117, 117, 117);
+
+}
+QPushButton:pressed {
+background-color: rgb(0, 255, 8);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
               </property>
               <property name="text">
                <string>Login</string>
@@ -704,11 +756,11 @@ border: 2px solid rgb(0, 255, 0);
                 <property name="maximumSize">
                  <size>
                   <width>350</width>
-                  <height>500</height>
+                  <height>700</height>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 127);</string>
+                 <string notr="true">background-color: rgb(190, 255, 234);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -740,6 +792,12 @@ border: 2px solid rgb(0, 255, 0);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
@@ -750,6 +808,23 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QLineEdit" name="input_nome_aluno">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="inputMethodHints">
                     <set>Qt::ImhDigitsOnly|Qt::ImhLatinOnly</set>
                    </property>
@@ -760,7 +835,7 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>20</height>
+                     <height>30</height>
                     </size>
                    </property>
                    <property name="font">
@@ -785,6 +860,12 @@ border: 2px solid rgb(0, 255, 0);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
@@ -795,11 +876,41 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QLineEdit" name="input_senha">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="inputMethodHints">
                     <set>Qt::ImhHiddenText|Qt::ImhLatinOnly|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
                    </property>
                    <property name="echoMode">
                     <enum>QLineEdit::Password</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_12">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -814,6 +925,12 @@ border: 2px solid rgb(0, 255, 0);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="text">
                     <string>Confirmar Senha</string>
                    </property>
@@ -821,6 +938,23 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QLineEdit" name="input_conf_senha">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="inputMethodHints">
                     <set>Qt::ImhHiddenText|Qt::ImhLatinOnly|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
                    </property>
@@ -837,7 +971,7 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>20</height>
+                     <height>30</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -856,18 +990,54 @@ border: 2px solid rgb(0, 255, 0);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>Nome do Professor ou Responsável </string>
+                    <string>Nome do Professor </string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QLineEdit" name="input_nome_professor">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="inputMethodHints">
                     <set>Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_13">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -879,18 +1049,54 @@ border: 2px solid rgb(0, 255, 0);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string>E-mail do Professor ou responsável</string>
+                    <string>E-mail do Professor </string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QLineEdit" name="input_email">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="inputMethodHints">
                     <set>Qt::ImhEmailCharactersOnly|Qt::ImhLatinOnly</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_14">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
                  </item>
@@ -902,6 +1108,12 @@ border: 2px solid rgb(0, 255, 0);
                      <height>30</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="styleSheet">
                     <string notr="true"/>
                    </property>
@@ -912,6 +1124,23 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QLineEdit" name="input_conf_email">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>35</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="inputMethodHints">
                     <set>Qt::ImhEmailCharactersOnly|Qt::ImhLatinOnly</set>
                    </property>
@@ -922,7 +1151,7 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>20</height>
+                     <height>30</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -940,6 +1169,32 @@ border: 2px solid rgb(0, 255, 0);
                      <width>350</width>
                      <height>50</height>
                     </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(181, 181, 181);
+
+
+}
+QPushButton:hover {
+background-color: rgb(71, 71, 71);
+border: 2px solid rgb(117, 117, 117);
+
+}
+QPushButton:pressed {
+background-color: rgb(0, 255, 8);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
                    </property>
                    <property name="text">
                     <string>Cadastrar</string>
@@ -1022,8 +1277,8 @@ border: 2px solid rgb(0, 255, 0);
                <widget class="QFrame" name="frame_6">
                 <property name="maximumSize">
                  <size>
-                  <width>300</width>
-                  <height>310</height>
+                  <width>400</width>
+                  <height>400</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1056,11 +1311,17 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>30</height>
+                     <height>40</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Nome do Aluno&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>Nome do Aluno</string>
                    </property>
                   </widget>
                  </item>
@@ -1077,6 +1338,16 @@ border: 2px solid rgb(0, 255, 0);
                      <pointsize>15</pointsize>
                     </font>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QComboBox {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+}</string>
+                   </property>
                    <property name="currentIndex">
                     <number>-1</number>
                    </property>
@@ -1087,11 +1358,17 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>30</height>
+                     <height>40</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>36</pointsize>
+                    </font>
+                   </property>
                    <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Senha&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>Senha</string>
                    </property>
                   </widget>
                  </item>
@@ -1103,6 +1380,17 @@ border: 2px solid rgb(0, 255, 0);
                      <height>40</height>
                     </size>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+                   </property>
                    <property name="echoMode">
                     <enum>QLineEdit::Password</enum>
                    </property>
@@ -1113,7 +1401,7 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>25</height>
+                     <height>40</height>
                     </size>
                    </property>
                    <property name="font">
@@ -1137,6 +1425,26 @@ border: 2px solid rgb(0, 255, 0);
                      <width>16777215</width>
                      <height>60</height>
                     </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(181, 181, 181);
+
+
+}
+QPushButton:hover {
+background-color: rgb(71, 71, 71);
+border: 2px solid rgb(117, 117, 117);
+
+}
+QPushButton:pressed {
+background-color: rgb(0, 255, 8);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
                    </property>
                    <property name="text">
                     <string>Login</string>
@@ -1434,7 +1742,7 @@ border: 2px solid rgb(0, 255, 0);
                   <string/>
                  </property>
                  <property name="pixmap">
-                  <pixmap resource="file_img.qrc">:/atvimg/imagens_atividades/ARVORE.png</pixmap>
+                  <pixmap>:/atvimg/imagens_atividades/ARVORE.png</pixmap>
                  </property>
                  <property name="scaledContents">
                   <bool>true</bool>
@@ -1496,20 +1804,20 @@ border: 2px solid rgb(0, 255, 0);
                 <widget class="QLabel" name="l_texto">
                  <property name="geometry">
                   <rect>
-                   <x>0</x>
+                   <x>50</x>
                    <y>0</y>
-                   <width>600</width>
-                   <height>71</height>
+                   <width>271</width>
+                   <height>60</height>
                   </rect>
                  </property>
                  <property name="maximumSize">
                   <size>
                    <width>600</width>
-                   <height>16777215</height>
+                   <height>70</height>
                   </size>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Clique na &lt;/span&gt;&lt;span style=&quot; font-size:24pt; font-weight:600; text-decoration: underline;&quot;&gt;CASA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Clique na :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="btn_alter_1">
@@ -1549,6 +1857,30 @@ border: 2px solid rgb(0, 255, 0);
                  </property>
                  <property name="text">
                   <string>PushButton</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="l_alter_txt">
+                 <property name="geometry">
+                  <rect>
+                   <x>340</x>
+                   <y>0</y>
+                   <width>271</width>
+                   <height>60</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>600</width>
+                   <height>70</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;CASA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                </widget>

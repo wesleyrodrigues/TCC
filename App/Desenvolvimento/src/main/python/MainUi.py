@@ -213,10 +213,35 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName("frame_2")
         self.btn_sair = QtWidgets.QPushButton(self.frame_2)
         self.btn_sair.setGeometry(QtCore.QRect(110, 290, 141, 41))
-        self.btn_sair.setStyleSheet("background-color: rgb(121, 121, 121);")
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(26)
+        self.btn_sair.setFont(font)
+        self.btn_sair.setStyleSheet("QPushButton {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(181, 181, 181);\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color: rgb(71, 71, 71);\n"
+"border: 2px solid rgb(117, 117, 117);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"background-color: rgb(0, 255, 8);\n"
+"border: 2px solid rgb(0, 255, 0);\n"
+"\n"
+"}")
         self.btn_sair.setObjectName("btn_sair")
         self.btn_tela_cadastro = QtWidgets.QPushButton(self.frame_2)
         self.btn_tela_cadastro.setGeometry(QtCore.QRect(110, 170, 141, 41))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(26)
+        self.btn_tela_cadastro.setFont(font)
         self.btn_tela_cadastro.setStyleSheet("QPushButton {\n"
 "\n"
 "border: 2px solid rgb(0, 0, 0);\n"
@@ -227,18 +252,39 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover {\n"
 "background-color: rgb(71, 71, 71);\n"
-"border: 2px solid rgb(49, 111, 255)\n"
+"border: 2px solid rgb(117, 117, 117);\n"
 "\n"
 "}\n"
 "QPushButton:pressed {\n"
-"background-color: rgb(247, 1, 255);\n"
+"background-color: rgb(0, 255, 8);\n"
 "border: 2px solid rgb(0, 255, 0);\n"
 "\n"
 "}")
         self.btn_tela_cadastro.setObjectName("btn_tela_cadastro")
         self.btn_tela_login = QtWidgets.QPushButton(self.frame_2)
         self.btn_tela_login.setGeometry(QtCore.QRect(110, 230, 141, 41))
-        self.btn_tela_login.setStyleSheet("background-color: rgb(121, 121, 121);")
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(26)
+        self.btn_tela_login.setFont(font)
+        self.btn_tela_login.setStyleSheet("QPushButton {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(181, 181, 181);\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color: rgb(71, 71, 71);\n"
+"border: 2px solid rgb(117, 117, 117);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"background-color: rgb(0, 255, 8);\n"
+"border: 2px solid rgb(0, 255, 0);\n"
+"\n"
+"}")
         self.btn_tela_login.setObjectName("btn_tela_login")
         self.label_3 = QtWidgets.QLabel(self.frame_2)
         self.label_3.setGeometry(QtCore.QRect(75, 50, 200, 61))
@@ -262,8 +308,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_3)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.frame_4 = QtWidgets.QFrame(self.frame_3)
-        self.frame_4.setMaximumSize(QtCore.QSize(350, 500))
-        self.frame_4.setStyleSheet("background-color: rgb(255, 255, 127);")
+        self.frame_4.setMaximumSize(QtCore.QSize(350, 700))
+        self.frame_4.setStyleSheet("background-color: rgb(190, 255, 234);")
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_4.setObjectName("frame_4")
@@ -273,15 +319,29 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.label_2 = QtWidgets.QLabel(self.frame_4)
         self.label_2.setMaximumSize(QtCore.QSize(350, 30))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.label_2.setFont(font)
         self.label_2.setStyleSheet("")
         self.label_2.setObjectName("label_2")
         self.verticalLayout_5.addWidget(self.label_2)
         self.input_nome_aluno = QtWidgets.QLineEdit(self.frame_4)
+        self.input_nome_aluno.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.input_nome_aluno.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_nome_aluno.setInputMethodHints(QtCore.Qt.ImhDigitsOnly|QtCore.Qt.ImhLatinOnly)
         self.input_nome_aluno.setObjectName("input_nome_aluno")
         self.verticalLayout_5.addWidget(self.input_nome_aluno)
         self.lverifica_nome = QtWidgets.QLabel(self.frame_4)
-        self.lverifica_nome.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.lverifica_nome.setMaximumSize(QtCore.QSize(16777215, 30))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -292,66 +352,173 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addWidget(self.lverifica_nome)
         self.label_7 = QtWidgets.QLabel(self.frame_4)
         self.label_7.setMaximumSize(QtCore.QSize(350, 30))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.label_7.setFont(font)
         self.label_7.setStyleSheet("")
         self.label_7.setObjectName("label_7")
         self.verticalLayout_5.addWidget(self.label_7)
         self.input_senha = QtWidgets.QLineEdit(self.frame_4)
+        self.input_senha.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.input_senha.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_senha.setInputMethodHints(QtCore.Qt.ImhHiddenText|QtCore.Qt.ImhLatinOnly|QtCore.Qt.ImhNoAutoUppercase|QtCore.Qt.ImhNoPredictiveText|QtCore.Qt.ImhSensitiveData)
         self.input_senha.setEchoMode(QtWidgets.QLineEdit.Password)
         self.input_senha.setObjectName("input_senha")
         self.verticalLayout_5.addWidget(self.input_senha)
+        self.label_12 = QtWidgets.QLabel(self.frame_4)
+        self.label_12.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_12.setText("")
+        self.label_12.setObjectName("label_12")
+        self.verticalLayout_5.addWidget(self.label_12)
         self.label_8 = QtWidgets.QLabel(self.frame_4)
         self.label_8.setEnabled(True)
         self.label_8.setMaximumSize(QtCore.QSize(350, 30))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.verticalLayout_5.addWidget(self.label_8)
         self.input_conf_senha = QtWidgets.QLineEdit(self.frame_4)
+        self.input_conf_senha.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.input_conf_senha.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_conf_senha.setInputMethodHints(QtCore.Qt.ImhHiddenText|QtCore.Qt.ImhLatinOnly|QtCore.Qt.ImhNoAutoUppercase|QtCore.Qt.ImhNoPredictiveText|QtCore.Qt.ImhSensitiveData)
         self.input_conf_senha.setEchoMode(QtWidgets.QLineEdit.Password)
         self.input_conf_senha.setClearButtonEnabled(False)
         self.input_conf_senha.setObjectName("input_conf_senha")
         self.verticalLayout_5.addWidget(self.input_conf_senha)
         self.lverifica_senha = QtWidgets.QLabel(self.frame_4)
-        self.lverifica_senha.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.lverifica_senha.setMaximumSize(QtCore.QSize(16777215, 30))
         self.lverifica_senha.setStyleSheet("color: rgb(255, 0, 0)")
         self.lverifica_senha.setText("")
         self.lverifica_senha.setObjectName("lverifica_senha")
         self.verticalLayout_5.addWidget(self.lverifica_senha)
         self.label_9 = QtWidgets.QLabel(self.frame_4)
         self.label_9.setMaximumSize(QtCore.QSize(350, 30))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.label_9.setFont(font)
         self.label_9.setStyleSheet("")
         self.label_9.setObjectName("label_9")
         self.verticalLayout_5.addWidget(self.label_9)
         self.input_nome_professor = QtWidgets.QLineEdit(self.frame_4)
+        self.input_nome_professor.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.input_nome_professor.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_nome_professor.setInputMethodHints(QtCore.Qt.ImhLatinOnly)
         self.input_nome_professor.setObjectName("input_nome_professor")
         self.verticalLayout_5.addWidget(self.input_nome_professor)
+        self.label_13 = QtWidgets.QLabel(self.frame_4)
+        self.label_13.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_13.setText("")
+        self.label_13.setObjectName("label_13")
+        self.verticalLayout_5.addWidget(self.label_13)
         self.label_11 = QtWidgets.QLabel(self.frame_4)
         self.label_11.setMaximumSize(QtCore.QSize(350, 30))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.label_11.setFont(font)
         self.label_11.setStyleSheet("")
         self.label_11.setObjectName("label_11")
         self.verticalLayout_5.addWidget(self.label_11)
         self.input_email = QtWidgets.QLineEdit(self.frame_4)
+        self.input_email.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.input_email.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_email.setInputMethodHints(QtCore.Qt.ImhEmailCharactersOnly|QtCore.Qt.ImhLatinOnly)
         self.input_email.setObjectName("input_email")
         self.verticalLayout_5.addWidget(self.input_email)
+        self.label_14 = QtWidgets.QLabel(self.frame_4)
+        self.label_14.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.label_14.setText("")
+        self.label_14.setObjectName("label_14")
+        self.verticalLayout_5.addWidget(self.label_14)
         self.label_10 = QtWidgets.QLabel(self.frame_4)
         self.label_10.setMaximumSize(QtCore.QSize(350, 30))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.label_10.setFont(font)
         self.label_10.setStyleSheet("")
         self.label_10.setObjectName("label_10")
         self.verticalLayout_5.addWidget(self.label_10)
         self.input_conf_email = QtWidgets.QLineEdit(self.frame_4)
+        self.input_conf_email.setMaximumSize(QtCore.QSize(16777215, 35))
+        self.input_conf_email.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_conf_email.setInputMethodHints(QtCore.Qt.ImhEmailCharactersOnly|QtCore.Qt.ImhLatinOnly)
         self.input_conf_email.setObjectName("input_conf_email")
         self.verticalLayout_5.addWidget(self.input_conf_email)
         self.lverifica_email = QtWidgets.QLabel(self.frame_4)
-        self.lverifica_email.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.lverifica_email.setMaximumSize(QtCore.QSize(16777215, 30))
         self.lverifica_email.setStyleSheet("color: rgb(255, 0, 0)")
         self.lverifica_email.setText("")
         self.lverifica_email.setObjectName("lverifica_email")
         self.verticalLayout_5.addWidget(self.lverifica_email)
         self.btn_cadastrar = QtWidgets.QPushButton(self.frame_4)
         self.btn_cadastrar.setMaximumSize(QtCore.QSize(350, 50))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.btn_cadastrar.setFont(font)
+        self.btn_cadastrar.setStyleSheet("QPushButton {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(181, 181, 181);\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color: rgb(71, 71, 71);\n"
+"border: 2px solid rgb(117, 117, 117);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"background-color: rgb(0, 255, 8);\n"
+"border: 2px solid rgb(0, 255, 0);\n"
+"\n"
+"}")
         self.btn_cadastrar.setObjectName("btn_cadastrar")
         self.verticalLayout_5.addWidget(self.btn_cadastrar)
         self.lcampos = QtWidgets.QLabel(self.frame_4)
@@ -386,7 +553,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.frame_5)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.frame_6 = QtWidgets.QFrame(self.frame_5)
-        self.frame_6.setMaximumSize(QtCore.QSize(300, 310))
+        self.frame_6.setMaximumSize(QtCore.QSize(400, 400))
         self.frame_6.setStyleSheet("background-color: rgb(255, 255, 127);")
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -396,7 +563,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.lnome_aluno = QtWidgets.QLabel(self.frame_6)
-        self.lnome_aluno.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.lnome_aluno.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.lnome_aluno.setFont(font)
         self.lnome_aluno.setObjectName("lnome_aluno")
         self.verticalLayout_6.addWidget(self.lnome_aluno)
         self.cb_nome_aluno = QtWidgets.QComboBox(self.frame_6)
@@ -404,19 +575,40 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(15)
         self.cb_nome_aluno.setFont(font)
+        self.cb_nome_aluno.setStyleSheet("QComboBox {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"}")
         self.cb_nome_aluno.setObjectName("cb_nome_aluno")
         self.verticalLayout_6.addWidget(self.cb_nome_aluno)
         self.lsenha = QtWidgets.QLabel(self.frame_6)
-        self.lsenha.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.lsenha.setMaximumSize(QtCore.QSize(16777215, 40))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(36)
+        self.lsenha.setFont(font)
         self.lsenha.setObjectName("lsenha")
         self.verticalLayout_6.addWidget(self.lsenha)
         self.input_senha_login = QtWidgets.QLineEdit(self.frame_6)
         self.input_senha_login.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.input_senha_login.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_senha_login.setEchoMode(QtWidgets.QLineEdit.Password)
         self.input_senha_login.setObjectName("input_senha_login")
         self.verticalLayout_6.addWidget(self.input_senha_login)
         self.lerro_login = QtWidgets.QLabel(self.frame_6)
-        self.lerro_login.setMaximumSize(QtCore.QSize(16777215, 25))
+        self.lerro_login.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -427,6 +619,24 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addWidget(self.lerro_login)
         self.btn_login = QtWidgets.QPushButton(self.frame_6)
         self.btn_login.setMaximumSize(QtCore.QSize(16777215, 60))
+        self.btn_login.setStyleSheet("QPushButton {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(181, 181, 181);\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color: rgb(71, 71, 71);\n"
+"border: 2px solid rgb(117, 117, 117);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"background-color: rgb(0, 255, 8);\n"
+"border: 2px solid rgb(0, 255, 0);\n"
+"\n"
+"}")
         self.btn_login.setObjectName("btn_login")
         self.verticalLayout_6.addWidget(self.btn_login)
         self.horizontalLayout_7.addWidget(self.frame_6)
@@ -577,8 +787,8 @@ class Ui_MainWindow(object):
         self.centralizador.setFrameShadow(QtWidgets.QFrame.Raised)
         self.centralizador.setObjectName("centralizador")
         self.l_texto = QtWidgets.QLabel(self.centralizador)
-        self.l_texto.setGeometry(QtCore.QRect(0, 0, 600, 71))
-        self.l_texto.setMaximumSize(QtCore.QSize(600, 16777215))
+        self.l_texto.setGeometry(QtCore.QRect(50, 0, 271, 60))
+        self.l_texto.setMaximumSize(QtCore.QSize(600, 70))
         self.l_texto.setObjectName("l_texto")
         self.btn_alter_1 = QtWidgets.QPushButton(self.centralizador)
         self.btn_alter_1.setGeometry(QtCore.QRect(40, 200, 150, 150))
@@ -589,6 +799,13 @@ class Ui_MainWindow(object):
         self.btn_alter_3 = QtWidgets.QPushButton(self.centralizador)
         self.btn_alter_3.setGeometry(QtCore.QRect(420, 200, 150, 150))
         self.btn_alter_3.setObjectName("btn_alter_3")
+        self.l_alter_txt = QtWidgets.QLabel(self.centralizador)
+        self.l_alter_txt.setGeometry(QtCore.QRect(340, 0, 271, 60))
+        self.l_alter_txt.setMaximumSize(QtCore.QSize(600, 70))
+        font = QtGui.QFont()
+        font.setPointSize(30)
+        self.l_alter_txt.setFont(font)
+        self.l_alter_txt.setObjectName("l_alter_txt")
         self.horizontalLayout_8.addWidget(self.centralizador)
         self.verticalLayout_7.addWidget(self.tela_fundo)
         self.stackedWidget.addWidget(self.page_2)
@@ -603,7 +820,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(6)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -620,12 +837,12 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Nome completo do aluno"))
         self.label_7.setText(_translate("MainWindow", "Senha"))
         self.label_8.setText(_translate("MainWindow", "Confirmar Senha"))
-        self.label_9.setText(_translate("MainWindow", "Nome do Professor ou Responsável "))
-        self.label_11.setText(_translate("MainWindow", "E-mail do Professor ou responsável"))
+        self.label_9.setText(_translate("MainWindow", "Nome do Professor "))
+        self.label_11.setText(_translate("MainWindow", "E-mail do Professor "))
         self.label_10.setText(_translate("MainWindow", "Confirme o e-mail"))
         self.btn_cadastrar.setText(_translate("MainWindow", "Cadastrar"))
-        self.lnome_aluno.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Nome do Aluno</span></p></body></html>"))
-        self.lsenha.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt;\">Senha</span></p></body></html>"))
+        self.lnome_aluno.setText(_translate("MainWindow", "Nome do Aluno"))
+        self.lsenha.setText(_translate("MainWindow", "Senha"))
         self.btn_login.setText(_translate("MainWindow", "Login"))
         self.label.setText(_translate("MainWindow", "PÁGINA ESCOLHER ATIVIDADES"))
         self.label_5.setText(_translate("MainWindow", "Atividades"))
@@ -635,10 +852,11 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "Digite o tempo"))
         self.label_6.setText(_translate("MainWindow", "Quantidade de exercicios"))
         self.btnProfessor.setText(_translate("MainWindow", "Professor"))
-        self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Clique na </span><span style=\" font-size:24pt; font-weight:600; text-decoration: underline;\">CASA</span></p></body></html>"))
+        self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt;\">Clique na :</span></p></body></html>"))
         self.btn_alter_1.setText(_translate("MainWindow", "PushButton"))
         self.btn_alter_2.setText(_translate("MainWindow", "PushButton"))
         self.btn_alter_3.setText(_translate("MainWindow", "PushButton"))
+        self.l_alter_txt.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" text-decoration: underline;\">CASA</span></p></body></html>"))
         self.pushButton_6.setText(_translate("MainWindow", "Página de atividade 3"))
 
 import file_img_rc
