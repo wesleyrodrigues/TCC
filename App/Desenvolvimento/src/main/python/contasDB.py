@@ -1,5 +1,5 @@
 from PyQt5 import QtSql, QtWidgets
-from os import environ
+from os import environ, path, listdir
 
 
 class Contas(QtSql.QSqlDatabase):
@@ -8,7 +8,7 @@ class Contas(QtSql.QSqlDatabase):
         super(Contas, self).__init__()
         # TODO verificar depois essa conexão
         self.db = self.addDatabase('QSQLITE')
-        self.db.setDatabaseName('contas_alunos.db')
+        self.db.setDatabaseName('alfa_edu.db')
         self.query = QtSql.QSqlQuery()
 
     def createDB(self) -> bool:
@@ -26,7 +26,16 @@ class Contas(QtSql.QSqlDatabase):
 
             return False
 
-        # TODO criptografar senha.
+        # TODO BLOB não funciona salvar pasta imagens, por enquanto.
+        t = self.query.exec(
+            """CREATE TABLE IF NOT EXISTS imagens_atividades(
+                id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+                nome_imagem varchar NOT NULL UNIQUE,
+                pasta_imagem varchar NOT NULL UNIQUE
+                )"""
+        )
+
+
         self.query.exec(
             """CREATE TABLE IF NOT EXISTS contas_alunos(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
@@ -41,6 +50,48 @@ class Contas(QtSql.QSqlDatabase):
         # query.exec("insert into imagenspng values(2, 'arvore')")
         self.db.close()
         return True
+
+    def add_imagem(self, input_conta):
+
+        self.db.open()
+        self.query.prepare("INSERT INTO imagens_atividades (nome_imagem, pasta_imagem) "
+                           "VALUES (:nome_imagem, :pasta_imagem)")
+
+        self.query.bindValue(":nome_imagem", input_conta["nome_imagem"])
+        self.query.bindValue(":pasta_imagem", input_conta["pasta_imagem"])
+        t = self.query.exec_()
+
+        print(f"""Resultado {input_conta["nome_imagem"]} = {t}""")
+        print(self.query.lastError().text())
+        self.db.close()
+        return t
+
+    def add_imagens(self):
+        import pathlib
+        pasta = str(pathlib.Path().absolute())
+        # pasta = "C:\\Users\\wesle\\Documents\\TCC\\App\\Desenvolvimento\\src\\main\\imagens_atividades"
+        caminhos = [path.join(pasta, nome) for nome in listdir(pasta)]
+        arquivos = [arq for arq in caminhos if path.isfile(
+            arq) and arq.lower().endswith(".png")]
+        # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
+        arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
+
+        for arq in arquivos:
+            # TODO not working
+            self.add_imagem(
+                {"nome_imagem": arq[77:][:-4], "pasta_imagem": arq[49:]})
+            print(arq[77:][:-4])
+
+    def seleciona_imagem_por_id(self, id_i):
+        self.db.open()
+        query = QtSql.QSqlQuery(
+            f"SELECT * FROM imagens_atividades WHERE id = '{id_i}'")
+        query.next()
+        imagem = {
+            "nome_imagem": query.value("nome_imagem"),
+            "imagem": query.value("pasta_imagem")}
+        self.db.close()
+        return imagem
 
     def add_conta(self, input_conta):
 
@@ -75,7 +126,7 @@ class Contas(QtSql.QSqlDatabase):
             "email_professor": query.value("email_professor")}
         self.db.close()
         return usuario
-    
+
     # TODO salvar nome e sobrenome junto mesmo aaargh
     def seleciona_nomes(self):
         self.db.open()
@@ -89,7 +140,6 @@ class Contas(QtSql.QSqlDatabase):
         self.db.close()
         return nomes
         # print(query.value(0))
-
 
     def seleciona_tudo(self):
         self.db.open()
@@ -122,5 +172,7 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     contas = Contas()
     contas.createDB()
+    # contas.add_imagens()
+    # contas.seleciona_imagem_por_id(1)
     # contas.seleciona_tudo()
     # contas.seleciona_usuario("Mabel1234")
