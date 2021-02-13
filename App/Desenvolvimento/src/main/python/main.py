@@ -1,11 +1,12 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
-from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog, QWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
 from os import environ
 from mainUi import Ui_MainWindow
 from contasDB import Contas
 from criptografia import Cript
 
 import sys
+
 
 class AlfaEdu(QMainWindow):
     def __init__(self):
@@ -15,19 +16,21 @@ class AlfaEdu(QMainWindow):
 
         self.stack = self.ui.stackedWidget
         self.ui.btn_voltar_tela_inicial.hide()
-
-        self.background_imagem = "MainWindow.png"
-        self.background_cor = "#add8e6"
+        # TODO verificar depois background app
+        # self.background_imagem = "MainWindow.png"
+        # self.background_cor = "#add8e6"
         self.stack.setCurrentWidget(
             self.stack.findChild(QWidget, "tela_inicial"))
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
+        # TODO apagar depois essa linha pular.
         self.pular = 1
         self.contas = Contas()
         self.contas.createDB()
+        # adiciona os nomes no combo box de login
         self.ui.cb_nome_aluno.addItems(self.contas.seleciona_nomes())
         self.usuario = ""
-        self.senha_cript = ""
+        # self.senha_cript = ""
 
     def pularfun(self):
         self.stack.setCurrentIndex(self.pular)
@@ -46,6 +49,12 @@ class AlfaEdu(QMainWindow):
             self.ui.lverifica_nome.setText("")
             self.ui.lerro_login.setText("")
             self.ui.input_senha_login.setText("")
+            self.ui.input_nome_aluno.setText("")
+            self.ui.input_senha.setText("")
+            self.ui.input_conf_senha.setText("")
+            self.ui.input_nome_professor.setText("")
+            self.ui.input_email.setText("")
+            self.ui.input_conf_email.setText("")
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
@@ -79,47 +88,81 @@ class AlfaEdu(QMainWindow):
         if(retorno):
             self.mudar_tela("tela_escolher_atividades")
             self.usuario = nome
-            self.senha = senha
+            # self.senha = senha
         else:
             self.ui.lerro_login.setText("Senha errada digite novamente!!")
+
+    def mensagens_erros(self, arg):
+        texto_lines = self.get_text()
+        self.ui.lcampos.setText("")
+        if(arg == "nome_aluno"):
+            for count in range(self.ui.cb_nome_aluno.count()):
+                if(texto_lines["nome_aluno"] == self.ui.cb_nome_aluno.itemText(count)):
+                    msg = "Nome do(a) aluno(a), já cadastrado\n"
+                    self.ui.lverifica_nome.setText(msg)
+                    return False
+            self.ui.lverifica_nome.setText("")
+            return True
+
+        # TODO redundancia de ifs em senha e conf_senha
+        elif(arg == "senha" or arg == "conf_senha"):
+            if(texto_lines["conf_senha"] == ""
+               or texto_lines["senha"] == ""):
+                self.ui.lverifica_senha.setText("")
+
+            if(texto_lines["conf_senha"] != ""):
+                if(texto_lines["senha"] != texto_lines["conf_senha"]):
+                    msg = "As senhas não são iguais. Tente novamente.\n"
+                    self.ui.lverifica_senha.setText(msg)
+                    return False
+                self.ui.lverifica_senha.setText("")
+                return True
+
+
+        # TODO redundancia de ifs em email e conf email
+        elif(arg == "email" or arg == "conf_email"):
+            if(texto_lines["conf_email"] == ""
+               or texto_lines["email_professor"] == ""):
+                self.ui.lverifica_email.setText("")
+
+            if(texto_lines["conf_email"] != ""):
+                if(texto_lines["email_professor"] != texto_lines["conf_email"]):
+                    msg = "Os emails não são iguais. Tente novamente.\n"
+                    self.ui.lverifica_email.setText(msg)
+                    return False
+                self.ui.lverifica_email.setText("")
+                return True
+
 
     def input_conta(self):
         texto_lines = self.get_text()
 
-        message = True
-        if(texto_lines["senha"] != texto_lines["conf_senha"]):
-            msg = "As senhas não são iguais. Tente novamente.\n"
-            self.ui.lverifica_senha.setText(msg)
-            message = False
-        if(texto_lines["email_professor"] != texto_lines["conf_email"]):
-            msg = "Os emails não são iguais. Tente novamente.\n"
-            self.ui.lverifica_email.setText(msg)
-            message = False
+        campos = True
+
+        msg_erros = self.mensagens_erros(
+            "nome_aluno") and self.mensagens_erros(
+            "conf_senha") and self.mensagens_erros(
+            "conf_email")
 
         for i in texto_lines:
             if(not(texto_lines[i])):
                 msg = "Verifique se todos dados estão preenchidos\n"
                 self.ui.lcampos.setText(msg)
-                message = False
+                campos = False
                 break
 
-        for count in range(self.ui.cb_nome_aluno.count()):
-            if(texto_lines["nome_aluno"] == self.ui.cb_nome_aluno.itemText(count)):
-                msg = "Nome do(a) aluno(a), já cadastrado\n"
-                self.ui.lverifica_nome.setText(msg)
-                message = False
-                break
 
-        if(message):
+        if(msg_erros and campos):
             print("adicionado")
             # TODO criptografia não funciona
-            texto_lines["senha"] = Cript.criptografa_senha(texto_lines["senha"])
+            texto_lines["senha"] = Cript.criptografa_senha(
+                texto_lines["senha"])
             t = self.contas.add_conta(texto_lines)
             if(t):
                 self.ui.cb_nome_aluno.addItem(texto_lines["nome_aluno"])
                 self.mudar_tela("tela_escolher_atividades")
                 self.usuario = texto_lines["nome_aluno"]
-                self.senha = texto_lines["senha"]
+                # self.senha = texto_lines["senha"]
                 self.ui.lnome_aluno_logado.setText(self.usuario)
             else:
                 msg = "Dados não salvos erro Banco de dados\n"
@@ -127,20 +170,20 @@ class AlfaEdu(QMainWindow):
 
     # TODO melhorar depois
 
-    def return_stylesheet(self):
+    # def return_stylesheet(self):
 
-        return """
-            QMainWindow {
-                background-image: url("src/main/app_imagens/%s");
-                background-color: "%s";
-            border-image: url("src/main/app_imagens/%s") 0 0 0 0 stretch stretch; 
-                background-repeat: no-repeat; 
-                background-position: center;
-            }""" % (
-            self.background_imagem,
-            self.background_cor,
-            self.background_imagem
-        )
+    #     return """
+    #         QMainWindow {
+    #             background-image: url("src/main/app_imagens/%s");
+    #             background-color: "%s";
+    #         border-image: url("src/main/app_imagens/%s") 0 0 0 0 stretch stretch;
+    #             background-repeat: no-repeat;
+    #             background-position: center;
+    #         }""" % (
+    #         self.background_imagem,
+    #         self.background_cor,
+    #         self.background_imagem
+    #     )
 
 
 def suppress_qt_warnings():
@@ -165,6 +208,22 @@ def buttons(alfa_edu):
     alfa_edu.ui.btn_cadastrar.clicked.connect(lambda: alfa_edu.input_conta())
 
 
+def line_edits(alfa_edu):
+    alfa_edu.ui.input_conf_email.returnPressed.connect(
+        alfa_edu.ui.btn_cadastrar.click)
+    alfa_edu.ui.input_senha_login.returnPressed.connect(
+        alfa_edu.ui.btn_login.click)
+    alfa_edu.ui.input_nome_aluno.textChanged.connect(
+        lambda: alfa_edu.mensagens_erros("nome_aluno"))
+    alfa_edu.ui.input_senha.textChanged.connect(
+        lambda: alfa_edu.mensagens_erros("senha"))
+    alfa_edu.ui.input_conf_senha.textChanged.connect(
+        lambda: alfa_edu.mensagens_erros("conf_senha"))
+    alfa_edu.ui.input_conf_email.textChanged.connect(
+        lambda: alfa_edu.mensagens_erros("conf_email"))
+    alfa_edu.ui.input_email.textChanged.connect(
+        lambda: alfa_edu.mensagens_erros("email"))
+
 
 if __name__ == '__main__':
     suppress_qt_warnings()
@@ -172,9 +231,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     alfa_edu_app = AlfaEdu()
-    app.setStyleSheet(alfa_edu_app.return_stylesheet())
+    # app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
     buttons(alfa_edu_app)
+    line_edits(alfa_edu_app)
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
 

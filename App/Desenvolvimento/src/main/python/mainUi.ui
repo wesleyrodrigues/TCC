@@ -543,7 +543,7 @@ background-color: rgb(0, 85, 0);</string>
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
