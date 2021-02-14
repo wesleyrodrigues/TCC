@@ -2,7 +2,7 @@ from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
 from os import environ
 from mainUi import Ui_MainWindow
-from contasDB import Contas
+from alfaeduDB import AlfaEduDB
 from criptografia import Cript
 
 import sys
@@ -25,10 +25,10 @@ class AlfaEdu(QMainWindow):
         # self.ui.btnProfessor
         # TODO apagar depois essa linha pular.
         self.pular = 1
-        self.contas = Contas()
-        self.contas.createDB()
+        self.alfa_edu_db = AlfaEduDB()
+        self.alfa_edu_db.createDB()
         # adiciona os nomes no combo box de login
-        self.ui.cb_nome_aluno.addItems(self.contas.seleciona_nomes())
+        self.ui.cb_nome_aluno.addItems(self.alfa_edu_db.seleciona_nomes())
         self.usuario = ""
         # self.senha_cript = ""
 
@@ -82,7 +82,7 @@ class AlfaEdu(QMainWindow):
         self.ui.lerro_login.setText("")
         nome = str(self.ui.cb_nome_aluno.currentText())
         senha = str(self.ui.input_senha_login.text())
-        senha_cript = self.contas.seleciona_usuario_por_nome(nome)["senha"]
+        senha_cript = self.alfa_edu_db.seleciona_usuario_por_nome(nome)["senha"]
         retorno = Cript.verifica_usuario_e_senha(senha_cript, senha)
 
         if(retorno):
@@ -157,7 +157,7 @@ class AlfaEdu(QMainWindow):
             # TODO criptografia não funciona
             texto_lines["senha"] = Cript.criptografa_senha(
                 texto_lines["senha"])
-            t = self.contas.add_conta(texto_lines)
+            t = self.alfa_edu_db.add_conta(texto_lines)
             if(t):
                 self.ui.cb_nome_aluno.addItem(texto_lines["nome_aluno"])
                 self.mudar_tela("tela_escolher_atividades")

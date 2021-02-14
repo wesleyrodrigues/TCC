@@ -1,10 +1,14 @@
-from contasDB import Contas
+from alfaeduDB import AlfaEduDB
 from criptografia import Cript
 import os
 
-contasTests = Contas()
+contasTests = AlfaEduDB()
+
 # Remove para novos testes
-os.remove("contas_alunos.db")
+try:
+    os.remove("alfa_edu.db")
+except FileNotFoundError:
+    pass
 
 def retorna_dic_conta():
     nome_aluno = "Mabel1234"
@@ -22,14 +26,14 @@ def retorna_dic_conta():
 
 
 def test_createDB():
-    assert contasTests.createDB() == True
+    assert contasTests.createDB()
 
 
 def test_add_conta():
-    assert contasTests.add_conta(retorna_dic_conta()) == True
+    assert contasTests.add_conta(retorna_dic_conta())
 
 def test_add_conta_novamente():
-    assert contasTests.add_conta(retorna_dic_conta()) == False
+    assert not(contasTests.add_conta(retorna_dic_conta()))
 
 
 # def test_seleciona_usuario():

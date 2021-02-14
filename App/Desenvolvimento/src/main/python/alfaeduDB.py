@@ -2,27 +2,24 @@ from PyQt5 import QtSql, QtWidgets
 from os import environ, path, listdir
 
 
-class Contas(QtSql.QSqlDatabase):
+class AlfaEduDB(QtSql.QSqlDatabase):
 
     def __init__(self) -> None:
-        super(Contas, self).__init__()
-        # TODO verificar depois essa conexão
+        super(AlfaEduDB, self).__init__()
         self.db = self.addDatabase('QSQLITE')
         self.db.setDatabaseName('alfa_edu.db')
         self.query = QtSql.QSqlQuery()
 
     def createDB(self) -> bool:
-        print("createDB iniciado")
-        # db = self.addDatabase('QSQLITE')
-        # db.setDatabaseName('contas.db')
 
         if not self.db.open():
-            QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Cannot open database"),
-                                           QtWidgets.qApp.tr("Unable to establish a database connection.\n"
-                                                             "This example needs SQLite support. Please read "
-                                                             "the Qt SQL driver documentation for information "
-                                                             "how to build it.\n\n" "Click Cancel to exit."),
-                                           QtWidgets.QMessageBox.Cancel)
+            QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Não é possível abrir o banco de dados"),
+                                           QtWidgets.qApp.tr(
+                "Não foi possível estabelecer uma conexão com o banco de dados.\n"
+                "Este exemplo precisa de suporte SQLite. Por favor leia "
+                "a documentação do driver Qt SQL para informações "
+                "como faze-lo.\n\n" "Click Cancelar para sair."),
+                QtWidgets.QMessageBox.Cancel)
 
             return False
 
@@ -35,7 +32,6 @@ class Contas(QtSql.QSqlDatabase):
                 )"""
         )
 
-
         self.query.exec(
             """CREATE TABLE IF NOT EXISTS contas_alunos(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
@@ -46,8 +42,6 @@ class Contas(QtSql.QSqlDatabase):
                 )"""
         )
 
-        # query.exec("insert into imagenspng values(1, 'casa')")
-        # query.exec("insert into imagenspng values(2, 'arvore')")
         self.db.close()
         return True
 
@@ -66,10 +60,11 @@ class Contas(QtSql.QSqlDatabase):
         self.db.close()
         return t
 
+    # TODO verificar o que fazer com essa função depois
     def add_imagens(self):
         import pathlib
         pasta = str(pathlib.Path().absolute())
-        # pasta = "C:\\Users\\wesle\\Documents\\TCC\\App\\Desenvolvimento\\src\\main\\imagens_atividades"
+
         caminhos = [path.join(pasta, nome) for nome in listdir(pasta)]
         arquivos = [arq for arq in caminhos if path.isfile(
             arq) and arq.lower().endswith(".png")]
@@ -82,7 +77,7 @@ class Contas(QtSql.QSqlDatabase):
                 {"nome_imagem": arq[77:][:-4], "pasta_imagem": arq[49:]})
             print(arq[77:][:-4])
 
-    def seleciona_imagem_por_id(self, id_i):
+    def seleciona_imagem_por(self, id_i):
         self.db.open()
         query = QtSql.QSqlQuery(
             f"SELECT * FROM imagens_atividades WHERE id = '{id_i}'")
@@ -96,7 +91,6 @@ class Contas(QtSql.QSqlDatabase):
     def add_conta(self, input_conta):
 
         self.db.open()
-        # TODO verificar por que não está salvando
         t = self.query.exec(
             f"""INSERT INTO contas_alunos(
                 nome_aluno,
@@ -130,6 +124,7 @@ class Contas(QtSql.QSqlDatabase):
     # TODO salvar nome e sobrenome junto mesmo aaargh
     def seleciona_nomes(self):
         self.db.open()
+        # TODO alterar esse query
         query = QtSql.QSqlQuery("SELECT * FROM contas_alunos")
         nomes = []
         # query.next()
@@ -170,8 +165,8 @@ if __name__ == '__main__':
 
     suppress_qt_warnings()
     app = QtWidgets.QApplication(sys.argv)
-    contas = Contas()
-    contas.createDB()
+    alfaedu = AlfaEduDB()
+    alfaedu.createDB()
     # contas.add_imagens()
     # contas.seleciona_imagem_por_id(1)
     # contas.seleciona_tudo()
