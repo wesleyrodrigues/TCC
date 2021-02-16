@@ -13,7 +13,7 @@ class AlfaEduDB(QtSql.QSqlDatabase):
     def createDB(self) -> bool:
 
         if not self.db.open():
-            erro = str(self.query.lastError().text())
+            erro = str(self.db.lastError().text())
             QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Não é possível abrir o banco de dados"),
                                            QtWidgets.qApp.tr(
                 f"{erro} Não foi possível estabelecer uma conexão com o banco de dados.\n"
