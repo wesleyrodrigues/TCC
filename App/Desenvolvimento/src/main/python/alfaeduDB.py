@@ -13,13 +13,15 @@ class AlfaEduDB(QtSql.QSqlDatabase):
     def createDB(self) -> bool:
 
         if not self.db.open():
+            erro = str(self.query.lastError().text())
             QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Não é possível abrir o banco de dados"),
                                            QtWidgets.qApp.tr(
-                "Não foi possível estabelecer uma conexão com o banco de dados.\n"
+                f"{erro} Não foi possível estabelecer uma conexão com o banco de dados.\n"
                 "Este exemplo precisa de suporte SQLite. Por favor leia "
                 "a documentação do driver Qt SQL para informações "
                 "como faze-lo.\n\n" "Click Cancelar para sair."),
                 QtWidgets.QMessageBox.Cancel)
+	   
 
             return False
 
