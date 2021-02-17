@@ -91,6 +91,27 @@ background-color: rgb(85, 255, 255);
             <height>41</height>
            </rect>
           </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="smallDecimalPoint">
+           <bool>false</bool>
+          </property>
+          <property name="segmentStyle">
+           <enum>QLCDNumber::Filled</enum>
+          </property>
+          <property name="value" stdset="0">
+           <double>0.000000000000000</double>
+          </property>
+          <property name="intValue" stdset="0">
+           <number>0</number>
+          </property>
          </widget>
          <widget class="QPushButton" name="btn_voltar_tela_inicial">
           <property name="geometry">
@@ -139,7 +160,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1150,9 +1171,23 @@ border: 2px solid rgb(0, 255, 0);
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="spinBox">
-                     <property name="minimum">
-                      <number>1</number>
+                    <widget class="QTimeEdit" name="timeEdit">
+                     <property name="maximumTime">
+                      <time>
+                       <hour>0</hour>
+                       <minute>59</minute>
+                       <second>59</second>
+                      </time>
+                     </property>
+                     <property name="minimumTime">
+                      <time>
+                       <hour>0</hour>
+                       <minute>1</minute>
+                       <second>0</second>
+                      </time>
+                     </property>
+                     <property name="displayFormat">
+                      <string>mm</string>
                      </property>
                     </widget>
                    </item>
@@ -1171,7 +1206,7 @@ border: 2px solid rgb(0, 255, 0);
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="btnProfessor">
+                    <widget class="QPushButton" name="btnAtvidade">
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
@@ -1186,7 +1221,7 @@ border: 2px solid rgb(0, 255, 0);
                       </font>
                      </property>
                      <property name="text">
-                      <string>Professor</string>
+                      <string>Atividade</string>
                      </property>
                     </widget>
                    </item>
@@ -1226,7 +1261,26 @@ border: 2px solid rgb(0, 255, 0);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page"/>
+         <widget class="QWidget" name="page">
+          <widget class="QLabel" name="label_16">
+           <property name="geometry">
+            <rect>
+             <x>240</x>
+             <y>180</y>
+             <width>321</width>
+             <height>151</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>25</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>SEM NADA AQUI</string>
+           </property>
+          </widget>
+         </widget>
          <widget class="QWidget" name="tela_atividade_1">
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="spacing">
@@ -1486,7 +1540,7 @@ border: 2px solid rgb(0, 255, 0);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_3">
+         <widget class="QWidget" name="tela_feedback">
           <widget class="QPushButton" name="pushButton_6">
            <property name="geometry">
             <rect>
@@ -1498,6 +1552,24 @@ border: 2px solid rgb(0, 255, 0);
            </property>
            <property name="text">
             <string>Página de atividade 3</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_15">
+           <property name="geometry">
+            <rect>
+             <x>230</x>
+             <y>90</y>
+             <width>141</width>
+             <height>81</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>20</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>FEEDBACK</string>
            </property>
           </widget>
          </widget>
@@ -1521,8 +1593,8 @@ border: 2px solid rgb(0, 255, 0);
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>186</x>
-     <y>353</y>
+     <x>187</x>
+     <y>421</y>
     </hint>
     <hint type="destinationlabel">
      <x>57</x>

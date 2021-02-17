@@ -1,11 +1,12 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
-from os import environ
+from PyQt5 import QtCore
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
-
+from os import environ
 import sys
+import time
 
 
 class AlfaEdu(QMainWindow):
@@ -16,6 +17,13 @@ class AlfaEdu(QMainWindow):
 
         self.stack = self.ui.stackedWidget
         self.ui.btn_voltar_tela_inicial.hide()
+        self.ui.lcd_atvtempo.setNumDigits(5)
+        self._text = "00:00"
+        self.lcd_setText(self._text)
+        self._timer = QtCore.QTimer(self)
+        self._timer.setInterval(1000)
+        self._seconds = 60
+        self._timer.timeout.connect(self.onTimeout)
         # TODO verificar depois background app
         # self.background_imagem = "MainWindow.png"
         # self.background_cor = "#add8e6"
@@ -31,6 +39,28 @@ class AlfaEdu(QMainWindow):
         self.ui.cb_nome_aluno.addItems(self.alfa_edu_db.seleciona_nomes())
         self.usuario = ""
         # self.senha_cript = ""
+    
+    def onTimeout(self):
+        self._seconds -= 1
+        self.displayTime()
+    
+    def displayTime(self):
+        self.lcd_setText(time.strftime('%M:%S', time.gmtime(self._seconds)))
+		    
+        if(time.gmtime(self._seconds).tm_min == 0 and time.gmtime(self._seconds).tm_sec == 0):
+            self.mudar_tela("tela_feedback")
+            self._timer.stop()
+
+    def lcd_setText(self, texto):
+        self._text = texto
+        self.ui.lcd_atvtempo.display(texto)
+
+    def lcd_getText(self):
+        return self._text
+    
+    def fazer_atividade(self):
+        self._seconds = int(self.ui.timeEdit.text()) * 60
+        self._timer.start()
 
     def pularfun(self):
         self.stack.setCurrentIndex(self.pular)
@@ -82,7 +112,8 @@ class AlfaEdu(QMainWindow):
         self.ui.lerro_login.setText("")
         nome = str(self.ui.cb_nome_aluno.currentText())
         senha = str(self.ui.input_senha_login.text())
-        senha_cript = self.alfa_edu_db.seleciona_usuario_por_nome(nome)["senha"]
+        senha_cript = self.alfa_edu_db.seleciona_usuario_por_nome(nome)[
+            "senha"]
         retorno = Cript.verifica_usuario_e_senha(senha_cript, senha)
 
         if(retorno):
@@ -118,7 +149,6 @@ class AlfaEdu(QMainWindow):
                 self.ui.lverifica_senha.setText("")
                 return True
 
-
         # TODO redundancia de ifs em email e conf email
         elif(arg == "email" or arg == "conf_email"):
             if(texto_lines["conf_email"] == ""
@@ -132,7 +162,6 @@ class AlfaEdu(QMainWindow):
                     return False
                 self.ui.lverifica_email.setText("")
                 return True
-
 
     def input_conta(self):
         texto_lines = self.get_text()
@@ -150,7 +179,6 @@ class AlfaEdu(QMainWindow):
                 self.ui.lcampos.setText(msg)
                 campos = False
                 break
-
 
         if(msg_erros and campos):
             print("adicionado")
@@ -206,6 +234,7 @@ def buttons(alfa_edu):
 
     alfa_edu.ui.btn_pular.clicked.connect(lambda: alfa_edu.pularfun())
     alfa_edu.ui.btn_cadastrar.clicked.connect(lambda: alfa_edu.input_conta())
+    alfa_edu.ui.btnAtvidade.clicked.connect(lambda: alfa_edu.fazer_atividade())
 
 
 def line_edits(alfa_edu):
