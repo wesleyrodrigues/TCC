@@ -1,6 +1,7 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
 from PyQt5 import QtCore
+from PyQt5.QtGui import QPixmap
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
@@ -37,8 +38,11 @@ class AlfaEdu(QMainWindow):
         self.alfa_edu_db.createDB()
         # adiciona os nomes no combo box de login
         self.ui.cb_nome_aluno.addItems(self.alfa_edu_db.seleciona_nomes())
+
         self.usuario = ""
         # self.senha_cript = ""
+        # self.ui.label_3.setPixmap(QPixmap(ApplicationContext().get_resource("dialog1.png")))
+
     
     def onTimeout(self):
         self._seconds -= 1
