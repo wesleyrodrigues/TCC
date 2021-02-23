@@ -16,7 +16,7 @@ class AlfaEduDB(QtSql.QSqlDatabase):
             erro = str(self.db.lastError().text())
             QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Não é possível abrir o banco de dados"),
                                            QtWidgets.qApp.tr(
-                f"{erro} Não foi possível estabelecer uma conexão com o banco de dados.\n"
+                f"Erro: {erro}\nNão foi possível estabelecer uma conexão com o banco de dados.\n"
                 "Este exemplo precisa de suporte SQLite. Por favor leia "
                 "a documentação do driver Qt SQL para informações "
                 "como faze-lo.\n\n" "Click Cancelar para sair."),
@@ -28,15 +28,14 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         # TODO BLOB não funciona salvar pasta imagens, por enquanto.
         t = self.query.exec(
             """CREATE TABLE IF NOT EXISTS imagens_atividades(
-                id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+                id_imagem INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
                 nome_imagem varchar NOT NULL UNIQUE,
-                pasta_imagem varchar NOT NULL UNIQUE
                 )"""
         )
 
         self.query.exec(
             """CREATE TABLE IF NOT EXISTS contas_alunos(
-                id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+                id_conta_aluno INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
                 nome_aluno varchar NOT NULL UNIQUE,
                 senha TEXT NOT NULL,
                 nome_professor varchar NOT NULL,
@@ -50,11 +49,10 @@ class AlfaEduDB(QtSql.QSqlDatabase):
     def add_imagem(self, input_conta):
 
         self.db.open()
-        self.query.prepare("INSERT INTO imagens_atividades (nome_imagem, pasta_imagem) "
-                           "VALUES (:nome_imagem, :pasta_imagem)")
+        self.query.prepare("INSERT INTO imagens_atividades (nome_imagem) "
+                           "VALUES (:nome_imagem)")
 
         self.query.bindValue(":nome_imagem", input_conta["nome_imagem"])
-        self.query.bindValue(":pasta_imagem", input_conta["pasta_imagem"])
         t = self.query.exec_()
 
         print(f"""Resultado {input_conta["nome_imagem"]} = {t}""")
@@ -76,17 +74,16 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         for arq in arquivos:
             # TODO not working
             self.add_imagem(
-                {"nome_imagem": arq[77:][:-4], "pasta_imagem": arq[49:]})
+                {"nome_imagem": arq[77:][:-4]})
             print(arq[77:][:-4])
 
     def seleciona_imagem_por(self, id_i):
         self.db.open()
         query = QtSql.QSqlQuery(
-            f"SELECT * FROM imagens_atividades WHERE id = '{id_i}'")
+            f"SELECT * FROM imagens_atividades WHERE id_imagem = '{id_i}'")
         query.next()
         imagem = {
-            "nome_imagem": query.value("nome_imagem"),
-            "imagem": query.value("pasta_imagem")}
+            "nome_imagem": query.value("nome_imagem")}
         self.db.close()
         return imagem
 

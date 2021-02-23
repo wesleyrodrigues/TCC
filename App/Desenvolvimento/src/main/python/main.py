@@ -1,7 +1,7 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
 from PyQt5 import QtCore
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QFontDatabase
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
@@ -42,6 +42,8 @@ class AlfaEdu(QMainWindow):
         self.usuario = ""
         # self.senha_cript = ""
         # self.ui.label_3.setPixmap(QPixmap(ApplicationContext().get_resource("dialog1.png")))
+        #TODO melhorar depois
+        QFontDatabase.addApplicationFont(ApplicationContext().get_resource("Schoolwork-Regular.ttf"))
 
     
     def onTimeout(self):
