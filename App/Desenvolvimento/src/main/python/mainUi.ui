@@ -69,7 +69,7 @@ background-color: rgb(85, 255, 255);
         <number>0</number>
        </property>
        <item>
-        <widget class="QFrame" name="frame_7">
+        <widget class="QFrame" name="Cabecalho">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -82,76 +82,95 @@ background-color: rgb(85, 255, 255);
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <widget class="QLCDNumber" name="lcd_atvtempo">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>40</y>
-            <width>121</width>
-            <height>41</height>
-           </rect>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <property name="spacing">
+           <number>700</number>
           </property>
-          <property name="contextMenuPolicy">
-           <enum>Qt::NoContextMenu</enum>
+          <property name="leftMargin">
+           <number>10</number>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
-          </property>
-          <property name="midLineWidth">
+          <property name="topMargin">
            <number>0</number>
           </property>
-          <property name="smallDecimalPoint">
-           <bool>false</bool>
-          </property>
-          <property name="segmentStyle">
-           <enum>QLCDNumber::Filled</enum>
-          </property>
-          <property name="value" stdset="0">
-           <double>0.000000000000000</double>
-          </property>
-          <property name="intValue" stdset="0">
+          <property name="rightMargin">
            <number>0</number>
           </property>
-         </widget>
-         <widget class="QPushButton" name="btn_voltar_tela_inicial">
-          <property name="geometry">
-           <rect>
-            <x>800</x>
-            <y>10</y>
-            <width>161</width>
-            <height>31</height>
-           </rect>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
-          <property name="text">
-           <string>Sair</string>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="btn_pular">
-          <property name="geometry">
-           <rect>
-            <x>800</x>
-            <y>50</y>
-            <width>161</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Pular</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="L_nome_aluno_logado">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>10</y>
-            <width>121</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
+          <item>
+           <widget class="QFrame" name="esquerda">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <widget class="QLabel" name="L_nome_aluno_logado">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLCDNumber" name="lcd_atvtempo"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="direita">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QPushButton" name="btn_voltar_tela_inicial">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>tela inicial</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_pular">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>pular</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item>
@@ -160,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">

@@ -274,7 +274,7 @@ if __name__ == '__main__':
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
 
     alfa_edu_app.show()
-    # alfa_edu_app.showFullScreen()
+    #alfa_edu_app.showFullScreen()
 
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)
