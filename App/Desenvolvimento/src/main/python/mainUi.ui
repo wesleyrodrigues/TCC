@@ -179,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1369,7 +1369,7 @@ border: 2px solid rgb(0, 255, 0);
                   <bool>true</bool>
                  </property>
                 </widget>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="btn_atv_digt_nome_imagem">
                  <property name="geometry">
                   <rect>
                    <x>335</x>
@@ -1392,7 +1392,7 @@ border: 2px solid rgb(0, 255, 0);
                   <string/>
                  </property>
                 </widget>
-                <widget class="QLabel" name="label">
+                <widget class="QLabel" name="latv_digt_nome_imagem">
                  <property name="geometry">
                   <rect>
                    <x>45</x>

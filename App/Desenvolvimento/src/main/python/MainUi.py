@@ -633,9 +633,9 @@ class Ui_MainWindow(object):
 "}")
         self.lineEdit.setFrame(True)
         self.lineEdit.setObjectName("lineEdit")
-        self.pushButton1 = QtWidgets.QPushButton(self.frame_31)
-        self.pushButton1.setGeometry(QtCore.QRect(335, 397, 61, 61))
-        self.pushButton1.setStyleSheet("QPushButton {\n"
+        self.btn_atv_digt_nome_imagem = QtWidgets.QPushButton(self.frame_31)
+        self.btn_atv_digt_nome_imagem.setGeometry(QtCore.QRect(335, 397, 61, 61))
+        self.btn_atv_digt_nome_imagem.setStyleSheet("QPushButton {\n"
 "    border: 0px;\n"
 "    background-image: url(:/botao/button-156707_1280.png);\n"
 "    background-repeat: no-repeat;\n"
@@ -643,15 +643,15 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "}")
-        self.pushButton1.setText("")
-        self.pushButton1.setObjectName("pushButton1")
-        self.label1 = QtWidgets.QLabel(self.frame_31)
-        self.label1.setGeometry(QtCore.QRect(45, 20, 360, 360))
-        self.label1.setMaximumSize(QtCore.QSize(360, 360))
-        self.label1.setText("")
-        self.label1.setPixmap(QtGui.QPixmap(":/atvimg/imagens_atividades/ARVORE.png"))
-        self.label1.setScaledContents(True)
-        self.label1.setObjectName("label1")
+        self.btn_atv_digt_nome_imagem.setText("")
+        self.btn_atv_digt_nome_imagem.setObjectName("btn_atv_digt_nome_imagem")
+        self.latv_digt_nome_imagem = QtWidgets.QLabel(self.frame_31)
+        self.latv_digt_nome_imagem.setGeometry(QtCore.QRect(45, 20, 360, 360))
+        self.latv_digt_nome_imagem.setMaximumSize(QtCore.QSize(360, 360))
+        self.latv_digt_nome_imagem.setText("")
+        self.latv_digt_nome_imagem.setPixmap(QtGui.QPixmap(":/atvimg/imagens_atividades/ARVORE.png"))
+        self.latv_digt_nome_imagem.setScaledContents(True)
+        self.latv_digt_nome_imagem.setObjectName("latv_digt_nome_imagem")
         self.horizontalLayout1.addWidget(self.frame_31)
         self.horizontalLayout_5.addWidget(self.frame_21)
         self.stackedWidget.addWidget(self.tela_atividade_1)
@@ -714,7 +714,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(5)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

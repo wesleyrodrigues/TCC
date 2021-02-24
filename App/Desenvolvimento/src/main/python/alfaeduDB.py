@@ -44,8 +44,14 @@ class AlfaEduDB(QtSql.QSqlDatabase):
                 )"""
         )
 
+        query = QtSql.QSqlQuery(
+            f"SELECT id_imagem FROM imagens_atividades WHERE id_imagem = 1")
+        query.next()
+        
+        if(not(query.value("id_imagem"))):
+            self.add_imagens()
+
         self.db.close()
-        self.add_imagens()
         return True
 
     def add_imagem(self, input_conta):
@@ -168,22 +174,16 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         return nomes
         # print(query.value(0))
 
-    def seleciona_tudo(self):
+    def seleciona_tudo_imagens(self):
         self.db.open()
         query = QtSql.QSqlQuery("SELECT * FROM imagens_atividades")
         # print("contas")
+        imagens = []
         while(query.next()):
-            # print(
-            #     f"""
-            #     {query.value("nome_aluno")},
-            #     {query.value("senha")},
-            #     {query.value("nome_professor")},
-            #     {query.value("email_professor")},
-            #      """
-            # )
-            print(f"""{query.value("nome_imagem")}""")
+             imagens.append(query.value("nome_imagem"))
         # print(query.value(0))
         self.db.close()
+        return imagens
 
 
 def suppress_qt_warnings():
