@@ -21,17 +21,18 @@ class AlfaEduDB(QtSql.QSqlDatabase):
                 "a documentação do driver Qt SQL para informações "
                 "como faze-lo.\n\n" "Click Cancelar para sair."),
                 QtWidgets.QMessageBox.Cancel)
-	   
 
             return False
 
         # TODO BLOB não funciona salvar pasta imagens, por enquanto.
-        t = self.query.exec(
+        self.query.exec(
             """CREATE TABLE IF NOT EXISTS imagens_atividades(
                 id_imagem INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
-                nome_imagem varchar NOT NULL UNIQUE,
+                nome_imagem varchar UNIQUE NOT NULL
                 )"""
         )
+
+        print(self.query.lastError().text())
 
         self.query.exec(
             """CREATE TABLE IF NOT EXISTS contas_alunos(
@@ -44,16 +45,20 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         )
 
         self.db.close()
+        self.add_imagens()
         return True
 
     def add_imagem(self, input_conta):
 
         self.db.open()
-        self.query.prepare("INSERT INTO imagens_atividades (nome_imagem) "
-                           "VALUES (:nome_imagem)")
+        t = self.query.exec(
+            f"""INSERT INTO imagens_atividades (nome_imagem)
+             VALUES ('{input_conta["nome_imagem"]}')"""
+        )
+        # self.query.prepare("INSERT INTO imagens_atividades (nome_imagem) VALUES :nome_imagem")
 
-        self.query.bindValue(":nome_imagem", input_conta["nome_imagem"])
-        t = self.query.exec_()
+        # self.query.bindValue("?nome_imagem", input_conta["nome_imagem"])
+        # t = self.query.exec_()
 
         print(f"""Resultado {input_conta["nome_imagem"]} = {t}""")
         print(self.query.lastError().text())
@@ -62,20 +67,48 @@ class AlfaEduDB(QtSql.QSqlDatabase):
 
     # TODO verificar o que fazer com essa função depois
     def add_imagens(self):
-        import pathlib
-        pasta = str(pathlib.Path().absolute())
+        # import pathlib
+        # pasta = str(pathlib.Path().absolute())
 
-        caminhos = [path.join(pasta, nome) for nome in listdir(pasta)]
-        arquivos = [arq for arq in caminhos if path.isfile(
-            arq) and arq.lower().endswith(".png")]
-        # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
-        arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
+        # caminhos = [path.join(pasta, nome) for nome in listdir(pasta)]
+        # arquivos = [arq for arq in caminhos if path.isfile(
+        #     arq) and arq.lower().endswith(".png")]
+        # # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
+        # arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
+        arquivos = ['ARCO-ÍRIS.png',
+                    'AVIÃO.png',
+                    'BICICLETA.png',
+                    'BOLA.png',
+                    'BOLO.png',
+                    'BORRACHA.png',
+                    'CACHORRO.png',
+                    'CAMA.png',
+                    'CARRO.png',
+                    'CASA.png',
+                    'CHINELO.png',
+                    'COELHO.png',
+                    'FLOR.png',
+                    'GATO.png',
+                    'JANELA.png',
+                    'LIVRO.png',
+                    'LÁPIS.png',
+                    'MACACO.png',
+                    'MAÇÃ.png',
+                    'MESA.png',
+                    'PORTA.png',
+                    'PÃO.png',
+                    'SOL.png',
+                    'TESOURA.png',
+                    'TREM.png',
+                    'TÊNIS.png',
+                    'URSO.png',
+                    'ÁRVORE.png']
 
         for arq in arquivos:
             # TODO not working
             self.add_imagem(
-                {"nome_imagem": arq[77:][:-4]})
-            print(arq[77:][:-4])
+                {"nome_imagem": arq})
+            # print(arq[77:][:-4])
 
     def seleciona_imagem_por(self, id_i):
         self.db.open()
@@ -137,17 +170,18 @@ class AlfaEduDB(QtSql.QSqlDatabase):
 
     def seleciona_tudo(self):
         self.db.open()
-        query = QtSql.QSqlQuery("SELECT * FROM contas_alunos")
-        print("contas")
+        query = QtSql.QSqlQuery("SELECT * FROM imagens_atividades")
+        # print("contas")
         while(query.next()):
-            print(
-                f"""
-                {query.value("nome_aluno")},
-                {query.value("senha")},
-                {query.value("nome_professor")},
-                {query.value("email_professor")},
-                 """
-            )
+            # print(
+            #     f"""
+            #     {query.value("nome_aluno")},
+            #     {query.value("senha")},
+            #     {query.value("nome_professor")},
+            #     {query.value("email_professor")},
+            #      """
+            # )
+            print(f"""{query.value("nome_imagem")}""")
         # print(query.value(0))
         self.db.close()
 
@@ -168,5 +202,5 @@ if __name__ == '__main__':
     alfaedu.createDB()
     # contas.add_imagens()
     # contas.seleciona_imagem_por_id(1)
-    # contas.seleciona_tudo()
+    # alfaedu.seleciona_tudo()
     # contas.seleciona_usuario("Mabel1234")
