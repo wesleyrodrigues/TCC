@@ -47,16 +47,19 @@ class AlfaEdu(QMainWindow):
         QFontDatabase.addApplicationFont(ApplicationContext().get_resource("Schoolwork-Regular.ttf"))
         self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
-        imagem = self.atv_imagens_bd[1]
-        pixmap = self.atv_nome_imagem.get_QPixmap_image(imagem)
-        self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        # imagem = self.atv_imagens_bd[0]
+        # pixmap = self.get_QPixmap_image(imagem)
+        # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
     
-    def atv_digite_nome(self):
+    def get_QPixmap_image(self, image, appctxt):
+        return QPixmap(appctxt.get_resource(image))
+    
+    def atv_digite_nome(self, appctxt):
         self.atv_nome_imagem.set_contador_mais_um()
         print(self.atv_nome_imagem.get_contador())
         self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
         imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
-        pixmap = self.atv_nome_imagem.get_QPixmap_image(imagem)
+        pixmap = self.get_QPixmap_image(imagem, appctxt)
         self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
     
     def onTimeout(self):
@@ -241,7 +244,7 @@ def suppress_qt_warnings():
 
 
 # TODO tentar colocar dentro da class depois
-def buttons(alfa_edu):
+def buttons(alfa_edu, appctxt):
     # telas
     alfa_edu.ui.btn_tela_cadastro.clicked.connect(
         lambda: alfa_edu.mudar_tela("tela_cadastro"))
@@ -254,7 +257,7 @@ def buttons(alfa_edu):
     alfa_edu.ui.btn_pular.clicked.connect(lambda: alfa_edu.pularfun())
     alfa_edu.ui.btn_cadastrar.clicked.connect(lambda: alfa_edu.input_conta())
     alfa_edu.ui.btnAtvidade.clicked.connect(lambda: alfa_edu.fazer_atividade())
-    alfa_edu.ui.btn_atv_digt_nome_imagem.clicked.connect(lambda: alfa_edu.atv_digite_nome())
+    alfa_edu.ui.btn_atv_digt_nome_imagem.clicked.connect(lambda: alfa_edu.atv_digite_nome(appctxt))
 
 
 def line_edits(alfa_edu):
@@ -282,10 +285,10 @@ if __name__ == '__main__':
     alfa_edu_app = AlfaEdu()
     # app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
-    buttons(alfa_edu_app)
     line_edits(alfa_edu_app)
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
+    buttons(alfa_edu_app, appctxt)
 
     alfa_edu_app.show()
     #alfa_edu_app.showFullScreen()
