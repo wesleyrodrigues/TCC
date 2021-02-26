@@ -6,9 +6,11 @@ from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
 from atividades import DigiteNomeDaImagem
+from random import shuffle
 from os import environ
 import sys
 import time
+
 
 
 class AlfaEdu(QMainWindow):
@@ -47,6 +49,7 @@ class AlfaEdu(QMainWindow):
         QFontDatabase.addApplicationFont(ApplicationContext().get_resource("Schoolwork-Regular.ttf"))
         self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
+        self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
@@ -54,14 +57,20 @@ class AlfaEdu(QMainWindow):
     def get_QPixmap_image(self, image, appctxt):
         return QPixmap(appctxt.get_resource(image))
     
-    def atv_digite_nome(self, appctxt):
-        self.atv_nome_imagem.set_contador_mais_um()
-        print(self.atv_nome_imagem.get_contador())
-        self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
-        imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
-        pixmap = self.get_QPixmap_image(imagem, appctxt)
-        self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
     
+    def atv_digite_nome(self, appctxt):
+        t = self.atv_nome_imagem.get_fim()
+        
+        if (t):
+            self._timer.stop()
+            self.mudar_tela("tela_feedback")
+        else:
+            print(self.atv_nome_imagem.get_contador())
+            imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
+            pixmap = self.get_QPixmap_image(imagem, appctxt)
+            self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+            self.atv_nome_imagem.set_contador_mais_um()
+        
     def onTimeout(self):
         self._seconds -= 1
         self.displayTime()
