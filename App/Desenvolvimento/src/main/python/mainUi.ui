@@ -179,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1559,39 +1559,7 @@ border: 2px solid rgb(0, 255, 0);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tela_feedback">
-          <widget class="QPushButton" name="pushButton_6">
-           <property name="geometry">
-            <rect>
-             <x>330</x>
-             <y>200</y>
-             <width>201</width>
-             <height>23</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Página de atividade 3</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="label_15">
-           <property name="geometry">
-            <rect>
-             <x>230</x>
-             <y>90</y>
-             <width>141</width>
-             <height>81</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>20</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>FEEDBACK</string>
-           </property>
-          </widget>
-         </widget>
+         <widget class="QWidget" name="tela_feedback"/>
         </widget>
        </item>
       </layout>

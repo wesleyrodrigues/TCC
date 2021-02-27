@@ -6,6 +6,7 @@ from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
 from atividades import DigiteNomeDaImagem
+from imagem_feedback import Feedback
 from random import shuffle
 from os import environ
 import sys
@@ -53,6 +54,11 @@ class AlfaEdu(QMainWindow):
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        self.feedback = Feedback()
+
+    
+    def tela_feedback(self):
+        
     
     def get_QPixmap_image(self, image, appctxt):
         return QPixmap(appctxt.get_resource(image))
