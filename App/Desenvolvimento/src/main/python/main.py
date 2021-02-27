@@ -46,19 +46,34 @@ class AlfaEdu(QMainWindow):
         self.usuario = ""
         # self.senha_cript = ""
         # self.ui.label_3.setPixmap(QPixmap(ApplicationContext().get_resource("dialog1.png")))
-        #TODO melhorar depois
-        QFontDatabase.addApplicationFont(ApplicationContext().get_resource("Schoolwork-Regular.ttf"))
+
         self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
         self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
-        self.feedback = Feedback()
 
     
-    def tela_feedback(self):
-        
+    def tela_feedback(self, appctxt):
+        self.feedback = Feedback()
+        self.feedback.set_feedback_imagem(
+            {
+                "nome_aluno": "Testando",
+                "nome_professor": "Testando",
+                "tempo_proposto": "Testando",
+                "tempo_executado": "Testando",
+                "total_questoes": "Testando",
+                "acertos": "Testando",
+                "erros": "Testando",
+                "media": "Testando"
+            }
+        )
+        imagem = self.feedback.get_imagem()
+        pixmap = self.get_QPixmap_image(imagem, appctxt)
+        self.ui.l_img_feedback.setPixmap(pixmap)
+        self._timer.stop()
+        self.mudar_tela("tela_feedback")
     
     def get_QPixmap_image(self, image, appctxt):
         return QPixmap(appctxt.get_resource(image))
@@ -68,8 +83,7 @@ class AlfaEdu(QMainWindow):
         t = self.atv_nome_imagem.get_fim()
         
         if (t):
-            self._timer.stop()
-            self.mudar_tela("tela_feedback")
+            self.tela_feedback(appctxt)
         else:
             print(self.atv_nome_imagem.get_contador())
             imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
@@ -304,9 +318,10 @@ if __name__ == '__main__':
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
     buttons(alfa_edu_app, appctxt)
+    QFontDatabase.addApplicationFont(appctxt.get_resource("Schoolwork-Regular.ttf"))
 
-    alfa_edu_app.show()
-    #alfa_edu_app.showFullScreen()
+    # alfa_edu_app.show()
+    alfa_edu_app.showFullScreen()
 
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)

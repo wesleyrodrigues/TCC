@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(986, 781)
+        MainWindow.resize(893, 764)
         MainWindow.setStyleSheet("QMainWindow {\n"
 "                \n"
 "    background-image: url(:/tela/app_imagens/kawaii-1546834.png);\n"
@@ -699,22 +699,31 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_2)
         self.tela_feedback = QtWidgets.QWidget()
         self.tela_feedback.setObjectName("tela_feedback")
-        self.pushButton_6 = QtWidgets.QPushButton(self.tela_feedback)
-        self.pushButton_6.setGeometry(QtCore.QRect(330, 200, 201, 23))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.label_15 = QtWidgets.QLabel(self.tela_feedback)
-        self.label_15.setGeometry(QtCore.QRect(230, 90, 141, 81))
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.label_15.setFont(font)
-        self.label_15.setObjectName("label_15")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.tela_feedback)
+        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_10.setSpacing(0)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.frame_7 = QtWidgets.QFrame(self.tela_feedback)
+        self.frame_7.setStyleSheet("background-color: rgb(225, 246, 255);")
+        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.frame_7)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_10.setSpacing(0)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.l_img_feedback = QtWidgets.QLabel(self.frame_7)
+        self.l_img_feedback.setText("")
+        self.l_img_feedback.setObjectName("l_img_feedback")
+        self.horizontalLayout_10.addWidget(self.l_img_feedback)
+        self.verticalLayout_10.addWidget(self.frame_7)
         self.stackedWidget.addWidget(self.tela_feedback)
         self.verticalLayout_4.addWidget(self.stackedWidget)
         self.gridLayout_3.addWidget(self.frame, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(7)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -753,8 +762,6 @@ class Ui_MainWindow(object):
         self.btn_alter_2.setText(_translate("MainWindow", "PushButton"))
         self.btn_alter_3.setText(_translate("MainWindow", "PushButton"))
         self.l_alter_txt.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" text-decoration: underline;\">CASA</span></p></body></html>"))
-        self.pushButton_6.setText(_translate("MainWindow", "Página de atividade 3"))
-        self.label_15.setText(_translate("MainWindow", "FEEDBACK"))
 
 import file_img_rc
 import img_fixas_rc
