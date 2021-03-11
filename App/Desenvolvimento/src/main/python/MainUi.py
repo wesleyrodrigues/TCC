@@ -550,9 +550,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout_3.setContentsMargins(0, 0, -1, -1)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.pushButton_2 = QtWidgets.QPushButton(self.tela_escolher_atividades)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout_3.addWidget(self.pushButton_2)
+        self.btn_tela_atividade_digt_nome_imagem = QtWidgets.QPushButton(self.tela_escolher_atividades)
+        self.btn_tela_atividade_digt_nome_imagem.setObjectName("btn_tela_atividade_digt_nome_imagem")
+        self.horizontalLayout_3.addWidget(self.btn_tela_atividade_digt_nome_imagem)
         self.pushButton = QtWidgets.QPushButton(self.tela_escolher_atividades)
         self.pushButton.setObjectName("pushButton")
         self.horizontalLayout_3.addWidget(self.pushButton)
@@ -602,13 +602,13 @@ class Ui_MainWindow(object):
         self.label_16.setFont(font)
         self.label_16.setObjectName("label_16")
         self.stackedWidget.addWidget(self.page)
-        self.tela_atividade_1 = QtWidgets.QWidget()
-        self.tela_atividade_1.setObjectName("tela_atividade_1")
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.tela_atividade_1)
+        self.tela_atividade_digt_nome_imagem = QtWidgets.QWidget()
+        self.tela_atividade_digt_nome_imagem.setObjectName("tela_atividade_digt_nome_imagem")
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.tela_atividade_digt_nome_imagem)
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.frame_21 = QtWidgets.QFrame(self.tela_atividade_1)
+        self.frame_21 = QtWidgets.QFrame(self.tela_atividade_digt_nome_imagem)
         self.frame_21.setStyleSheet("background-color: rgb(247, 255, 208);")
         self.frame_21.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_21.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -621,18 +621,19 @@ class Ui_MainWindow(object):
         self.frame_31.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_31.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_31.setObjectName("frame_31")
-        self.lineEdit = QtWidgets.QLineEdit(self.frame_31)
-        self.lineEdit.setGeometry(QtCore.QRect(30, 400, 280, 55))
-        self.lineEdit.setStyleSheet("QLineEdit {\n"
+        self.input_atv_digt_nome_imagem = QtWidgets.QLineEdit(self.frame_31)
+        self.input_atv_digt_nome_imagem.setGeometry(QtCore.QRect(30, 400, 280, 55))
+        font = QtGui.QFont()
+        font.setPointSize(30)
+        self.input_atv_digt_nome_imagem.setFont(font)
+        self.input_atv_digt_nome_imagem.setStyleSheet("QLineEdit {\n"
 "    border: 2px solid rgb(107, 107, 107);\n"
 "    border-radius: 5px;\n"
-"    padding: 30px;\n"
 "    background-color:rgb(0, 127, 0)\n"
-"    \n"
-"\n"
 "}")
-        self.lineEdit.setFrame(True)
-        self.lineEdit.setObjectName("lineEdit")
+        self.input_atv_digt_nome_imagem.setText("")
+        self.input_atv_digt_nome_imagem.setFrame(True)
+        self.input_atv_digt_nome_imagem.setObjectName("input_atv_digt_nome_imagem")
         self.btn_atv_digt_nome_imagem = QtWidgets.QPushButton(self.frame_31)
         self.btn_atv_digt_nome_imagem.setGeometry(QtCore.QRect(335, 397, 61, 61))
         self.btn_atv_digt_nome_imagem.setStyleSheet("QPushButton {\n"
@@ -654,7 +655,7 @@ class Ui_MainWindow(object):
         self.latv_digt_nome_imagem.setObjectName("latv_digt_nome_imagem")
         self.horizontalLayout1.addWidget(self.frame_31)
         self.horizontalLayout_5.addWidget(self.frame_21)
-        self.stackedWidget.addWidget(self.tela_atividade_1)
+        self.stackedWidget.addWidget(self.tela_atividade_digt_nome_imagem)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.page_2)
@@ -723,9 +724,8 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget.setCurrentIndex(3)
         self.cb_nome_aluno.setCurrentIndex(-1)
-        self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -749,7 +749,7 @@ class Ui_MainWindow(object):
         self.btn_login.setText(_translate("MainWindow", "Login"))
         self.label.setText(_translate("MainWindow", "PÁGINA ESCOLHER ATIVIDADES"))
         self.label_5.setText(_translate("MainWindow", "Atividades"))
-        self.pushButton_2.setText(_translate("MainWindow", "PushButton"))
+        self.btn_tela_atividade_digt_nome_imagem.setText(_translate("MainWindow", "Digite nome da imagem"))
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_3.setText(_translate("MainWindow", "PushButton"))
         self.label_4.setText(_translate("MainWindow", "Digite o tempo"))

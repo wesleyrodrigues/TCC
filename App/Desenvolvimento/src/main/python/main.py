@@ -13,14 +13,13 @@ import sys
 import time
 
 
-
 class AlfaEdu(QMainWindow):
     def __init__(self):
         super(AlfaEdu, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.stack = self.ui.stackedWidget
+        self.stack = self.ui.stackedWidget  # paginas das interface
         self.ui.btn_voltar_tela_inicial.hide()
         self.ui.lcd_atvtempo.setNumDigits(5)
         self._text = "00:00"
@@ -49,13 +48,23 @@ class AlfaEdu(QMainWindow):
 
         self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
+        shuffle(self.atv_imagens_bd)
         self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
+
+        self.appctxt = None
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        self.buttons()
+        self.line_edits()
 
-    
-    def tela_feedback(self, appctxt):
+    def set_appctxt(self, appctxt):
+        self.appctxt = appctxt
+
+    def upper_text(self, arg):
+        arg.setText(str(arg.text()).upper())
+
+    def tela_feedback(self):
         self.feedback = Feedback()
         self.feedback.set_feedback_imagem(
             {
@@ -70,34 +79,44 @@ class AlfaEdu(QMainWindow):
             }
         )
         imagem = self.feedback.get_imagem()
-        pixmap = self.get_QPixmap_image(imagem, appctxt)
+        pixmap = self.get_QPixmap_image(imagem)
         self.ui.l_img_feedback.setPixmap(pixmap)
         self._timer.stop()
         self.mudar_tela("tela_feedback")
+
+    def get_QPixmap_image(self, image):
+        return QPixmap(self.appctxt.get_resource(image))
     
-    def get_QPixmap_image(self, image, appctxt):
-        return QPixmap(appctxt.get_resource(image))
-    
-    
-    def atv_digite_nome(self, appctxt):
-        t = self.atv_nome_imagem.get_fim()
-        
-        if (t):
-            self.tela_feedback(appctxt)
+    def atv_digite_nome_muda_img(self):
+        print(self.atv_nome_imagem.get_contador())
+        imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
+        nome_imagem = imagem[:-4]
+        print(nome_imagem)
+        pixmap = self.get_QPixmap_image(imagem)
+        self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        return nome_imagem
+
+    def atv_digite_nome(self, execute=True):
+        fim_bool = self.atv_nome_imagem.get_fim()
+        input_nome = str(self.ui.input_atv_digt_nome_imagem.text())
+
+        if (fim_bool):
+            self.tela_feedback(self.appctxt)
         else:
-            print(self.atv_nome_imagem.get_contador())
-            imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
-            pixmap = self.get_QPixmap_image(imagem, appctxt)
-            self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
-            self.atv_nome_imagem.set_contador_mais_um()
-        
+            nome_imagem = self.atv_digite_nome_muda_img()
+            # TODO fazer - exercicio aqui
+            if(nome_imagem == input_nome):
+                self.atv_nome_imagem.set_contador_mais_um()
+                self.atv_digite_nome_muda_img()
+                self.ui.input_atv_digt_nome_imagem.setText("")
+
     def onTimeout(self):
         self._seconds -= 1
         self.displayTime()
-    
+
     def displayTime(self):
         self.lcd_setText(time.strftime('%M:%S', time.gmtime(self._seconds)))
-		    
+
         if(time.gmtime(self._seconds).tm_min == 0 and time.gmtime(self._seconds).tm_sec == 0):
             self.mudar_tela("tela_feedback")
             self._timer.stop()
@@ -108,7 +127,7 @@ class AlfaEdu(QMainWindow):
 
     def lcd_getText(self):
         return self._text
-    
+
     def fazer_atividade(self):
         self._seconds = int(self.ui.timeEdit.text()) * 60
         self._timer.start()
@@ -137,10 +156,15 @@ class AlfaEdu(QMainWindow):
             self.ui.input_email.setText("")
             self.ui.input_conf_email.setText("")
 
+    def mudar_telas_acoes(self, stack_name):
+        if(stack_name == "tela_atividade_digt_nome_imagem"):
+            self.atv_digite_nome()
+
     def mudar_tela(self, stack_name):
         # TODO Melhorar
         stack_passado = self.stack.findChild(QWidget, stack_name)
         self.stack.setCurrentWidget(stack_passado)
+        self.mudar_telas_acoes(stack_name)
         # self.stack.setCurrentIndex(index)
         self.hide_widgets(stack_name)
 
@@ -174,6 +198,7 @@ class AlfaEdu(QMainWindow):
         else:
             self.ui.lerro_login.setText("Senha errada digite novamente!!")
 
+    # TODO melhorar depois
     def mensagens_erros(self, arg):
         texto_lines = self.get_text()
         self.ui.lcampos.setText("")
@@ -247,6 +272,44 @@ class AlfaEdu(QMainWindow):
                 msg = "Dados não salvos erro Banco de dados\n"
                 self.ui.lcampos.setText(msg)
 
+    def buttons(self):
+        # telas
+        print("Passou aqui")
+        self.ui.btn_tela_cadastro.clicked.connect(
+            lambda: self.mudar_tela("tela_cadastro"))
+        self.ui.btn_tela_login.clicked.connect(
+            lambda: self.mudar_tela("tela_login"))
+        self.ui.btn_login.clicked.connect(lambda: self.login())
+        self.ui.btn_voltar_tela_inicial.clicked.connect(
+            lambda: self.mudar_tela("tela_inicial"))
+        self.ui.btn_tela_atividade_digt_nome_imagem.clicked.connect(
+            lambda: self.mudar_tela("tela_atividade_digt_nome_imagem"))
+
+        self.ui.btn_pular.clicked.connect(lambda: self.pularfun())
+        self.ui.btn_cadastrar.clicked.connect(lambda: self.input_conta())
+        self.ui.btnAtvidade.clicked.connect(lambda: self.fazer_atividade())
+        self.ui.btn_atv_digt_nome_imagem.clicked.connect(
+            lambda: self.atv_digite_nome())
+
+    def line_edits(self):
+        self.ui.input_conf_email.returnPressed.connect(
+            self.ui.btn_cadastrar.click)
+        self.ui.input_senha_login.returnPressed.connect(
+            self.ui.btn_login.click)
+
+        self.ui.input_atv_digt_nome_imagem.textChanged.connect(
+            lambda: self.upper_text(self.ui.input_atv_digt_nome_imagem))
+        self.ui.input_nome_aluno.textChanged.connect(
+            lambda: self.mensagens_erros("nome_aluno"))
+        self.ui.input_senha.textChanged.connect(
+            lambda: self.mensagens_erros("senha"))
+        self.ui.input_conf_senha.textChanged.connect(
+            lambda: self.mensagens_erros("conf_senha"))
+        self.ui.input_conf_email.textChanged.connect(
+            lambda: self.mensagens_erros("conf_email"))
+        self.ui.input_email.textChanged.connect(
+            lambda: self.mensagens_erros("email"))
+
     # TODO melhorar depois
 
     # def return_stylesheet(self):
@@ -271,39 +334,7 @@ def suppress_qt_warnings():
     environ["QT_SCREEN_SCALE_FACTORS"] = "1"
     environ["QT_SCALE_FACTOR"] = "1"
 
-
 # TODO tentar colocar dentro da class depois
-def buttons(alfa_edu, appctxt):
-    # telas
-    alfa_edu.ui.btn_tela_cadastro.clicked.connect(
-        lambda: alfa_edu.mudar_tela("tela_cadastro"))
-    alfa_edu.ui.btn_tela_login.clicked.connect(
-        lambda: alfa_edu.mudar_tela("tela_login"))
-    alfa_edu.ui.btn_login.clicked.connect(lambda: alfa_edu.login())
-    alfa_edu.ui.btn_voltar_tela_inicial.clicked.connect(
-        lambda: alfa_edu.mudar_tela("tela_inicial"))
-
-    alfa_edu.ui.btn_pular.clicked.connect(lambda: alfa_edu.pularfun())
-    alfa_edu.ui.btn_cadastrar.clicked.connect(lambda: alfa_edu.input_conta())
-    alfa_edu.ui.btnAtvidade.clicked.connect(lambda: alfa_edu.fazer_atividade())
-    alfa_edu.ui.btn_atv_digt_nome_imagem.clicked.connect(lambda: alfa_edu.atv_digite_nome(appctxt))
-
-
-def line_edits(alfa_edu):
-    alfa_edu.ui.input_conf_email.returnPressed.connect(
-        alfa_edu.ui.btn_cadastrar.click)
-    alfa_edu.ui.input_senha_login.returnPressed.connect(
-        alfa_edu.ui.btn_login.click)
-    alfa_edu.ui.input_nome_aluno.textChanged.connect(
-        lambda: alfa_edu.mensagens_erros("nome_aluno"))
-    alfa_edu.ui.input_senha.textChanged.connect(
-        lambda: alfa_edu.mensagens_erros("senha"))
-    alfa_edu.ui.input_conf_senha.textChanged.connect(
-        lambda: alfa_edu.mensagens_erros("conf_senha"))
-    alfa_edu.ui.input_conf_email.textChanged.connect(
-        lambda: alfa_edu.mensagens_erros("conf_email"))
-    alfa_edu.ui.input_email.textChanged.connect(
-        lambda: alfa_edu.mensagens_erros("email"))
 
 
 if __name__ == '__main__':
@@ -314,14 +345,14 @@ if __name__ == '__main__':
     alfa_edu_app = AlfaEdu()
     # app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
-    line_edits(alfa_edu_app)
-
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
-    buttons(alfa_edu_app, appctxt)
-    QFontDatabase.addApplicationFont(appctxt.get_resource("Schoolwork-Regular.ttf"))
+    alfa_edu_app.set_appctxt(appctxt)
 
-    # alfa_edu_app.show()
-    alfa_edu_app.showFullScreen()
+    QFontDatabase.addApplicationFont(
+        appctxt.get_resource("Schoolwork-Regular.ttf"))
+
+    alfa_edu_app.show()
+    # alfa_edu_app.showFullScreen()
 
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)

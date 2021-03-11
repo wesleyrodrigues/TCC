@@ -179,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1160,9 +1160,9 @@ border: 2px solid rgb(0, 255, 0);
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QPushButton" name="pushButton_2">
+                      <widget class="QPushButton" name="btn_tela_atividade_digt_nome_imagem">
                        <property name="text">
-                        <string>PushButton</string>
+                        <string>Digite nome da imagem</string>
                        </property>
                       </widget>
                      </item>
@@ -1300,7 +1300,7 @@ border: 2px solid rgb(0, 255, 0);
            </property>
           </widget>
          </widget>
-         <widget class="QWidget" name="tela_atividade_1">
+         <widget class="QWidget" name="tela_atividade_digt_nome_imagem">
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="spacing">
             <number>0</number>
@@ -1346,7 +1346,7 @@ border: 2px solid rgb(0, 255, 0);
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <widget class="QLineEdit" name="lineEdit">
+                <widget class="QLineEdit" name="input_atv_digt_nome_imagem">
                  <property name="geometry">
                   <rect>
                    <x>30</x>
@@ -1355,15 +1355,20 @@ border: 2px solid rgb(0, 255, 0);
                    <height>55</height>
                   </rect>
                  </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
 	border: 2px solid rgb(107, 107, 107);
 	border-radius: 5px;
-	padding: 30px;
 	background-color:rgb(0, 127, 0)
-	
-
 }</string>
+                 </property>
+                 <property name="text">
+                  <string/>
                  </property>
                  <property name="frame">
                   <bool>true</bool>
@@ -1627,22 +1632,5 @@ border: 2px solid rgb(0, 255, 0);
   <include location="img_fixas.qrc"/>
   <include location="file_img.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>btn_sair</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>187</x>
-     <y>421</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>57</x>
-     <y>0</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
