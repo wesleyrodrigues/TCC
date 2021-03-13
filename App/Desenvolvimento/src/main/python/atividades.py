@@ -24,7 +24,7 @@ class DigiteNomeDaImagem():
     
     def set_contador_mais_um(self):
         self.contador += 1
-        self.fim = (self.contador == self.max_contador)
+        self.fim = (self.contador == (self.max_contador - 1))
     
     def get_contador(self):
         return self.contador

@@ -46,6 +46,7 @@ class AlfaEdu(QMainWindow):
         # self.senha_cript = ""
         # self.ui.label_3.setPixmap(QPixmap(ApplicationContext().get_resource("dialog1.png")))
 
+        #TODO mover depois para mudar tela ações
         self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
         shuffle(self.atv_imagens_bd)
@@ -88,7 +89,6 @@ class AlfaEdu(QMainWindow):
         return QPixmap(self.appctxt.get_resource(image))
     
     def atv_digite_nome_muda_img(self):
-        print(self.atv_nome_imagem.get_contador())
         imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
         nome_imagem = imagem[:-4]
         print(nome_imagem)
@@ -97,14 +97,15 @@ class AlfaEdu(QMainWindow):
         return nome_imagem
 
     def atv_digite_nome(self, execute=True):
-        fim_bool = self.atv_nome_imagem.get_fim()
+        # TODO verificar index error
         input_nome = str(self.ui.input_atv_digt_nome_imagem.text())
-
-        if (fim_bool):
-            self.tela_feedback(self.appctxt)
+        self.fim_bool = self.atv_nome_imagem.get_fim()
+        print(self.fim_bool)
+        if (self.fim_bool):
+            self.tela_feedback()
         else:
             nome_imagem = self.atv_digite_nome_muda_img()
-            # TODO fazer - exercicio aqui
+
             if(nome_imagem == input_nome):
                 self.atv_nome_imagem.set_contador_mais_um()
                 self.atv_digite_nome_muda_img()
