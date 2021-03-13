@@ -1169,7 +1169,7 @@ border: 2px solid rgb(0, 255, 0);
                      <item>
                       <widget class="QPushButton" name="pushButton">
                        <property name="text">
-                        <string>PushButton</string>
+                        <string>Clique na imagem</string>
                        </property>
                       </widget>
                      </item>
@@ -1429,7 +1429,7 @@ border: 2px solid rgb(0, 255, 0);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_2">
+         <widget class="QWidget" name="tela_atividade_clique_na_imagem">
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <property name="spacing">
             <number>0</number>
@@ -1632,5 +1632,22 @@ border: 2px solid rgb(0, 255, 0);
   <include location="img_fixas.qrc"/>
   <include location="file_img.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btn_sair</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>457</x>
+     <y>483</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>461</x>
+     <y>766</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
