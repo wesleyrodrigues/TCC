@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap, QFontDatabase
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
-from atividades import DigiteNomeDaImagem
+from atividades import Atividades
 from imagem_feedback import Feedback
 from random import shuffle
 from os import environ
@@ -46,11 +46,13 @@ class AlfaEdu(QMainWindow):
         # self.senha_cript = ""
         # self.ui.label_3.setPixmap(QPixmap(ApplicationContext().get_resource("dialog1.png")))
 
-        #TODO mover depois para mudar tela ações
-        self.atv_nome_imagem = DigiteNomeDaImagem()
+        # TODO mover depois para mudar tela ações
+        # self.atv_nome_imagem = DigiteNomeDaImagem()
+        self.atividades = Atividades()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
         shuffle(self.atv_imagens_bd)
-        self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
+        # self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
+        self.atividades.set_max_atividades(len(self.atv_imagens_bd))
 
         self.appctxt = None
         # imagem = self.atv_imagens_bd[0]
@@ -87,28 +89,34 @@ class AlfaEdu(QMainWindow):
 
     def get_QPixmap_image(self, image):
         return QPixmap(self.appctxt.get_resource(image))
-    
-    def atv_digite_nome_muda_img(self):
-        imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
+
+    def change_label_image(self, label):
+        # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
+        imagem = self.atv_imagens_bd[self.atividades.get_contador()]
         nome_imagem = imagem[:-4]
         print(nome_imagem)
         pixmap = self.get_QPixmap_image(imagem)
-        self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        label.setPixmap(pixmap)
         return nome_imagem
 
-    def atv_digite_nome(self, execute=True):
-        # TODO verificar index error
+    def reset_atividades(self):
+        self.atividades = Atividades()
+        shuffle(self.atv_imagens_bd)
+        self.atividades.set_max_atividades(len(self.atv_imagens_bd))
+
+    def atv_digite_nome(self):
         input_nome = str(self.ui.input_atv_digt_nome_imagem.text())
-        self.fim_bool = self.atv_nome_imagem.get_fim()
+        self.fim_bool = self.atividades.get_fim()
         print(self.fim_bool)
         if (self.fim_bool):
             self.tela_feedback()
+            self.reset_atividades()
         else:
-            nome_imagem = self.atv_digite_nome_muda_img()
-
+            nome_imagem = self.change_label_image(
+                self.ui.latv_digt_nome_imagem)
             if(nome_imagem == input_nome):
-                self.atv_nome_imagem.set_contador_mais_um()
-                self.atv_digite_nome_muda_img()
+                self.atividades.set_contador_mais_um()
+                self.change_label_image(self.ui.latv_digt_nome_imagem)
                 self.ui.input_atv_digt_nome_imagem.setText("")
 
     def onTimeout(self):
@@ -297,6 +305,8 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_cadastrar.click)
         self.ui.input_senha_login.returnPressed.connect(
             self.ui.btn_login.click)
+        self.ui.input_atv_digt_nome_imagem.returnPressed.connect(
+            lambda: self.atv_digite_nome())
 
         self.ui.input_atv_digt_nome_imagem.textChanged.connect(
             lambda: self.upper_text(self.ui.input_atv_digt_nome_imagem))
@@ -334,8 +344,6 @@ def suppress_qt_warnings():
     environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     environ["QT_SCREEN_SCALE_FACTORS"] = "1"
     environ["QT_SCALE_FACTOR"] = "1"
-
-# TODO tentar colocar dentro da class depois
 
 
 if __name__ == '__main__':
