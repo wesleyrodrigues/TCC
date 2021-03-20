@@ -1167,7 +1167,7 @@ border: 2px solid rgb(0, 255, 0);
                       </widget>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton">
+                      <widget class="QPushButton" name="btn_tela_atividade_clique_na_imagem">
                        <property name="text">
                         <string>Clique na imagem</string>
                        </property>
@@ -1494,7 +1494,7 @@ border: 2px solid rgb(0, 255, 0);
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Clique na :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
-                <widget class="QPushButton" name="btn_alter_1">
+                <widget class="QPushButton" name="btn_imagem_1">
                  <property name="geometry">
                   <rect>
                    <x>40</x>
@@ -1507,7 +1507,7 @@ border: 2px solid rgb(0, 255, 0);
                   <string>PushButton</string>
                  </property>
                 </widget>
-                <widget class="QPushButton" name="btn_alter_2">
+                <widget class="QPushButton" name="btn_imagem_2">
                  <property name="geometry">
                   <rect>
                    <x>230</x>
@@ -1520,7 +1520,7 @@ border: 2px solid rgb(0, 255, 0);
                   <string>PushButton</string>
                  </property>
                 </widget>
-                <widget class="QPushButton" name="btn_alter_3">
+                <widget class="QPushButton" name="btn_imagem_3">
                  <property name="geometry">
                   <rect>
                    <x>420</x>
@@ -1533,7 +1533,7 @@ border: 2px solid rgb(0, 255, 0);
                   <string>PushButton</string>
                  </property>
                 </widget>
-                <widget class="QLabel" name="l_alter_txt">
+                <widget class="QLabel" name="l_nome_imagem">
                  <property name="geometry">
                   <rect>
                    <x>340</x>

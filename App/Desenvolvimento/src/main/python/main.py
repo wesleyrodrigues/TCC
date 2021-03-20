@@ -98,6 +98,16 @@ class AlfaEdu(QMainWindow):
         pixmap = self.get_QPixmap_image(imagem)
         label.setPixmap(pixmap)
         return nome_imagem
+    
+    def change_btn_image(self, btn):
+        # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
+        imagem = self.atv_imagens_bd[self.atividades.get_contador()]
+        nome_imagem = imagem[:-4]
+        print(nome_imagem)
+        # pixmap = self.get_QPixmap_image(imagem)
+
+        btn.setStyleSheet(f"border-image: url(src/main/resources/base/{imagem});")
+        return nome_imagem
 
     def reset_atividades(self):
         self.atividades = Atividades()
@@ -118,6 +128,18 @@ class AlfaEdu(QMainWindow):
                 self.atividades.set_contador_mais_um()
                 self.change_label_image(self.ui.latv_digt_nome_imagem)
                 self.ui.input_atv_digt_nome_imagem.setText("")
+    
+    def atv_clique_na_imagem(self):
+        self.fim_bool = self.atividades.get_fim()
+        print(self.fim_bool)
+        if (self.fim_bool):
+            self.tela_feedback()
+            self.reset_atividades()
+        else:
+            self.atividades.set_contador_mais_um()
+            self.change_btn_image(self.ui.btn_imagem_1)
+            self.change_btn_image(self.ui.btn_imagem_2)
+            self.change_btn_image(self.ui.btn_imagem_3)
 
     def onTimeout(self):
         self._seconds -= 1
@@ -167,7 +189,11 @@ class AlfaEdu(QMainWindow):
 
     def mudar_telas_acoes(self, stack_name):
         if(stack_name == "tela_atividade_digt_nome_imagem"):
+            self.reset_atividades()
             self.atv_digite_nome()
+        elif(stack_name == "tela_atividade_clique_na_imagem"):
+            self.reset_atividades()
+            self.atv_clique_na_imagem()
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
@@ -291,14 +317,25 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_login.clicked.connect(lambda: self.login())
         self.ui.btn_voltar_tela_inicial.clicked.connect(
             lambda: self.mudar_tela("tela_inicial"))
+        
         self.ui.btn_tela_atividade_digt_nome_imagem.clicked.connect(
             lambda: self.mudar_tela("tela_atividade_digt_nome_imagem"))
+        self.ui.btn_tela_atividade_clique_na_imagem.clicked.connect(
+            lambda: self.mudar_tela("tela_atividade_clique_na_imagem")
+        )
 
         self.ui.btn_pular.clicked.connect(lambda: self.pularfun())
         self.ui.btn_cadastrar.clicked.connect(lambda: self.input_conta())
         self.ui.btnAtvidade.clicked.connect(lambda: self.fazer_atividade())
+        
         self.ui.btn_atv_digt_nome_imagem.clicked.connect(
             lambda: self.atv_digite_nome())
+        self.ui.btn_imagem_1.clicked.connect(
+            lambda: self.atv_clique_na_imagem())
+        self.ui.btn_imagem_2.clicked.connect(
+            lambda: self.atv_clique_na_imagem())
+        self.ui.btn_imagem_3.clicked.connect(
+            lambda: self.atv_clique_na_imagem())
 
     def line_edits(self):
         self.ui.input_conf_email.returnPressed.connect(
