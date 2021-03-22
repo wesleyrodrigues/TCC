@@ -681,12 +681,15 @@ class Ui_MainWindow(object):
         self.l_texto.setObjectName("l_texto")
         self.btn_imagem_1 = QtWidgets.QPushButton(self.centralizador)
         self.btn_imagem_1.setGeometry(QtCore.QRect(40, 200, 150, 150))
+        self.btn_imagem_1.setText("")
         self.btn_imagem_1.setObjectName("btn_imagem_1")
         self.btn_imagem_2 = QtWidgets.QPushButton(self.centralizador)
         self.btn_imagem_2.setGeometry(QtCore.QRect(230, 200, 150, 150))
+        self.btn_imagem_2.setText("")
         self.btn_imagem_2.setObjectName("btn_imagem_2")
         self.btn_imagem_3 = QtWidgets.QPushButton(self.centralizador)
         self.btn_imagem_3.setGeometry(QtCore.QRect(420, 200, 150, 150))
+        self.btn_imagem_3.setText("")
         self.btn_imagem_3.setObjectName("btn_imagem_3")
         self.l_nome_imagem = QtWidgets.QLabel(self.centralizador)
         self.l_nome_imagem.setGeometry(QtCore.QRect(340, 0, 271, 60))
@@ -724,7 +727,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(6)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -758,11 +761,8 @@ class Ui_MainWindow(object):
         self.label_6.setText(_translate("MainWindow", "Quantidade de exercicios"))
         self.btnAtvidade.setText(_translate("MainWindow", "Atividade"))
         self.label_16.setText(_translate("MainWindow", "SEM NADA AQUI"))
-        self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt;\">Clique na :</span></p></body></html>"))
-        self.btn_imagem_1.setText(_translate("MainWindow", "PushButton"))
-        self.btn_imagem_2.setText(_translate("MainWindow", "PushButton"))
-        self.btn_imagem_3.setText(_translate("MainWindow", "PushButton"))
-        self.l_nome_imagem.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" text-decoration: underline;\">CASA</span></p></body></html>"))
+        self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt;\">Clique no (a)</span></p></body></html>"))
+        self.l_nome_imagem.setText(_translate("MainWindow", "<html><head/><body><p>CASA</p></body></html>"))
 
 import file_img_rc
 import img_fixas_rc

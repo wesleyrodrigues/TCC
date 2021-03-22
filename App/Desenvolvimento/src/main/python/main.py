@@ -7,7 +7,7 @@ from alfaeduDB import AlfaEduDB
 from criptografia import Cript
 from atividades import Atividades
 from imagem_feedback import Feedback
-from random import shuffle
+from random import shuffle, randint
 from os import environ
 import sys
 import time
@@ -99,14 +99,12 @@ class AlfaEdu(QMainWindow):
         label.setPixmap(pixmap)
         return nome_imagem
     
-    def change_btn_image(self, btn):
+    def change_btn_image(self, btn, contador):
         # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
-        imagem = self.atv_imagens_bd[self.atividades.get_contador()]
+        imagem = self.atv_imagens_bd[contador]
         nome_imagem = imagem[:-4]
-        print(nome_imagem)
-        # pixmap = self.get_QPixmap_image(imagem)
-
-        btn.setStyleSheet(f"border-image: url(src/main/resources/base/{imagem});")
+        # print(nome_imagem)
+        btn.setStyleSheet(f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
     def reset_atividades(self):
@@ -117,7 +115,6 @@ class AlfaEdu(QMainWindow):
     def atv_digite_nome(self):
         input_nome = str(self.ui.input_atv_digt_nome_imagem.text())
         self.fim_bool = self.atividades.get_fim()
-        print(self.fim_bool)
         if (self.fim_bool):
             self.tela_feedback()
             self.reset_atividades()
@@ -129,17 +126,39 @@ class AlfaEdu(QMainWindow):
                 self.change_label_image(self.ui.latv_digt_nome_imagem)
                 self.ui.input_atv_digt_nome_imagem.setText("")
     
-    def atv_clique_na_imagem(self):
+    def atv_clique_na_imagem_rand(self):
+        posic_imagem = self.atividades.get_posic_imagem()
+        nome = ""
+        contador = self.atividades.get_contador()
+        if(posic_imagem == 1):
+            nome = self.change_btn_image(self.ui.btn_imagem_1, contador)
+            self.change_btn_image(self.ui.btn_imagem_2, self.atividades.get_2_posicao())
+            self.change_btn_image(self.ui.btn_imagem_3, self.atividades.get_3_posicao())
+        elif(posic_imagem == 2):
+            nome = self.change_btn_image(self.ui.btn_imagem_2, contador)
+            self.change_btn_image(self.ui.btn_imagem_1, self.atividades.get_2_posicao())
+            self.change_btn_image(self.ui.btn_imagem_3, self.atividades.get_3_posicao())
+        else:
+            nome = self.change_btn_image(self.ui.btn_imagem_3, contador)
+            self.change_btn_image(self.ui.btn_imagem_1, self.atividades.get_2_posicao())
+            self.change_btn_image(self.ui.btn_imagem_2, self.atividades.get_3_posicao())
+        
+        self.ui.l_nome_imagem.setText(nome)
+        return posic_imagem 
+    
+    def atv_clique_na_imagem(self, button):
         self.fim_bool = self.atividades.get_fim()
-        print(self.fim_bool)
+
         if (self.fim_bool):
             self.tela_feedback()
             self.reset_atividades()
         else:
-            self.atividades.set_contador_mais_um()
-            self.change_btn_image(self.ui.btn_imagem_1)
-            self.change_btn_image(self.ui.btn_imagem_2)
-            self.change_btn_image(self.ui.btn_imagem_3)
+            posic_imagem = self.atv_clique_na_imagem_rand()
+            if(posic_imagem == button):
+                self.atividades.set_contador_mais_um()
+                self.atividades.set_posic_imagem()
+                self.atv_clique_na_imagem_rand()
+
 
     def onTimeout(self):
         self._seconds -= 1
@@ -193,7 +212,8 @@ class AlfaEdu(QMainWindow):
             self.atv_digite_nome()
         elif(stack_name == "tela_atividade_clique_na_imagem"):
             self.reset_atividades()
-            self.atv_clique_na_imagem()
+            self.atividades.set_posic_imagem()
+            self.atv_clique_na_imagem(0)
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
@@ -331,11 +351,11 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_atv_digt_nome_imagem.clicked.connect(
             lambda: self.atv_digite_nome())
         self.ui.btn_imagem_1.clicked.connect(
-            lambda: self.atv_clique_na_imagem())
+            lambda: self.atv_clique_na_imagem(1))
         self.ui.btn_imagem_2.clicked.connect(
-            lambda: self.atv_clique_na_imagem())
+            lambda: self.atv_clique_na_imagem(2))
         self.ui.btn_imagem_3.clicked.connect(
-            lambda: self.atv_clique_na_imagem())
+            lambda: self.atv_clique_na_imagem(3))
 
     def line_edits(self):
         self.ui.input_conf_email.returnPressed.connect(

@@ -179,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1491,7 +1491,7 @@ border: 2px solid rgb(0, 255, 0);
                   </size>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Clique na :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;Clique no (a)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="btn_imagem_1">
@@ -1504,7 +1504,7 @@ border: 2px solid rgb(0, 255, 0);
                   </rect>
                  </property>
                  <property name="text">
-                  <string>PushButton</string>
+                  <string/>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="btn_imagem_2">
@@ -1517,7 +1517,7 @@ border: 2px solid rgb(0, 255, 0);
                   </rect>
                  </property>
                  <property name="text">
-                  <string>PushButton</string>
+                  <string/>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="btn_imagem_3">
@@ -1530,7 +1530,7 @@ border: 2px solid rgb(0, 255, 0);
                   </rect>
                  </property>
                  <property name="text">
-                  <string>PushButton</string>
+                  <string/>
                  </property>
                 </widget>
                 <widget class="QLabel" name="l_nome_imagem">
@@ -1554,7 +1554,7 @@ border: 2px solid rgb(0, 255, 0);
                   </font>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;CASA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CASA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                 </widget>
                </widget>

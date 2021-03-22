@@ -1,3 +1,5 @@
+from random import randint
+
 class Atividades():
     def __init__(self) -> None:
         self.atividades_feitas = 0
@@ -6,6 +8,7 @@ class Atividades():
         self.atividade_com_dificuldade = {}
         self.max_atividades = 0
         self.fim = False
+        self.posic_imagem = 0
 
     def set_contador_mais_um(self) -> None:
         self.contador_index += 1
@@ -34,3 +37,26 @@ class Atividades():
         dic = self.atividade_com_dificuldade
         list_atividade = sorted(dic, key=dic.get, reverse=True)
         return list_atividade[:3]
+
+    def set_posic_imagem(self):
+        self.posic_imagem = randint(1, 3)
+    
+    def get_posic_imagem(self):
+        return self.posic_imagem
+    
+    # TODO melhorar depois
+    def get_2_posicao(self):
+        pos2 = self.get_contador() + 3
+        
+        if(pos2 < self.max_atividades):
+            return pos2
+        else:
+            return pos2 - self.max_atividades
+
+    def get_3_posicao(self):
+        pos3 = self.get_contador() + 6
+        
+        if(pos3 < self.max_atividades):
+            return pos3
+        else:
+            return pos3 - self.max_atividades
