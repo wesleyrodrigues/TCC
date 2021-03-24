@@ -179,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1279,25 +1279,117 @@ border: 2px solid rgb(0, 255, 0);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page">
-          <widget class="QLabel" name="label_16">
-           <property name="geometry">
-            <rect>
-             <x>240</x>
-             <y>180</y>
-             <width>321</width>
-             <height>151</height>
-            </rect>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>25</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>SEM NADA AQUI</string>
-           </property>
-          </widget>
+         <widget class="QWidget" name="tela_atividade_falta_a_letra">
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QFrame" name="organizador">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QFrame" name="organizador_meio">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>40</horstretch>
+                  <verstretch>40</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>405</width>
+                  <height>405</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>400</width>
+                  <height>400</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(170, 170, 255);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="l_palavra">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>90</y>
+                   <width>405</width>
+                   <height>100</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_letra_1">
+                 <property name="geometry">
+                  <rect>
+                   <x>5</x>
+                   <y>290</y>
+                   <width>95</width>
+                   <height>95</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_letra_4">
+                 <property name="geometry">
+                  <rect>
+                   <x>305</x>
+                   <y>290</y>
+                   <width>95</width>
+                   <height>95</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_letra_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>105</x>
+                   <y>290</y>
+                   <width>95</width>
+                   <height>95</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_letra_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>205</x>
+                   <y>290</y>
+                   <width>95</width>
+                   <height>95</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="tela_atividade_digt_nome_imagem">
           <layout class="QHBoxLayout" name="horizontalLayout_5">
