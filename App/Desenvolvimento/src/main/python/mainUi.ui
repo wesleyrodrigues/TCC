@@ -114,7 +114,7 @@ background-color: rgb(85, 255, 255);
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_8">
              <item>
-              <widget class="QLabel" name="L_nome_aluno_logado">
+              <widget class="QLabel" name="lnome_aluno_logado">
                <property name="text">
                 <string>TextLabel</string>
                </property>
@@ -179,7 +179,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1123,6 +1123,13 @@ border: 2px solid rgb(0, 255, 0);
                   </size>
                  </property>
                 </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btn_tela_editar_aluno">
+                 <property name="text">
+                  <string>Editar ou excluir aluno</string>
+                 </property>
+                </widget>
                </item>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout">

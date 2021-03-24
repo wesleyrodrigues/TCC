@@ -146,7 +146,7 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         self.db.close()
         return t
 
-    def seleciona_usuario_por_nome(self, nome_usuario):
+    def seleciona_aluno_por_nome(self, nome_usuario):
         self.db.open()
         query = QtSql.QSqlQuery(
             f"SELECT * FROM contas_alunos WHERE nome_aluno = '{nome_usuario}'")
@@ -163,13 +163,12 @@ class AlfaEduDB(QtSql.QSqlDatabase):
     def seleciona_nomes(self):
         self.db.open()
         # TODO alterar esse query
-        query = QtSql.QSqlQuery("SELECT * FROM contas_alunos")
+        query = QtSql.QSqlQuery(f"SELECT * FROM contas_alunos")
         nomes = []
         # query.next()
         # print(query.value("nome_aluno"))
         while(query.next()):
             nomes.append(query.value("nome_aluno"))
-        print(nomes)
         self.db.close()
         return nomes
         # print(query.value(0))

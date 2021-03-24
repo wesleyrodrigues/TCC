@@ -6,6 +6,7 @@ from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
 from atividades import Atividades
+from mensagens import mensagens_erros_cadastro
 from imagem_feedback import Feedback
 from random import shuffle, randint
 from os import environ
@@ -98,13 +99,14 @@ class AlfaEdu(QMainWindow):
         pixmap = self.get_QPixmap_image(imagem)
         label.setPixmap(pixmap)
         return nome_imagem
-    
+
     def change_btn_image(self, btn, contador):
         # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
         imagem = self.atv_imagens_bd[contador]
         nome_imagem = imagem[:-4]
         # print(nome_imagem)
-        btn.setStyleSheet(f"border-image: url('src/main/resources/base/{imagem}');")
+        btn.setStyleSheet(
+            f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
     def reset_atividades(self):
@@ -125,27 +127,34 @@ class AlfaEdu(QMainWindow):
                 self.atividades.set_contador_mais_um()
                 self.change_label_image(self.ui.latv_digt_nome_imagem)
                 self.ui.input_atv_digt_nome_imagem.setText("")
-    
+
+    # TODO tentar melhorar essa função.
     def atv_clique_na_imagem_rand(self):
         posic_imagem = self.atividades.get_posic_imagem()
         nome = ""
         contador = self.atividades.get_contador()
         if(posic_imagem == 1):
             nome = self.change_btn_image(self.ui.btn_imagem_1, contador)
-            self.change_btn_image(self.ui.btn_imagem_2, self.atividades.get_2_posicao())
-            self.change_btn_image(self.ui.btn_imagem_3, self.atividades.get_3_posicao())
+            self.change_btn_image(self.ui.btn_imagem_2,
+                                  self.atividades.get_2_posicao())
+            self.change_btn_image(self.ui.btn_imagem_3,
+                                  self.atividades.get_3_posicao())
         elif(posic_imagem == 2):
             nome = self.change_btn_image(self.ui.btn_imagem_2, contador)
-            self.change_btn_image(self.ui.btn_imagem_1, self.atividades.get_2_posicao())
-            self.change_btn_image(self.ui.btn_imagem_3, self.atividades.get_3_posicao())
+            self.change_btn_image(self.ui.btn_imagem_1,
+                                  self.atividades.get_2_posicao())
+            self.change_btn_image(self.ui.btn_imagem_3,
+                                  self.atividades.get_3_posicao())
         else:
             nome = self.change_btn_image(self.ui.btn_imagem_3, contador)
-            self.change_btn_image(self.ui.btn_imagem_1, self.atividades.get_2_posicao())
-            self.change_btn_image(self.ui.btn_imagem_2, self.atividades.get_3_posicao())
-        
+            self.change_btn_image(self.ui.btn_imagem_1,
+                                  self.atividades.get_2_posicao())
+            self.change_btn_image(self.ui.btn_imagem_2,
+                                  self.atividades.get_3_posicao())
+
         self.ui.l_nome_imagem.setText(nome)
-        return posic_imagem 
-    
+        return posic_imagem
+
     def atv_clique_na_imagem(self, button):
         self.fim_bool = self.atividades.get_fim()
 
@@ -158,7 +167,6 @@ class AlfaEdu(QMainWindow):
                 self.atividades.set_contador_mais_um()
                 self.atividades.set_posic_imagem()
                 self.atv_clique_na_imagem_rand()
-
 
     def onTimeout(self):
         self._seconds -= 1
@@ -206,6 +214,16 @@ class AlfaEdu(QMainWindow):
             self.ui.input_email.setText("")
             self.ui.input_conf_email.setText("")
 
+    def editar_aluno(self):
+        # print(self.usuario)
+        aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
+        self.ui.input_nome_aluno.setText(aluno["nome_aluno"])
+        # self.ui.input_senha.setText("123")
+        # self.ui.input_conf_senha.setText("123")
+        self.ui.input_nome_professor.setText(aluno["nome_professor"])
+        self.ui.input_email.setText(aluno["email_professor"])
+        # self.ui.input_conf_email.setText(aluno["email_professor"])
+
     def mudar_telas_acoes(self, stack_name):
         if(stack_name == "tela_atividade_digt_nome_imagem"):
             self.reset_atividades()
@@ -214,16 +232,19 @@ class AlfaEdu(QMainWindow):
             self.reset_atividades()
             self.atividades.set_posic_imagem()
             self.atv_clique_na_imagem(0)
+        elif(stack_name == "tela_cadastro" and self.usuario):
+            self.editar_aluno()
+            # print("Here")
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
         stack_passado = self.stack.findChild(QWidget, stack_name)
         self.stack.setCurrentWidget(stack_passado)
+        self.hide_widgets(stack_name)
         self.mudar_telas_acoes(stack_name)
         # self.stack.setCurrentIndex(index)
-        self.hide_widgets(stack_name)
 
-    def get_text(self, nome_line="tudo"):
+    def get_input_cadastro(self, nome_line="tudo"):
         nomes_dict = {
             "nome_aluno": str(self.ui.input_nome_aluno.text()),
             "senha": str(self.ui.input_senha.text()),
@@ -242,70 +263,30 @@ class AlfaEdu(QMainWindow):
         self.ui.lerro_login.setText("")
         nome = str(self.ui.cb_nome_aluno.currentText())
         senha = str(self.ui.input_senha_login.text())
-        senha_cript = self.alfa_edu_db.seleciona_usuario_por_nome(nome)[
+        senha_cript = self.alfa_edu_db.seleciona_aluno_por_nome(nome)[
             "senha"]
         retorno = Cript.verifica_usuario_e_senha(senha_cript, senha)
 
         if(retorno):
             self.mudar_tela("tela_escolher_atividades")
             self.usuario = nome
+            self.ui.lnome_aluno_logado.setText(self.usuario)
             # self.senha = senha
         else:
             self.ui.lerro_login.setText("Senha errada digite novamente!!")
 
-    # TODO melhorar depois
-    def mensagens_erros(self, arg):
-        texto_lines = self.get_text()
-        self.ui.lcampos.setText("")
-        if(arg == "nome_aluno"):
-            for count in range(self.ui.cb_nome_aluno.count()):
-                if(texto_lines["nome_aluno"] == self.ui.cb_nome_aluno.itemText(count)):
-                    msg = "Nome do(a) aluno(a), já cadastrado\n"
-                    self.ui.lverifica_nome.setText(msg)
-                    return False
-            self.ui.lverifica_nome.setText("")
-            return True
-
-        # TODO redundancia de ifs em senha e conf_senha
-        elif(arg == "senha" or arg == "conf_senha"):
-            if(texto_lines["conf_senha"] == ""
-               or texto_lines["senha"] == ""):
-                self.ui.lverifica_senha.setText("")
-
-            if(texto_lines["conf_senha"] != ""):
-                if(texto_lines["senha"] != texto_lines["conf_senha"]):
-                    msg = "As senhas não são iguais. Tente novamente.\n"
-                    self.ui.lverifica_senha.setText(msg)
-                    return False
-                self.ui.lverifica_senha.setText("")
-                return True
-
-        # TODO redundancia de ifs em email e conf email
-        elif(arg == "email" or arg == "conf_email"):
-            if(texto_lines["conf_email"] == ""
-               or texto_lines["email_professor"] == ""):
-                self.ui.lverifica_email.setText("")
-
-            if(texto_lines["conf_email"] != ""):
-                if(texto_lines["email_professor"] != texto_lines["conf_email"]):
-                    msg = "Os emails não são iguais. Tente novamente.\n"
-                    self.ui.lverifica_email.setText(msg)
-                    return False
-                self.ui.lverifica_email.setText("")
-                return True
-
     def input_conta(self):
-        texto_lines = self.get_text()
+        line_input_cadastro = self.get_input_cadastro()
 
         campos = True
 
-        msg_erros = self.mensagens_erros(
-            "nome_aluno") and self.mensagens_erros(
-            "conf_senha") and self.mensagens_erros(
+        msg_erros = mensagens_erros_cadastro(self,
+            "nome_aluno") and mensagens_erros_cadastro(self,
+            "conf_senha") and mensagens_erros_cadastro(self,
             "conf_email")
 
-        for i in texto_lines:
-            if(not(texto_lines[i])):
+        for i in line_input_cadastro:
+            if(not(line_input_cadastro[i])):
                 msg = "Verifique se todos dados estão preenchidos\n"
                 self.ui.lcampos.setText(msg)
                 campos = False
@@ -313,15 +294,15 @@ class AlfaEdu(QMainWindow):
 
         if(msg_erros and campos):
             print("adicionado")
-            # TODO criptografia não funciona
-            texto_lines["senha"] = Cript.criptografa_senha(
-                texto_lines["senha"])
-            t = self.alfa_edu_db.add_conta(texto_lines)
+            line_input_cadastro["senha"] = Cript.criptografa_senha(
+                line_input_cadastro["senha"])
+            t = self.alfa_edu_db.add_conta(line_input_cadastro)
             if(t):
-                self.ui.cb_nome_aluno.addItem(texto_lines["nome_aluno"])
+                self.ui.cb_nome_aluno.addItem(
+                    line_input_cadastro["nome_aluno"])
                 self.mudar_tela("tela_escolher_atividades")
-                self.usuario = texto_lines["nome_aluno"]
-                # self.senha = texto_lines["senha"]
+                self.usuario = line_input_cadastro["nome_aluno"]
+                # self.senha = line_input_cadastro["senha"]
                 self.ui.lnome_aluno_logado.setText(self.usuario)
             else:
                 msg = "Dados não salvos erro Banco de dados\n"
@@ -332,12 +313,14 @@ class AlfaEdu(QMainWindow):
         print("Passou aqui")
         self.ui.btn_tela_cadastro.clicked.connect(
             lambda: self.mudar_tela("tela_cadastro"))
+        self.ui.btn_tela_editar_aluno.clicked.connect(
+            lambda: self.mudar_tela("tela_cadastro"))
         self.ui.btn_tela_login.clicked.connect(
             lambda: self.mudar_tela("tela_login"))
         self.ui.btn_login.clicked.connect(lambda: self.login())
         self.ui.btn_voltar_tela_inicial.clicked.connect(
             lambda: self.mudar_tela("tela_inicial"))
-        
+
         self.ui.btn_tela_atividade_digt_nome_imagem.clicked.connect(
             lambda: self.mudar_tela("tela_atividade_digt_nome_imagem"))
         self.ui.btn_tela_atividade_clique_na_imagem.clicked.connect(
@@ -347,7 +330,7 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_pular.clicked.connect(lambda: self.pularfun())
         self.ui.btn_cadastrar.clicked.connect(lambda: self.input_conta())
         self.ui.btnAtvidade.clicked.connect(lambda: self.fazer_atividade())
-        
+
         self.ui.btn_atv_digt_nome_imagem.clicked.connect(
             lambda: self.atv_digite_nome())
         self.ui.btn_imagem_1.clicked.connect(
@@ -368,15 +351,15 @@ class AlfaEdu(QMainWindow):
         self.ui.input_atv_digt_nome_imagem.textChanged.connect(
             lambda: self.upper_text(self.ui.input_atv_digt_nome_imagem))
         self.ui.input_nome_aluno.textChanged.connect(
-            lambda: self.mensagens_erros("nome_aluno"))
+            lambda: mensagens_erros_cadastro(self, "nome_aluno"))
         self.ui.input_senha.textChanged.connect(
-            lambda: self.mensagens_erros("senha"))
+            lambda: mensagens_erros_cadastro(self, "senha"))
         self.ui.input_conf_senha.textChanged.connect(
-            lambda: self.mensagens_erros("conf_senha"))
+            lambda: mensagens_erros_cadastro(self, "conf_senha"))
         self.ui.input_conf_email.textChanged.connect(
-            lambda: self.mensagens_erros("conf_email"))
+            lambda: mensagens_erros_cadastro(self, "conf_email"))
         self.ui.input_email.textChanged.connect(
-            lambda: self.mensagens_erros("email"))
+            lambda: mensagens_erros_cadastro(self, "email"))
 
     # TODO melhorar depois
 
