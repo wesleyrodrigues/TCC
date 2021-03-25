@@ -148,14 +148,22 @@ class AlfaEduDB(QtSql.QSqlDatabase):
 
     def seleciona_aluno_por_nome(self, nome_usuario):
         self.db.open()
+        usuario = {}
         query = QtSql.QSqlQuery(
             f"SELECT * FROM contas_alunos WHERE nome_aluno = '{nome_usuario}'")
-        query.next()
-        usuario = {
-            "nome_aluno": query.value("nome_aluno"),
-            "senha": query.value("senha"),
-            "nome_professor": query.value("nome_professor"),
-            "email_professor": query.value("email_professor")}
+        t = query.next()
+        if(t):
+            usuario = {
+                "nome_aluno": query.value("nome_aluno"),
+                "senha": query.value("senha"),
+                "nome_professor": query.value("nome_professor"),
+                "email_professor": query.value("email_professor")}
+        else:
+            usuario = {
+                "nome_aluno": None,
+                "senha": None,
+                "nome_professor": None,
+                "email_professor": None}
         self.db.close()
         return usuario
 

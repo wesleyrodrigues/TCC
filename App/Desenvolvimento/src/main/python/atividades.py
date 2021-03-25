@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, shuffle
 
 class Atividades():
     def __init__(self) -> None:
@@ -60,3 +60,62 @@ class Atividades():
             return pos3
         else:
             return pos3 - self.max_atividades
+
+def reset_atividades(self):
+    self.atividades = Atividades()
+    shuffle(self.atv_imagens_bd)
+    self.atividades.set_max_atividades(len(self.atv_imagens_bd))
+
+def atv_digite_nome(self):
+    input_nome = str(self.ui.input_atv_digt_nome_imagem.text()).strip()
+    self.fim_bool = self.atividades.get_fim()
+    if (self.fim_bool):
+        self.tela_feedback()
+        reset_atividades(self)
+    else:
+        nome_imagem = self.change_label_image(
+            self.ui.latv_digt_nome_imagem)
+        if(nome_imagem == input_nome):
+            self.atividades.set_contador_mais_um()
+            self.change_label_image(self.ui.latv_digt_nome_imagem)
+            self.ui.input_atv_digt_nome_imagem.setText("")
+
+# TODO tentar melhorar essa função.
+def atv_clique_na_imagem_rand(self):
+    posic_imagem = self.atividades.get_posic_imagem()
+    nome = ""
+    contador = self.atividades.get_contador()
+    if(posic_imagem == 1):
+        nome = self.change_btn_image(self.ui.btn_imagem_1, contador)
+        self.change_btn_image(self.ui.btn_imagem_2,
+                            self.atividades.get_2_posicao())
+        self.change_btn_image(self.ui.btn_imagem_3,
+                            self.atividades.get_3_posicao())
+    elif(posic_imagem == 2):
+        nome = self.change_btn_image(self.ui.btn_imagem_2, contador)
+        self.change_btn_image(self.ui.btn_imagem_1,
+                            self.atividades.get_2_posicao())
+        self.change_btn_image(self.ui.btn_imagem_3,
+                            self.atividades.get_3_posicao())
+    else:
+        nome = self.change_btn_image(self.ui.btn_imagem_3, contador)
+        self.change_btn_image(self.ui.btn_imagem_1,
+                            self.atividades.get_2_posicao())
+        self.change_btn_image(self.ui.btn_imagem_2,
+                            self.atividades.get_3_posicao())
+
+    self.ui.l_nome_imagem.setText(nome)
+    return posic_imagem
+
+def atv_clique_na_imagem(self, button):
+    self.fim_bool = self.atividades.get_fim()
+
+    if (self.fim_bool):
+        self.tela_feedback()
+        self.reset_atividades()
+    else:
+        posic_imagem = atv_clique_na_imagem_rand(self)
+        if(posic_imagem == button):
+            self.atividades.set_contador_mais_um()
+            self.atividades.set_posic_imagem()
+            atv_clique_na_imagem_rand(self)

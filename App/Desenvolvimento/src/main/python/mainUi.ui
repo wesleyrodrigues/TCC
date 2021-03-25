@@ -115,8 +115,13 @@ background-color: rgb(85, 255, 255);
             <layout class="QVBoxLayout" name="verticalLayout_8">
              <item>
               <widget class="QLabel" name="lnome_aluno_logado">
+               <property name="font">
+                <font>
+                 <pointsize>20</pointsize>
+                </font>
+               </property>
                <property name="text">
-                <string>TextLabel</string>
+                <string/>
                </property>
               </widget>
              </item>
@@ -179,7 +184,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -854,7 +859,10 @@ border: 2px solid rgb(0, 255, 0);
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_6">
+                  <widget class="QPushButton" name="btn_excluir">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="maximumSize">
                     <size>
                      <width>500</width>
@@ -1238,16 +1246,16 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_2">
+                  <widget class="QPushButton" name="btn_tela_editar_aluno">
                    <property name="text">
-                    <string>PushButton</string>
+                    <string>Editar Aluno</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_5">
+                  <widget class="QPushButton" name="btn_fazer_atividade">
                    <property name="text">
-                    <string>PushButton</string>
+                    <string>Fazer</string>
                    </property>
                   </widget>
                  </item>
@@ -1731,8 +1739,8 @@ border: 2px solid rgb(0, 255, 0);
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>457</x>
-     <y>483</y>
+     <x>251</x>
+     <y>421</y>
     </hint>
     <hint type="destinationlabel">
      <x>461</x>
