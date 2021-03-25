@@ -109,7 +109,6 @@ class AlfaEdu(QMainWindow):
             f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
-
     def onTimeout(self):
         self._seconds -= 1
         self.displayTime()
@@ -142,7 +141,7 @@ class AlfaEdu(QMainWindow):
         if(stack_name == "tela_inicial"):
             self.ui.btn_voltar_tela_inicial.hide()
             self.usuario = ""
-            self.ui.lnome_aluno_logado.setText("") 
+            self.ui.lnome_aluno_logado.setText("")
         else:
             self.ui.btn_voltar_tela_inicial.show()
             self.ui.lverifica_senha.setText("")
@@ -228,17 +227,10 @@ class AlfaEdu(QMainWindow):
 
         campos = True
 
-        msg_erros = mensagens_erros_cadastro(self,
-            "nome_aluno") and mensagens_erros_cadastro(self,
-            "conf_senha") and mensagens_erros_cadastro(self,
-            "conf_email")
-        
-        print(mensagens_erros_cadastro(self,
-            "nome_aluno"))
-        print(mensagens_erros_cadastro(self,
-            "conf_senha"))
-        print(mensagens_erros_cadastro(self,
-            "conf_email"))
+        msg_erros = mensagens_erros_cadastro(
+            self, "nome_aluno") and mensagens_erros_cadastro(
+            self, "conf_senha") and mensagens_erros_cadastro(
+            self,"conf_email")
 
         for i in line_input_cadastro:
             if(not(line_input_cadastro[i])):
@@ -246,21 +238,21 @@ class AlfaEdu(QMainWindow):
                 self.ui.lcampos.setText(msg)
                 campos = False
                 break
-        
-        print("Erro1: " + str(msg_erros))
-        print("Erro2: " + str(campos))
+
         if(msg_erros and campos):
             print("adicionado")
             t = False
             aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
-            print(aluno)
 
             if(not(aluno["senha"] == line_input_cadastro["senha"])):
                 line_input_cadastro["senha"] = Cript.criptografa_senha(
-                line_input_cadastro["senha"])
-            
+                    line_input_cadastro["senha"])
+
             if(self.usuario):
-                print("Editado")
+                t = self.alfa_edu_db.atualiza_conta(
+                    line_input_cadastro, aluno["id_conta_aluno"])
+                index = self.ui.cb_nome_aluno.currentIndex()
+                self.ui.cb_nome_aluno.removeItem(index)
             else:
                 t = self.alfa_edu_db.add_conta(line_input_cadastro)
 
@@ -296,7 +288,8 @@ class AlfaEdu(QMainWindow):
 
         self.ui.btn_pular.clicked.connect(lambda: self.pularfun())
         self.ui.btn_cadastrar.clicked.connect(lambda: self.input_conta())
-        self.ui.btn_fazer_atividade.clicked.connect(lambda: self.fazer_atividade())
+        self.ui.btn_fazer_atividade.clicked.connect(
+            lambda: self.fazer_atividade())
 
         self.ui.btn_atv_digt_nome_imagem.clicked.connect(
             lambda: atv_digite_nome(self))

@@ -146,6 +146,22 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         self.db.close()
         return t
 
+    def atualiza_conta(self, input_conta, id_aluno):
+        self.db.open()
+        t = self.query.exec(
+
+            f"""UPDATE contas_alunos SET nome_aluno = '{input_conta["nome_aluno"]}',
+                senha = '{input_conta["senha"]}',
+                nome_professor = '{input_conta["nome_professor"]}',
+                email_professor = '{input_conta["email_professor"]}'               
+                WHERE id_conta_aluno = '{id_aluno}'"""
+        )
+        print(f"Resultado adicionado = {t}")
+        print(self.query.lastError().text())
+        self.db.close()
+        return t
+
+
     def seleciona_aluno_por_nome(self, nome_usuario):
         self.db.open()
         usuario = {}
@@ -154,12 +170,14 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         t = query.next()
         if(t):
             usuario = {
+                "id_conta_aluno": query.value("id_conta_aluno"),
                 "nome_aluno": query.value("nome_aluno"),
                 "senha": query.value("senha"),
                 "nome_professor": query.value("nome_professor"),
                 "email_professor": query.value("email_professor")}
         else:
             usuario = {
+                "id_conta_aluno": None,
                 "nome_aluno": None,
                 "senha": None,
                 "nome_professor": None,

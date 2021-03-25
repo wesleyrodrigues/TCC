@@ -3,15 +3,20 @@
 def mensagens_erros_cadastro(self, arg):
     line_input_cadastro = self.get_input_cadastro()
     self.ui.lcampos.setText("")
+    nomes = []
+    msg = ""
     if(arg == "nome_aluno"):
         for count in range(self.ui.cb_nome_aluno.count()):
-            if(line_input_cadastro["nome_aluno"] == self.ui.cb_nome_aluno.itemText(count)):
-                msg = "Nome do(a) aluno(a), já cadastrado\n"
-                if(not(self.usuario)):
-                    self.ui.lverifica_nome.setText(msg)
-                    return False
-                else:
-                    return True
+            nomes.append(self.ui.cb_nome_aluno.itemText(count))
+        
+        if(self.usuario):
+            nomes.remove(self.usuario)
+        
+        if(line_input_cadastro["nome_aluno"] in nomes):
+            msg = "Nome do(a) aluno(a), já cadastrado\n"
+            self.ui.lverifica_nome.setText(msg)
+            return False
+
         self.ui.lverifica_nome.setText("")
         return True
 
