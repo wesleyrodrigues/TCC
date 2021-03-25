@@ -156,12 +156,18 @@ class AlfaEduDB(QtSql.QSqlDatabase):
                 email_professor = '{input_conta["email_professor"]}'               
                 WHERE id_conta_aluno = '{id_aluno}'"""
         )
-        print(f"Resultado adicionado = {t}")
+        print(f"Resultado atualizado = {t}")
         print(self.query.lastError().text())
         self.db.close()
         return t
-
-
+    
+    def deleta_conta(self, id_aluno):
+        self.db.open()
+        t = self.query.exec(f"DELETE FROM contas_alunos WHERE id_conta_aluno = '{id_aluno}'")
+        print(self.query.lastError().text())
+        self.db.close()
+        return t
+        
     def seleciona_aluno_por_nome(self, nome_usuario):
         self.db.open()
         usuario = {}

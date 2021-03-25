@@ -168,6 +168,15 @@ class AlfaEdu(QMainWindow):
         self.ui.input_nome_professor.setText(aluno["nome_professor"])
         self.ui.input_email.setText(aluno["email_professor"])
         self.ui.input_conf_email.setText(aluno["email_professor"])
+    
+    def deletar_aluno(self):
+        aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
+        self.alfa_edu_db.deleta_conta(aluno["id_conta_aluno"])
+        index = self.ui.cb_nome_aluno.currentIndex()
+        self.ui.cb_nome_aluno.removeItem(index)
+        self.mudar_tela("tela_inicial")
+        self.ui.lnome_aluno_logado.setText("")
+
 
     def mudar_telas_acoes(self, stack_name):
         if(stack_name == "tela_atividade_digt_nome_imagem"):
@@ -272,6 +281,8 @@ class AlfaEdu(QMainWindow):
         print("Passou aqui")
         self.ui.btn_tela_cadastro.clicked.connect(
             lambda: self.mudar_tela("tela_cadastro"))
+        self.ui.btn_excluir.clicked.connect(
+            lambda: self.deletar_aluno())
         self.ui.btn_tela_editar_aluno.clicked.connect(
             lambda: self.mudar_tela("tela_cadastro"))
         self.ui.btn_tela_login.clicked.connect(
