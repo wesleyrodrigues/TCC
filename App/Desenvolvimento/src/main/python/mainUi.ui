@@ -184,7 +184,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1227,21 +1227,21 @@ border: 2px solid rgb(0, 255, 0);
                     <bool>true</bool>
                    </property>
                    <property name="text">
-                    <string>PushButton</string>
+                    <string>Clique na imagem</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btn_tela_atividade_digt_nome_imagem">
                    <property name="text">
-                    <string>PushButton</string>
+                    <string>Digite nome da imagem</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btn_tela_atividade_aletra_falta">
+                  <widget class="QPushButton" name="btn_tela_atividade_clique_na_letra">
                    <property name="text">
-                    <string>PushButton</string>
+                    <string>Clique na letra</string>
                    </property>
                   </widget>
                  </item>
@@ -1287,7 +1287,7 @@ border: 2px solid rgb(0, 255, 0);
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tela_atividade_falta_a_letra">
+         <widget class="QWidget" name="tela_atividade_clique_na_letra">
           <layout class="QHBoxLayout" name="horizontalLayout_12">
            <item>
             <widget class="QFrame" name="organizador">
@@ -1336,8 +1336,16 @@ border: 2px solid rgb(0, 255, 0);
                    <height>100</height>
                   </rect>
                  </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>50</pointsize>
+                  </font>
+                 </property>
                  <property name="text">
                   <string/>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                 <widget class="QPushButton" name="btn_letra_1">
@@ -1348,6 +1356,11 @@ border: 2px solid rgb(0, 255, 0);
                    <width>95</width>
                    <height>95</height>
                   </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>40</pointsize>
+                  </font>
                  </property>
                  <property name="text">
                   <string/>
@@ -1362,6 +1375,11 @@ border: 2px solid rgb(0, 255, 0);
                    <height>95</height>
                   </rect>
                  </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>40</pointsize>
+                  </font>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -1375,6 +1393,11 @@ border: 2px solid rgb(0, 255, 0);
                    <height>95</height>
                   </rect>
                  </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>40</pointsize>
+                  </font>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -1387,6 +1410,11 @@ border: 2px solid rgb(0, 255, 0);
                    <width>95</width>
                    <height>95</height>
                   </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>40</pointsize>
+                  </font>
                  </property>
                  <property name="text">
                   <string/>

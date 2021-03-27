@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap, QFontDatabase
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
-from atividades import Atividades, reset_atividades, atv_digite_nome, atv_clique_na_imagem
+from atividades import Atividades, atv_clique_na_letra, reset_atividades, atv_digite_nome, atv_clique_na_imagem
 from mensagens import mensagens_erros_cadastro
 from imagem_feedback import Feedback
 from random import shuffle
@@ -69,17 +69,18 @@ class AlfaEdu(QMainWindow):
         arg.setText(str(arg.text()).upper())
 
     def tela_feedback(self):
+        aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
         self.feedback = Feedback()
         self.feedback.set_feedback_imagem(
             {
-                "nome_aluno": "Testando",
-                "nome_professor": "Testando",
-                "tempo_proposto": "Testando",
-                "tempo_executado": "Testando",
-                "total_questoes": "Testando",
-                "acertos": "Testando",
-                "erros": "Testando",
-                "media": "Testando"
+                "nome_aluno": aluno["nome_aluno"],
+                "nome_professor": aluno["nome_professor"],
+                "tempo_proposto": "tempo_proposto",
+                "tempo_executado": "tempo_executado",
+                "total_questoes": "total_questoes",
+                "acertos": "acertos",
+                "erros": "erros",
+                "media": "media"
             }
         )
         imagem = self.feedback.get_imagem()
@@ -186,6 +187,11 @@ class AlfaEdu(QMainWindow):
             reset_atividades(self)
             self.atividades.set_posic_imagem()
             atv_clique_na_imagem(self, 0)
+        elif(stack_name == "tela_atividade_clique_na_letra"):
+            reset_atividades(self)
+            self.atividades.set_posic_letra()
+            atv_clique_na_letra(self, 0)
+
         elif(stack_name == "tela_cadastro" and self.usuario):
             self.ui.btn_excluir.show()
             self.ui.btn_cadastrar.setText("Editar")
@@ -235,7 +241,7 @@ class AlfaEdu(QMainWindow):
         line_input_cadastro = self.get_input_cadastro()
 
         campos = True
-
+        
         msg_erros = mensagens_erros_cadastro(
             self, "nome_aluno") and mensagens_erros_cadastro(
             self, "conf_senha") and mensagens_erros_cadastro(
@@ -296,6 +302,9 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_tela_atividade_clique_na_imagem.clicked.connect(
             lambda: self.mudar_tela("tela_atividade_clique_na_imagem")
         )
+        self.ui.btn_tela_atividade_clique_na_letra.clicked.connect(
+            lambda: self.mudar_tela("tela_atividade_clique_na_letra")
+        )
 
         self.ui.btn_pular.clicked.connect(lambda: self.pularfun())
         self.ui.btn_cadastrar.clicked.connect(lambda: self.input_conta())
@@ -310,6 +319,19 @@ class AlfaEdu(QMainWindow):
             lambda: atv_clique_na_imagem(self, 2))
         self.ui.btn_imagem_3.clicked.connect(
             lambda: atv_clique_na_imagem(self, 3))
+
+        self.ui.btn_letra_1.clicked.connect(
+            lambda: atv_clique_na_letra(self, 1)
+        )
+        self.ui.btn_letra_2.clicked.connect(
+            lambda: atv_clique_na_letra(self, 2)
+        )
+        self.ui.btn_letra_3.clicked.connect(
+            lambda: atv_clique_na_letra(self, 3)
+        )
+        self.ui.btn_letra_4.clicked.connect(
+            lambda: atv_clique_na_letra(self, 4)
+        )
 
     def line_edits(self):
         self.ui.input_conf_email.returnPressed.connect(

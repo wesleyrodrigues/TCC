@@ -1,4 +1,5 @@
-from random import randint, shuffle
+from random import choice, randint, shuffle
+
 
 class Atividades():
     def __init__(self) -> None:
@@ -9,6 +10,7 @@ class Atividades():
         self.max_atividades = 0
         self.fim = False
         self.posic_imagem = 0
+        self.posic_letra = 0
 
     def set_contador_mais_um(self) -> None:
         self.contador_index += 1
@@ -18,7 +20,7 @@ class Atividades():
     def set_atividade_mais_um(self) -> None:
         self.atividades_feitas += 1
 
-    def get_contador(self):
+    def get_contador(self) -> int:
         return self.contador_index
 
     def get_atividades_feitas(self) -> int:
@@ -38,33 +40,41 @@ class Atividades():
         list_atividade = sorted(dic, key=dic.get, reverse=True)
         return list_atividade[:3]
 
-    def set_posic_imagem(self):
+    def set_posic_imagem(self) -> None:
         self.posic_imagem = randint(1, 3)
     
-    def get_posic_imagem(self):
+    def set_posic_letra(self) -> None:
+        self.posic_letra = randint(1, 4)
+
+    def get_posic_imagem(self) -> int:
         return self.posic_imagem
     
+    def get_posic_letra(self) -> int:
+        return self.posic_letra
+
     # TODO melhorar depois
-    def get_2_posicao(self):
+    def get_2_posicao(self) -> int:
         pos2 = self.get_contador() + 3
-        
+
         if(pos2 < self.max_atividades):
             return pos2
         else:
             return pos2 - self.max_atividades
 
-    def get_3_posicao(self):
+    def get_3_posicao(self) -> int:
         pos3 = self.get_contador() + 6
-        
+
         if(pos3 < self.max_atividades):
             return pos3
         else:
             return pos3 - self.max_atividades
 
-def reset_atividades(self):
+
+def reset_atividades(self) -> None:
     self.atividades = Atividades()
     shuffle(self.atv_imagens_bd)
     self.atividades.set_max_atividades(len(self.atv_imagens_bd))
+
 
 def atv_digite_nome(self):
     input_nome = str(self.ui.input_atv_digt_nome_imagem.text()).strip()
@@ -81,6 +91,8 @@ def atv_digite_nome(self):
             self.ui.input_atv_digt_nome_imagem.setText("")
 
 # TODO tentar melhorar essa função.
+
+
 def atv_clique_na_imagem_rand(self):
     posic_imagem = self.atividades.get_posic_imagem()
     nome = ""
@@ -88,25 +100,26 @@ def atv_clique_na_imagem_rand(self):
     if(posic_imagem == 1):
         nome = self.change_btn_image(self.ui.btn_imagem_1, contador)
         self.change_btn_image(self.ui.btn_imagem_2,
-                            self.atividades.get_2_posicao())
+                              self.atividades.get_2_posicao())
         self.change_btn_image(self.ui.btn_imagem_3,
-                            self.atividades.get_3_posicao())
+                              self.atividades.get_3_posicao())
     elif(posic_imagem == 2):
         nome = self.change_btn_image(self.ui.btn_imagem_2, contador)
         self.change_btn_image(self.ui.btn_imagem_1,
-                            self.atividades.get_2_posicao())
+                              self.atividades.get_2_posicao())
         self.change_btn_image(self.ui.btn_imagem_3,
-                            self.atividades.get_3_posicao())
+                              self.atividades.get_3_posicao())
     else:
         nome = self.change_btn_image(self.ui.btn_imagem_3, contador)
         self.change_btn_image(self.ui.btn_imagem_1,
-                            self.atividades.get_2_posicao())
+                              self.atividades.get_2_posicao())
         self.change_btn_image(self.ui.btn_imagem_2,
-                            self.atividades.get_3_posicao())
+                              self.atividades.get_3_posicao())
 
     self.ui.l_nome_imagem.setText(nome)
     return posic_imagem
 
+# recebe número do button clicado
 def atv_clique_na_imagem(self, button):
     self.fim_bool = self.atividades.get_fim()
 
@@ -119,3 +132,83 @@ def atv_clique_na_imagem(self, button):
             self.atividades.set_contador_mais_um()
             self.atividades.set_posic_imagem()
             atv_clique_na_imagem_rand(self)
+
+def atv_clique_na_letra_rand(self):
+    alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    posic_letra = self.atividades.get_posic_letra()
+    imagem = self.atv_imagens_bd[self.atividades.get_contador()]
+    nome_imagem = imagem[:-4]
+    letra_index = randint(0, len(nome_imagem) - 1)
+    nome = ""
+    letra = ""
+    for i in range(0, len(nome_imagem)):
+        if(i == letra_index):
+            letra = nome_imagem[i]
+            alfabeto = alfabeto.replace(letra, "")
+            nome += "_"
+        else:
+            nome += nome_imagem[i]
+    # print(nome)
+    self.ui.l_palavra.setText(nome)
+
+    c1 = choice(alfabeto)
+    alfabeto = alfabeto.replace(c1, "")
+    c2 = choice(alfabeto)
+    alfabeto = alfabeto.replace(c2, "")
+    c3 = choice(alfabeto)
+    alfabeto = alfabeto.replace(c3, "")
+    c4 = choice(alfabeto)
+    alfabeto = alfabeto.replace(c4, "")
+
+    self.ui.btn_letra_1.setText(c1)
+    self.ui.btn_letra_2.setText(c2)
+    self.ui.btn_letra_3.setText(c3)
+    self.ui.btn_letra_4.setText(c4)
+    
+    if(posic_letra == 1):
+        self.ui.btn_letra_1.setText(letra)
+    elif(posic_letra == 2):
+        self.ui.btn_letra_2.setText(letra)
+    elif(posic_letra == 3):
+        self.ui.btn_letra_3.setText(letra)
+    else:
+        self.ui.btn_letra_4.setText(letra)
+    
+    return posic_letra
+    # if(posic_letra == 1):
+
+    # if(posic_imagem == 1):
+    #     nome = self.change_btn_image(self.ui.btn_imagem_1, contador)
+    #     self.change_btn_image(self.ui.btn_imagem_2,
+    #                           self.atividades.get_2_posicao())
+    #     self.change_btn_image(self.ui.btn_imagem_3,
+    #                           self.atividades.get_3_posicao())
+    # elif(posic_imagem == 2):
+    #     nome = self.change_btn_image(self.ui.btn_imagem_2, contador)
+    #     self.change_btn_image(self.ui.btn_imagem_1,
+    #                           self.atividades.get_2_posicao())
+    #     self.change_btn_image(self.ui.btn_imagem_3,
+    #                           self.atividades.get_3_posicao())
+    # else:
+    #     nome = self.change_btn_image(self.ui.btn_imagem_3, contador)
+    #     self.change_btn_image(self.ui.btn_imagem_1,
+    #                           self.atividades.get_2_posicao())
+    #     self.change_btn_image(self.ui.btn_imagem_2,
+    #                           self.atividades.get_3_posicao())
+
+    # self.ui.l_nome_imagem.setText(nome)
+    # return posic_imagem
+
+
+def atv_clique_na_letra(self, button):
+    self.fim_bool = self.atividades.get_fim()
+
+    if (self.fim_bool):
+        self.tela_feedback()
+        reset_atividades(self)
+    else:
+        posic_letra = atv_clique_na_letra_rand(self)
+        if(posic_letra == button):
+            self.atividades.set_contador_mais_um()
+            self.atividades.set_posic_letra()
+            atv_clique_na_letra_rand(self)
