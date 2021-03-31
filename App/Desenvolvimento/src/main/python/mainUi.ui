@@ -184,7 +184,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1282,17 +1282,14 @@ border: 2px solid rgb(0, 255, 0);
                   </widget>
                  </item>
                  <item>
-                  <widget class="QSpinBox" name="spinBox"/>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_5">
-                   <property name="text">
-                    <string>Quantidade De Exercicios</string>
+                  <widget class="QSpinBox" name="timeEdit">
+                   <property name="minimum">
+                    <number>1</number>
+                   </property>
+                   <property name="maximum">
+                    <number>59</number>
                    </property>
                   </widget>
-                 </item>
-                 <item>
-                  <widget class="QSpinBox" name="spinBox_2"/>
                  </item>
                 </layout>
                </widget>

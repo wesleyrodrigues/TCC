@@ -46,9 +46,9 @@ class AlfaEduDB(QtSql.QSqlDatabase):
 
         query = QtSql.QSqlQuery(
             f"SELECT id_imagem FROM imagens_atividades WHERE id_imagem = 1")
-        query.next()
+        t = query.next()
 
-        if(not(query.value("id_imagem"))):
+        if(not(t)):
             self.add_imagens()
 
         self.db.close()
@@ -129,7 +129,7 @@ class AlfaEduDB(QtSql.QSqlDatabase):
                     'TÊNIS.png',
                     'URSO.png',
                     'ÁRVORE.png']
-
+        #TODO tentar adicionar por meio de thread 
         for arq in arquivos:
             # TODO not working
             self.add_imagem(
