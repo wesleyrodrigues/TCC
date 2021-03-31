@@ -106,6 +106,7 @@ class AlfaEdu(QMainWindow):
         imagem = self.atv_imagens_bd[contador]
         nome_imagem = imagem[:-4]
         # print(nome_imagem)
+        # TODO na aplicação final alterar caminho dessa pasta
         btn.setStyleSheet(
             f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
@@ -356,20 +357,15 @@ class AlfaEdu(QMainWindow):
 
     # TODO melhorar depois
 
-    # def return_stylesheet(self):
-
-    #     return """
-    #         QMainWindow {
-    #             background-image: url("src/main/app_imagens/%s");
-    #             background-color: "%s";
-    #         border-image: url("src/main/app_imagens/%s") 0 0 0 0 stretch stretch;
-    #             background-repeat: no-repeat;
-    #             background-position: center;
-    #         }""" % (
-    #         self.background_imagem,
-    #         self.background_cor,
-    #         self.background_imagem
-    #     )
+    def return_stylesheet(self):
+        return """
+            QMainWindow {
+                background-image: url("src/main/app_imagens/MainWindow.png");
+                background-color: "#add8e6";
+            border-image: url("src/main/app_imagens/MainWindow.png") 0 0 0 0 stretch stretch;
+                background-repeat: no-repeat;
+                background-position: center;
+            }"""
 
 
 def suppress_qt_warnings():
@@ -385,7 +381,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     alfa_edu_app = AlfaEdu()
-    # app.setStyleSheet(alfa_edu_app.return_stylesheet())
+    app.setStyleSheet(alfa_edu_app.return_stylesheet())
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
     alfa_edu_app.set_appctxt(appctxt)

@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(893, 764)
+        MainWindow.resize(1034, 764)
         MainWindow.setStyleSheet("QMainWindow {\n"
 "                \n"
 "    background-image: url(:/tela/app_imagens/kawaii-1546834.png);\n"
@@ -84,16 +84,21 @@ class Ui_MainWindow(object):
         self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setObjectName("stackedWidget")
         self.tela_inicial = QtWidgets.QWidget()
-        self.tela_inicial.setStyleSheet("")
+        self.tela_inicial.setStyleSheet("background-image: url(:/newPrefix/app_imagens/MainWindow.png);")
         self.tela_inicial.setObjectName("tela_inicial")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.tela_inicial)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.frame_2 = QtWidgets.QFrame(self.tela_inicial)
+        self.frame_2.setEnabled(True)
         self.frame_2.setMaximumSize(QtCore.QSize(350, 500))
+        self.frame_2.setToolTip("")
+        self.frame_2.setStatusTip("")
+        self.frame_2.setWhatsThis("")
+        self.frame_2.setAutoFillBackground(False)
         self.frame_2.setStyleSheet("")
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
         self.btn_sair = QtWidgets.QPushButton(self.frame_2)
@@ -801,7 +806,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

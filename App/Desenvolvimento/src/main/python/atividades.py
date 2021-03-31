@@ -175,29 +175,6 @@ def atv_clique_na_letra_rand(self):
         self.ui.btn_letra_4.setText(letra)
     
     return posic_letra
-    # if(posic_letra == 1):
-
-    # if(posic_imagem == 1):
-    #     nome = self.change_btn_image(self.ui.btn_imagem_1, contador)
-    #     self.change_btn_image(self.ui.btn_imagem_2,
-    #                           self.atividades.get_2_posicao())
-    #     self.change_btn_image(self.ui.btn_imagem_3,
-    #                           self.atividades.get_3_posicao())
-    # elif(posic_imagem == 2):
-    #     nome = self.change_btn_image(self.ui.btn_imagem_2, contador)
-    #     self.change_btn_image(self.ui.btn_imagem_1,
-    #                           self.atividades.get_2_posicao())
-    #     self.change_btn_image(self.ui.btn_imagem_3,
-    #                           self.atividades.get_3_posicao())
-    # else:
-    #     nome = self.change_btn_image(self.ui.btn_imagem_3, contador)
-    #     self.change_btn_image(self.ui.btn_imagem_1,
-    #                           self.atividades.get_2_posicao())
-    #     self.change_btn_image(self.ui.btn_imagem_2,
-    #                           self.atividades.get_3_posicao())
-
-    # self.ui.l_nome_imagem.setText(nome)
-    # return posic_imagem
 
 
 def atv_clique_na_letra(self, button):

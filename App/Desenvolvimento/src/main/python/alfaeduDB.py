@@ -1,5 +1,5 @@
 from PyQt5 import QtSql, QtWidgets
-from os import environ, path, listdir
+from os import environ
 
 
 class AlfaEduDB(QtSql.QSqlDatabase):
@@ -47,7 +47,7 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         query = QtSql.QSqlQuery(
             f"SELECT id_imagem FROM imagens_atividades WHERE id_imagem = 1")
         query.next()
-        
+
         if(not(query.value("id_imagem"))):
             self.add_imagens()
 
@@ -81,29 +81,49 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         #     arq) and arq.lower().endswith(".png")]
         # # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
         # arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
-        arquivos = ['ARCO-ÍRIS.png',
+        arquivos = ['ABELHA.png',
+                    'ARCO-ÍRIS.png',
                     'AVIÃO.png',
                     'BICICLETA.png',
                     'BOLA.png',
                     'BOLO.png',
                     'BORRACHA.png',
                     'CACHORRO.png',
+                    'CADEADO.png',
+                    'CAIXA.png',
                     'CAMA.png',
+                    'CANECA.png',
                     'CARRO.png',
                     'CASA.png',
+                    'CAVALO.png',
                     'CHINELO.png',
+                    'COCO.png',
                     'COELHO.png',
+                    'COLHER.png',
+                    'COROA.png',
+                    'DADO.png',
+                    'BIGODE.png',
                     'FLOR.png',
+                    'FOLHA.png',
+                    'GALO.png',
+                    'GARFO.png',
                     'GATO.png',
                     'JANELA.png',
                     'LIVRO.png',
+                    'LIXO.png',
+                    'LUA.png',
                     'LÁPIS.png',
                     'MACACO.png',
                     'MAÇÃ.png',
                     'MESA.png',
+                    'MOEDA.png',
                     'PORTA.png',
+                    'PRATO.png',
                     'PÃO.png',
+                    'SALADA.png',
+                    'SAPO.png',
                     'SOL.png',
+                    'SORVETE.png',
                     'TESOURA.png',
                     'TREM.png',
                     'TÊNIS.png',
@@ -160,14 +180,15 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         print(self.query.lastError().text())
         self.db.close()
         return t
-    
+
     def deleta_conta(self, id_aluno):
         self.db.open()
-        t = self.query.exec(f"DELETE FROM contas_alunos WHERE id_conta_aluno = '{id_aluno}'")
+        t = self.query.exec(
+            f"DELETE FROM contas_alunos WHERE id_conta_aluno = '{id_aluno}'")
         print(self.query.lastError().text())
         self.db.close()
         return t
-        
+
     def seleciona_aluno_por_nome(self, nome_usuario):
         self.db.open()
         usuario = {}
@@ -211,7 +232,7 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         # print("contas")
         imagens = []
         while(query.next()):
-             imagens.append(query.value("nome_imagem"))
+            imagens.append(query.value("nome_imagem"))
         # print(query.value(0))
         self.db.close()
         return imagens
