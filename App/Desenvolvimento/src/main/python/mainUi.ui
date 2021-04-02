@@ -184,7 +184,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -837,13 +837,13 @@ background-color: rgb(255, 255, 255);
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
-background-color: rgb(181, 181, 181);
+background-color: rgb(103, 255, 76);
 
 
 }
 QPushButton:hover {
-background-color: rgb(71, 71, 71);
-border: 2px solid rgb(117, 117, 117);
+background-color: rgb(10, 156, 0);
+border: 2px solid rgb(0, 0, 0);
 
 }
 QPushButton:pressed {
@@ -996,7 +996,7 @@ border: 2px solid rgb(62, 0, 0);
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(255, 255, 127);</string>
+                 <string notr="true">background-color: rgb(190, 255, 234);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -1049,7 +1049,8 @@ border: 2px solid rgb(62, 0, 0);
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>15</pointsize>
+                     <family>Schoolwork</family>
+                     <pointsize>34</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -1093,6 +1094,12 @@ background-color: rgb(255, 255, 255);
                      <width>16777215</width>
                      <height>40</height>
                     </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>34</pointsize>
+                    </font>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLineEdit {
@@ -1145,13 +1152,13 @@ background-color: rgb(255, 255, 255);
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
-background-color: rgb(181, 181, 181);
+background-color: rgb(103, 255, 76);
 
 
 }
 QPushButton:hover {
-background-color: rgb(71, 71, 71);
-border: 2px solid rgb(117, 117, 117);
+background-color: rgb(10, 156, 0);
+border: 2px solid rgb(0, 0, 0);
 
 }
 QPushButton:pressed {
@@ -1209,8 +1216,8 @@ border: 2px solid rgb(0, 255, 0);
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>400</width>
-                  <height>300</height>
+                  <width>300</width>
+                  <height>450</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1232,7 +1239,7 @@ border: 2px solid rgb(0, 255, 0);
                     </font>
                    </property>
                    <property name="text">
-                    <string>Atividades</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Atividades&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
@@ -1241,6 +1248,38 @@ border: 2px solid rgb(0, 255, 0);
                    <property name="enabled">
                     <bool>true</bool>
                    </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>30</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 249, 71);
+
+
+}
+QPushButton:hover {
+background-color:rgb(192, 207, 52);
+border: 2px solid rgb(0, 0, 0);
+
+}
+QPushButton:pressed {
+background-color: rgb(58, 255, 48);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
+                   </property>
                    <property name="text">
                     <string>Clique na imagem</string>
                    </property>
@@ -1248,6 +1287,38 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QPushButton" name="btn_tela_atividade_digt_nome_imagem">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>30</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 249, 71);
+
+
+}
+QPushButton:hover {
+background-color:rgb(192, 207, 52);
+border: 2px solid rgb(0, 0, 0);
+
+}
+QPushButton:pressed {
+background-color: rgb(58, 255, 48);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
+                   </property>
                    <property name="text">
                     <string>Digite nome da imagem</string>
                    </property>
@@ -1255,6 +1326,38 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QPushButton" name="btn_tela_atividade_clique_na_letra">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>30</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 249, 71);
+
+
+}
+QPushButton:hover {
+background-color:rgb(192, 207, 52);
+border: 2px solid rgb(0, 0, 0);
+
+}
+QPushButton:pressed {
+background-color: rgb(58, 255, 48);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
+                   </property>
                    <property name="text">
                     <string>Clique na letra</string>
                    </property>
@@ -1262,6 +1365,38 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QPushButton" name="btn_tela_editar_aluno">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>30</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 249, 71);
+
+
+}
+QPushButton:hover {
+background-color:rgb(192, 207, 52);
+border: 2px solid rgb(0, 0, 0);
+
+}
+QPushButton:pressed {
+background-color: rgb(58, 255, 48);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
+                   </property>
                    <property name="text">
                     <string>Editar Aluno</string>
                    </property>
@@ -1269,6 +1404,38 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QPushButton" name="btn_fazer_atividade">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>30</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 249, 71);
+
+
+}
+QPushButton:hover {
+background-color:rgb(192, 207, 52);
+border: 2px solid rgb(0, 0, 0);
+
+}
+QPushButton:pressed {
+background-color: rgb(58, 255, 48);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
+                   </property>
                    <property name="text">
                     <string>Fazer</string>
                    </property>
@@ -1276,13 +1443,35 @@ border: 2px solid rgb(0, 255, 0);
                  </item>
                  <item>
                   <widget class="QLabel" name="label_6">
+                   <property name="font">
+                    <font>
+                     <family>Schoolwork</family>
+                     <pointsize>26</pointsize>
+                    </font>
+                   </property>
                    <property name="text">
-                    <string>Digite o Tempo ( minutos )</string>
+                    <string>Digite o Tempo em minutos</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QSpinBox" name="timeEdit">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QSpinBox {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+}</string>
+                   </property>
                    <property name="minimum">
                     <number>1</number>
                    </property>
