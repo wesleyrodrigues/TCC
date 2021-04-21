@@ -29,6 +29,8 @@ class AlfaEdu(QMainWindow):
         self._timer.setInterval(1000)
         self._seconds = 60
         self._timer.timeout.connect(self.onTimeout)
+        self.ui.lcd_atvtempo.hide()
+        self.tempo_proposto = ""
         # TODO verificar depois background app
         # self.background_imagem = "MainWindow.png"
         # self.background_cor = "#add8e6"
@@ -70,12 +72,13 @@ class AlfaEdu(QMainWindow):
 
     def tela_feedback(self):
         aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
+        self.ui.lcd_atvtempo.hide()
         self.feedback = Feedback()
         self.feedback.set_feedback_imagem(
             {
                 "nome_aluno": aluno["nome_aluno"],
                 "nome_professor": aluno["nome_professor"],
-                "tempo_proposto": "tempo_proposto",
+                "tempo_proposto": self.tempo_proposto,
                 "tempo_executado": "tempo_executado",
                 "total_questoes": "total_questoes",
                 "acertos": "acertos",
@@ -119,7 +122,7 @@ class AlfaEdu(QMainWindow):
         self.lcd_setText(time.strftime('%M:%S', time.gmtime(self._seconds)))
 
         if(time.gmtime(self._seconds).tm_min == 0 and time.gmtime(self._seconds).tm_sec == 0):
-            self.mudar_tela("tela_feedback")
+            self.tela_feedback()
             self._timer.stop()
 
     def lcd_setText(self, texto):
@@ -130,10 +133,12 @@ class AlfaEdu(QMainWindow):
         return self._text
 
     def fazer_atividade(self):
+        self.ui.lcd_atvtempo.show()
         self._seconds = int(self.ui.timeEdit.text()) * 60
+        self.tempo_proposto = time.strftime('%H:%M:%S', time.gmtime(self._seconds))
         self._timer.start()
 
-    def pularfun(self):
+    def pularfun(self): # TODO APAGAR
         self.stack.setCurrentIndex(self.pular)
         self.pular += 1
         if(self.pular == self.stack.count()):
@@ -144,6 +149,7 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_voltar_tela_inicial.hide()
             self.usuario = ""
             self.ui.lnome_aluno_logado.setText("")
+            self.ui.lcd_atvtempo.hide()
         else:
             self.ui.btn_voltar_tela_inicial.show()
             self.ui.lverifica_senha.setText("")
