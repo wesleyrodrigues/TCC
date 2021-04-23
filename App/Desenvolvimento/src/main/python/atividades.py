@@ -11,6 +11,27 @@ class Atividades():
         self.fim = False
         self.posic_imagem = 0
         self.posic_letra = 0
+        self.acertos = 0
+        self.erros = 0
+        self.media = 0
+    
+    def set_acertos_mais_um(self) -> None:
+        self.acertos += 1
+    
+    def get_acertos(self) -> int:
+        return self.acertos
+    
+    def set_erros_mais_um(self) -> None:
+        self.erros += 1
+    
+    def get_erros(self) -> int:
+        return self.erros
+    
+    def set_total_questoes_mais_um(self) -> None:
+        self.total_questoes += 1
+    
+    def get_total_questoes(self) -> int:
+        return self.total_questoes
 
     def set_contador_mais_um(self) -> None:
         self.contador_index += 1
@@ -69,7 +90,7 @@ class Atividades():
         else:
             return pos3 - self.max_atividades
 
-
+# TODO colocar dentro da classe atividades
 def reset_atividades(self) -> None:
     self.atividades = Atividades()
     shuffle(self.atv_imagens_bd)
@@ -89,6 +110,8 @@ def atv_digite_nome(self):
             self.atividades.set_contador_mais_um()
             self.change_label_image(self.ui.latv_digt_nome_imagem)
             self.ui.input_atv_digt_nome_imagem.setText("")
+        else:
+            self.atividades.set_erros_mais_um()
 
 # TODO tentar melhorar essa função.
 
@@ -132,6 +155,8 @@ def atv_clique_na_imagem(self, button):
             self.atividades.set_contador_mais_um()
             self.atividades.set_posic_imagem()
             atv_clique_na_imagem_rand(self)
+        else:
+            self.atividades.set_erros_mais_um()
 
 def atv_clique_na_letra_rand(self):
     alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -151,8 +176,8 @@ def atv_clique_na_letra_rand(self):
     # print(nome)
     self.ui.l_palavra.setText(nome)
 
-    c1 = choice(alfabeto)
-    alfabeto = alfabeto.replace(c1, "")
+    c1 = choice(alfabeto) # escolhe uma letra do alfabeto
+    alfabeto = alfabeto.replace(c1, "") # Remove a letra escolhida para que não repita
     c2 = choice(alfabeto)
     alfabeto = alfabeto.replace(c2, "")
     c3 = choice(alfabeto)
@@ -160,7 +185,7 @@ def atv_clique_na_letra_rand(self):
     c4 = choice(alfabeto)
     alfabeto = alfabeto.replace(c4, "")
 
-    self.ui.btn_letra_1.setText(c1)
+    self.ui.btn_letra_1.setText(c1) # define a letra no botão
     self.ui.btn_letra_2.setText(c2)
     self.ui.btn_letra_3.setText(c3)
     self.ui.btn_letra_4.setText(c4)
@@ -189,3 +214,5 @@ def atv_clique_na_letra(self, button):
             self.atividades.set_contador_mais_um()
             self.atividades.set_posic_letra()
             atv_clique_na_letra_rand(self)
+        else:
+            self.atividades.set_erros_mais_um()

@@ -15,6 +15,9 @@ import time
 
 
 class AlfaEdu(QMainWindow):
+    """
+    Aplicação principal...
+    """
     def __init__(self):
         super(AlfaEdu, self).__init__()
         self.ui = Ui_MainWindow()
@@ -80,9 +83,9 @@ class AlfaEdu(QMainWindow):
                 "nome_professor": aluno["nome_professor"],
                 "tempo_proposto": self.tempo_proposto,
                 "tempo_executado": "tempo_executado",
-                "total_questoes": "total_questoes",
+                "total_questoes": str(self.atividades.get_contador()),
                 "acertos": "acertos",
-                "erros": "erros",
+                "erros": str(self.atividades.get_erros() - 1),
                 "media": "media"
             }
         )
@@ -104,7 +107,7 @@ class AlfaEdu(QMainWindow):
         label.setPixmap(pixmap)
         return nome_imagem
 
-    def change_btn_image(self, btn, contador):
+    def change_btn_image(self, btn, contador: int):
         # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
         imagem = self.atv_imagens_bd[contador]
         nome_imagem = imagem[:-4]
@@ -125,17 +128,18 @@ class AlfaEdu(QMainWindow):
             self.tela_feedback()
             self._timer.stop()
 
-    def lcd_setText(self, texto):
+    def lcd_setText(self, texto: str) -> None:
         self._text = texto
         self.ui.lcd_atvtempo.display(texto)
 
-    def lcd_getText(self):
+    def lcd_getText(self) -> str:
         return self._text
 
-    def fazer_atividade(self):
+    def fazer_atividade(self) -> None:
         self.ui.lcd_atvtempo.show()
         self._seconds = int(self.ui.timeEdit.text()) * 60
         self.tempo_proposto = time.strftime('%H:%M:%S', time.gmtime(self._seconds))
+        self.mudar_tela("tela_atividade_clique_na_letra")
         self._timer.start()
 
     def pularfun(self): # TODO APAGAR
@@ -144,7 +148,7 @@ class AlfaEdu(QMainWindow):
         if(self.pular == self.stack.count()):
             self.pular = 0
 
-    def hide_widgets(self, stack_name):
+    def hide_widgets(self, stack_name: str):
         if(stack_name == "tela_inicial"):
             self.ui.btn_voltar_tela_inicial.hide()
             self.usuario = ""
