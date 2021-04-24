@@ -5,7 +5,7 @@ from PyQt5.QtGui import QPixmap, QFontDatabase
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
 from criptografia import Cript
-from atividades import Atividades, atv_clique_na_letra, reset_atividades, atv_digite_nome, atv_clique_na_imagem
+from atividades import Atividades
 from mensagens import mensagens_erros_cadastro
 from imagem_feedback import Feedback
 from random import shuffle
@@ -58,7 +58,8 @@ class AlfaEdu(QMainWindow):
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
         shuffle(self.atv_imagens_bd)
         # self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
-        self.atividades.set_max_atividades(len(self.atv_imagens_bd))
+        self.total_atividades = len(self.atv_imagens_bd)
+        self.atividades.set_max_atividades(self.total_atividades)
 
         self.appctxt = None
         # imagem = self.atv_imagens_bd[0]
@@ -84,9 +85,8 @@ class AlfaEdu(QMainWindow):
                 "tempo_proposto": self.tempo_proposto,
                 "tempo_executado": "tempo_executado",
                 "total_questoes": str(self.atividades.get_contador()),
-                "acertos": "acertos",
-                "erros": str(self.atividades.get_erros() - 1),
-                "media": "media"
+                "acertos": str(self.atividades.get_acertos()),
+                "erros": str(self.atividades.get_erros()),
             }
         )
         imagem = self.feedback.get_imagem()
@@ -100,6 +100,7 @@ class AlfaEdu(QMainWindow):
 
     def change_label_image(self, label):
         # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
+        print(self.atividades.get_contador())
         imagem = self.atv_imagens_bd[self.atividades.get_contador()]
         nome_imagem = imagem[:-4]
         print(nome_imagem)
@@ -168,6 +169,7 @@ class AlfaEdu(QMainWindow):
             self.ui.input_nome_professor.setText("")
             self.ui.input_email.setText("")
             self.ui.input_conf_email.setText("")
+            self.ui.input_atv_digt_nome_imagem.setText("")
             self.ui.btn_cadastrar.setText("Cadastrar")
             self.ui.btn_excluir.hide()
 
@@ -192,16 +194,19 @@ class AlfaEdu(QMainWindow):
 
     def mudar_telas_acoes(self, stack_name):
         if(stack_name == "tela_atividade_digt_nome_imagem"):
-            reset_atividades(self)
-            atv_digite_nome(self)
+            self.atividades.reset_atividades(self)
+            self.atividades.set_max_atividades(self.total_atividades)
+            self.atividades.atv_digite_nome(self)
         elif(stack_name == "tela_atividade_clique_na_imagem"):
-            reset_atividades(self)
+            self.atividades.reset_atividades(self)
+            self.atividades.set_max_atividades(self.total_atividades)
             self.atividades.set_posic_imagem()
-            atv_clique_na_imagem(self, 0)
+            self.atividades.atv_clique_na_imagem(self, 0)
         elif(stack_name == "tela_atividade_clique_na_letra"):
-            reset_atividades(self)
+            self.atividades.reset_atividades(self)
+            self.atividades.set_max_atividades(self.total_atividades)
             self.atividades.set_posic_letra()
-            atv_clique_na_letra(self, 0)
+            self.atividades.atv_clique_na_letra(self, 0)
 
         elif(stack_name == "tela_cadastro" and self.usuario):
             self.ui.btn_excluir.show()
@@ -323,25 +328,25 @@ class AlfaEdu(QMainWindow):
             lambda: self.fazer_atividade())
 
         self.ui.btn_atv_digt_nome_imagem.clicked.connect(
-            lambda: atv_digite_nome(self))
+            lambda: self.atividades.atv_digite_nome(self))
         self.ui.btn_imagem_1.clicked.connect(
-            lambda: atv_clique_na_imagem(self, 1))
+            lambda: self.atividades.atv_clique_na_imagem(self, 1))
         self.ui.btn_imagem_2.clicked.connect(
-            lambda: atv_clique_na_imagem(self, 2))
+            lambda: self.atividades.atv_clique_na_imagem(self, 2))
         self.ui.btn_imagem_3.clicked.connect(
-            lambda: atv_clique_na_imagem(self, 3))
+            lambda: self.atividades.atv_clique_na_imagem(self, 3))
 
         self.ui.btn_letra_1.clicked.connect(
-            lambda: atv_clique_na_letra(self, 1)
+            lambda: self.atividades.atv_clique_na_letra(self, 1)
         )
         self.ui.btn_letra_2.clicked.connect(
-            lambda: atv_clique_na_letra(self, 2)
+            lambda: self.atividades.atv_clique_na_letra(self, 2)
         )
         self.ui.btn_letra_3.clicked.connect(
-            lambda: atv_clique_na_letra(self, 3)
+            lambda: self.atividades.atv_clique_na_letra(self, 3)
         )
         self.ui.btn_letra_4.clicked.connect(
-            lambda: atv_clique_na_letra(self, 4)
+            lambda: self.atividades.atv_clique_na_letra(self, 4)
         )
 
     def line_edits(self):
@@ -350,7 +355,7 @@ class AlfaEdu(QMainWindow):
         self.ui.input_senha_login.returnPressed.connect(
             self.ui.btn_login.click)
         self.ui.input_atv_digt_nome_imagem.returnPressed.connect(
-            lambda: atv_digite_nome(self))
+            lambda: self.atividades.atv_digite_nome(self))
 
         self.ui.input_atv_digt_nome_imagem.textChanged.connect(
             lambda: self.upper_text(self.ui.input_atv_digt_nome_imagem))

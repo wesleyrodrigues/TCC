@@ -27,7 +27,6 @@ class Feedback():
         total_questoes = "Total de questões respondidas: " + dict_feedback["total_questoes"]
         acertos = "Acertos: " + dict_feedback["acertos"]
         erros = "Erros: " + dict_feedback["erros"]
-        media = "Média: " + dict_feedback["media"]
 
         self.draw.text((100, 2), "Feedback", font=self.font, fill="black")
         self.draw.text((100, 52), nome_aluno, font=self.font, fill="black")
@@ -37,7 +36,6 @@ class Feedback():
         self.draw.text((100, 252), total_questoes, font=self.font, fill="black")
         self.draw.text((100, 300), acertos, font=self.font, fill="black")
         self.draw.text((100, 352), erros, font=self.font, fill="black")
-        self.draw.text((100, 402), media, font=self.font, fill="black")
         self.img.save("feedback.bmp")
 
 
