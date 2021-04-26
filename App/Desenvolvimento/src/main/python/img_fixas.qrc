@@ -4,6 +4,7 @@
     <file>../app_imagens/tentativa.png</file>
   </qresource>
   <qresource prefix="newPrefix">
+    <file>../app_imagens/certta.jpg</file>
     <file>../app_imagens/MainWindow.png</file>
   </qresource>
 </RCC>
