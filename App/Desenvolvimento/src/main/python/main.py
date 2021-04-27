@@ -65,6 +65,7 @@ class AlfaEdu(QMainWindow):
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        self.ui.btn_pular.hide()
         self.buttons()
         self.line_edits()
 
@@ -82,8 +83,8 @@ class AlfaEdu(QMainWindow):
             {
                 "nome_aluno": aluno["nome_aluno"],
                 "nome_professor": aluno["nome_professor"],
-                "tempo_proposto": self.tempo_proposto,
-                "tempo_executado": "tempo_executado",
+                "tempo_proposto": time.strftime('%M:%S', time.gmtime(self.tempo_proposto)),
+                "tempo_executado": time.strftime('%M:%S', time.gmtime(self.tempo_proposto - self._seconds)),
                 "total_questoes": str(self.atividades.get_contador()),
                 "acertos": str(self.atividades.get_acertos()),
                 "erros": str(self.atividades.get_erros()),
@@ -139,7 +140,7 @@ class AlfaEdu(QMainWindow):
     def fazer_atividade(self) -> None:
         self.ui.lcd_atvtempo.show()
         self._seconds = int(self.ui.timeEdit.text()) * 60
-        self.tempo_proposto = time.strftime('%H:%M:%S', time.gmtime(self._seconds))
+        self.tempo_proposto = self._seconds
         self.mudar_tela("tela_atividade_clique_na_letra")
         self._timer.start()
 
