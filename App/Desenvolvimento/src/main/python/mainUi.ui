@@ -184,7 +184,7 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -416,7 +416,7 @@ border: 2px solid rgb(0, 255, 0);
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(190, 255, 234);</string>
+                 <string notr="true">background-color: rgb(5, 155, 255);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -978,7 +978,7 @@ border: 2px solid rgb(62, 0, 0);
            <item>
             <widget class="QFrame" name="frame_5">
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(85, 255, 0);</string>
+              <string notr="true">background-color: rgb(170, 255, 255);</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -996,7 +996,7 @@ border: 2px solid rgb(62, 0, 0);
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(190, 255, 234);</string>
+                 <string notr="true">background-color: rgb(5, 155, 255);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -1199,6 +1199,9 @@ border: 2px solid rgb(0, 255, 0);
            </property>
            <item>
             <widget class="QFrame" name="frame_8">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(170, 255, 255);</string>
+             </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
@@ -1492,6 +1495,9 @@ background-color: rgb(255, 255, 255);
           <layout class="QHBoxLayout" name="horizontalLayout_12">
            <item>
             <widget class="QFrame" name="organizador">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(170, 255, 255);</string>
+             </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
@@ -1520,7 +1526,7 @@ background-color: rgb(255, 255, 255);
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(170, 170, 255);</string>
+                 <string notr="true">background-color: rgb(247, 255, 208);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -1629,6 +1635,9 @@ background-color: rgb(255, 255, 255);
           </layout>
          </widget>
          <widget class="QWidget" name="tela_atividade_digt_nome_imagem">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(170, 255, 255);</string>
+          </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5">
            <property name="spacing">
             <number>0</number>
@@ -1647,9 +1656,6 @@ background-color: rgb(255, 255, 255);
            </property>
            <item>
             <widget class="QFrame" name="frame_2">
-             <property name="styleSheet">
-              <string notr="true">background-color: rgb(247, 255, 208);</string>
-             </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
              </property>
@@ -1666,7 +1672,7 @@ background-color: rgb(255, 255, 255);
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true"/>
+                 <string notr="true">background-color: rgb(247, 255, 208);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
@@ -1690,9 +1696,10 @@ background-color: rgb(255, 255, 255);
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
-	border: 2px solid rgb(107, 107, 107);
+	border: 2px solid rgb(5, 9, 255);
 	border-radius: 5px;
-	background-color:rgb(0, 127, 0)
+	background-color: rgb(255, 255, 255);
+	
 }</string>
                  </property>
                  <property name="text">
@@ -1740,6 +1747,9 @@ background-color: rgb(255, 255, 255);
                    <height>360</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(247, 255, 208);</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -1777,7 +1787,8 @@ background-color: rgb(255, 255, 255);
            <item>
             <widget class="QFrame" name="tela_fundo">
              <property name="styleSheet">
-              <string notr="true">background-color: rgb(247, 255, 208);</string>
+              <string notr="true">
+background-color: rgb(170, 255, 255);</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::StyledPanel</enum>
@@ -1795,7 +1806,7 @@ background-color: rgb(255, 255, 255);
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">background-color: rgb(170, 255, 127);</string>
+                 <string notr="true">background-color: rgb(247, 255, 208);</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
