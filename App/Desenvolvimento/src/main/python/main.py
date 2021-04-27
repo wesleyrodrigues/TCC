@@ -376,9 +376,9 @@ class AlfaEdu(QMainWindow):
     def return_stylesheet(self):
         return """
             QMainWindow {
-                background-image: url("src/main/app_imagens/MainWindow.png");
+                background-image: url("MainWindow.png");
                 background-color: "#add8e6";
-            border-image: url("src/main/app_imagens/MainWindow.png") 0 0 0 0 stretch stretch;
+            border-image: url("MainWindow.png") 0 0 0 0 stretch stretch;
                 background-repeat: no-repeat;
                 background-position: center;
             }"""
@@ -397,7 +397,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     alfa_edu_app = AlfaEdu()
-    app.setStyleSheet(alfa_edu_app.return_stylesheet())
+    # app.setStyleSheet("""
+    #         QMainWindow {
+    #             background-image: url("MainWindow.png");
+    #         }""")
 
     appctxt = ApplicationContext()       # 1. Instantiate ApplicationContext
     alfa_edu_app.set_appctxt(appctxt)
