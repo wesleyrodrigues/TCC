@@ -1,8 +1,8 @@
 <RCC>
   <qresource prefix="atvimg">
-    <file>pato.png</file>
-    <file>../imagens_atividades/ARVORE.png</file>
-    <file>ARVORE.png</file>
+    <file>../app_imagens/ok2.png</file>
+    <file>../app_imagens/letra.png</file>
+    <file>../app_imagens/clique.png</file>
   </qresource>
   <qresource prefix="botao">
     <file>button-156707_1280.png</file>

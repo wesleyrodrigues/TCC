@@ -14,12 +14,11 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {
-				
-	background-image: url(:/tela/app_imagens/kawaii-1546834.png);
-                background-repeat: no-repeat; 
-                background-position: center;
- }</string>
+   <string notr="true">	background-image: url(:/tela/app_imagens/certta.jpg);
+	background-repeat: no-repeat; 
+	background-position: center;
+
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -41,10 +40,7 @@
     <item row="0" column="0">
      <widget class="QFrame" name="frame">
       <property name="styleSheet">
-       <string notr="true">QFrame {
-selection-background-color: rgb(85, 255, 255);
-background-color: rgb(85, 255, 255);
-}</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -75,6 +71,9 @@ background-color: rgb(85, 255, 255);
            <width>0</width>
            <height>90</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -160,6 +159,9 @@ background-color: rgb(85, 255, 255);
               </widget>
              </item>
              <item>
+              <widget class="QLineEdit" name="lineEdit"/>
+             </item>
+             <item>
               <widget class="QPushButton" name="btn_pular">
                <property name="maximumSize">
                 <size>
@@ -184,11 +186,11 @@ background-color: rgb(85, 255, 255);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>5</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
-           <string notr="true">background-image: url(:/newPrefix/app_imagens/MainWindow.png);</string>
+           <string notr="true"/>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <property name="spacing">
@@ -1219,8 +1221,8 @@ border: 2px solid rgb(0, 255, 0);
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>300</width>
-                  <height>450</height>
+                  <width>500</width>
+                  <height>700</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1232,39 +1234,135 @@ border: 2px solid rgb(0, 255, 0);
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout">
-                 <item>
-                  <widget class="QLabel" name="label">
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>30</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Atividades&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_tela_atividade_clique_na_imagem">
-                   <property name="enabled">
-                    <bool>true</bool>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>30</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                <widget class="QLabel" name="label">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>10</y>
+                   <width>491</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Atividades&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_tela_atividade_clique_na_imagem">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>60</y>
+                   <width>181</width>
+                   <height>161</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>400</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image:url(:/atvimg/app_imagens/clique.png)</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_tela_atividade_digt_nome_imagem">
+                 <property name="geometry">
+                  <rect>
+                   <x>220</x>
+                   <y>60</y>
+                   <width>231</width>
+                   <height>171</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>200</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image: url(:/atvimg/app_imagens/letra.png)</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_tela_atividade_clique_na_letra">
+                 <property name="geometry">
+                  <rect>
+                   <x>130</x>
+                   <y>240</y>
+                   <width>181</width>
+                   <height>161</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>200</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-image:url(:/atvimg/app_imagens/ok2.png)</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_tela_editar_aluno">
+                 <property name="geometry">
+                  <rect>
+                   <x>310</x>
+                   <y>430</y>
+                   <width>153</width>
+                   <height>35</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
@@ -1282,28 +1380,34 @@ background-color: rgb(58, 255, 48);
 border: 2px solid rgb(0, 255, 0);
 
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>Clique na imagem</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_tela_atividade_digt_nome_imagem">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>30</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                 </property>
+                 <property name="text">
+                  <string>Editar Aluno</string>
+                 </property>
+                </widget>
+                <widget class="QPushButton" name="btn_fazer_atividade">
+                 <property name="geometry">
+                  <rect>
+                   <x>300</x>
+                   <y>530</y>
+                   <width>69</width>
+                   <height>35</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>30</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
@@ -1321,152 +1425,47 @@ background-color: rgb(58, 255, 48);
 border: 2px solid rgb(0, 255, 0);
 
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>Digite nome da imagem</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_tela_atividade_clique_na_letra">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>30</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-
-border: 2px solid rgb(0, 0, 0);
-border-radius:10px;
-background-color: rgb(255, 249, 71);
-
-
-}
-QPushButton:hover {
-background-color:rgb(192, 207, 52);
-border: 2px solid rgb(0, 0, 0);
-
-}
-QPushButton:pressed {
-background-color: rgb(58, 255, 48);
-border: 2px solid rgb(0, 255, 0);
-
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Clique na letra</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_tela_editar_aluno">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>30</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-
-border: 2px solid rgb(0, 0, 0);
-border-radius:10px;
-background-color: rgb(255, 249, 71);
-
-
-}
-QPushButton:hover {
-background-color:rgb(192, 207, 52);
-border: 2px solid rgb(0, 0, 0);
-
-}
-QPushButton:pressed {
-background-color: rgb(58, 255, 48);
-border: 2px solid rgb(0, 255, 0);
-
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Editar Aluno</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="btn_fazer_atividade">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>30</pointsize>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
-
-border: 2px solid rgb(0, 0, 0);
-border-radius:10px;
-background-color: rgb(255, 249, 71);
-
-
-}
-QPushButton:hover {
-background-color:rgb(192, 207, 52);
-border: 2px solid rgb(0, 0, 0);
-
-}
-QPushButton:pressed {
-background-color: rgb(58, 255, 48);
-border: 2px solid rgb(0, 255, 0);
-
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Fazer</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_6">
-                   <property name="font">
-                    <font>
-                     <family>Schoolwork</family>
-                     <pointsize>26</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Digite o Tempo em minutos</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QSpinBox" name="timeEdit">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QSpinBox {
+                 </property>
+                 <property name="text">
+                  <string>Fazer</string>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="label_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>441</y>
+                   <width>268</width>
+                   <height>27</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Schoolwork</family>
+                   <pointsize>26</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Digite o Tempo em minutos</string>
+                 </property>
+                </widget>
+                <widget class="QSpinBox" name="timeEdit">
+                 <property name="geometry">
+                  <rect>
+                   <x>30</x>
+                   <y>520</y>
+                   <width>241</width>
+                   <height>40</height>
+                  </rect>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QSpinBox {
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
@@ -1474,16 +1473,27 @@ background-color: rgb(255, 255, 255);
 
 
 }</string>
-                   </property>
-                   <property name="minimum">
-                    <number>1</number>
-                   </property>
-                   <property name="maximum">
-                    <number>59</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                 </property>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>59</number>
+                 </property>
+                </widget>
+                <widget class="QSlider" name="horizontalSlider">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>610</y>
+                   <width>261</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
                </widget>
               </item>
              </layout>
@@ -1979,8 +1989,8 @@ background-color: rgb(170, 255, 255);</string>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>251</x>
-     <y>421</y>
+     <x>592</x>
+     <y>512</y>
     </hint>
     <hint type="destinationlabel">
      <x>461</x>
