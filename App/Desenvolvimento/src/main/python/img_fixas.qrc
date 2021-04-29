@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="tela">
+    <file>abct.png</file>
     <file>../app_imagens/kawaii-1546834.png</file>
     <file>../app_imagens/tentativa.png</file>
   </qresource>

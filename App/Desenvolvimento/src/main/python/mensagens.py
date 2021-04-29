@@ -8,10 +8,10 @@ def mensagens_erros_cadastro(self, arg):
     if(arg == "nome_aluno"):
         for count in range(self.ui.cb_nome_aluno.count()):
             nomes.append(self.ui.cb_nome_aluno.itemText(count))
-        
+
         if(self.usuario):
             nomes.remove(self.usuario)
-        
+
         if(line_input_cadastro["nome_aluno"] in nomes):
             msg = "Nome do(a) aluno(a), já cadastrado\n"
             self.ui.lverifica_nome.setText(msg)
@@ -19,7 +19,6 @@ def mensagens_erros_cadastro(self, arg):
 
         self.ui.lverifica_nome.setText("")
         return True
-
 
     # TODO redundancia de ifs em senha e conf_senha
     elif(arg == "senha" or arg == "conf_senha"):
