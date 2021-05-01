@@ -1480,14 +1480,26 @@ background-color: rgb(255, 255, 255);
                 <widget class="QSlider" name="horizontalSlider">
                  <property name="geometry">
                   <rect>
-                   <x>10</x>
-                   <y>610</y>
-                   <width>261</width>
-                   <height>16</height>
+                   <x>30</x>
+                   <y>485</y>
+                   <width>241</width>
+                   <height>21</height>
                   </rect>
+                 </property>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>59</number>
                  </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="tickPosition">
+                  <enum>QSlider::TicksBelow</enum>
+                 </property>
+                 <property name="tickInterval">
+                  <number>10</number>
                  </property>
                 </widget>
                </widget>
@@ -1975,12 +1987,44 @@ background-color: rgb(255, 255, 255);
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>592</x>
-     <y>512</y>
+     <x>251</x>
+     <y>431</y>
     </hint>
     <hint type="destinationlabel">
      <x>461</x>
      <y>766</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>timeEdit</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>609</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>431</x>
+     <y>649</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>timeEdit</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>horizontalSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>333</x>
+     <y>646</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>324</x>
+     <y>607</y>
     </hint>
    </hints>
   </connection>

@@ -694,8 +694,12 @@ class Ui_MainWindow(object):
         self.timeEdit.setMaximum(59)
         self.timeEdit.setObjectName("timeEdit")
         self.horizontalSlider = QtWidgets.QSlider(self.frame_9)
-        self.horizontalSlider.setGeometry(QtCore.QRect(10, 610, 261, 16))
+        self.horizontalSlider.setGeometry(QtCore.QRect(30, 485, 241, 21))
+        self.horizontalSlider.setMinimum(1)
+        self.horizontalSlider.setMaximum(59)
         self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setTickPosition(QtWidgets.QSlider.TicksBelow)
+        self.horizontalSlider.setTickInterval(10)
         self.horizontalSlider.setObjectName("horizontalSlider")
         self.horizontalLayout_3.addWidget(self.frame_9)
         self.verticalLayout_31.addWidget(self.frame_8)
@@ -889,6 +893,8 @@ class Ui_MainWindow(object):
         self.stackedWidget.setCurrentIndex(3)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
+        self.horizontalSlider.sliderMoved['int'].connect(self.timeEdit.setValue)
+        self.timeEdit.valueChanged['int'].connect(self.horizontalSlider.setValue)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
