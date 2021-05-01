@@ -597,7 +597,16 @@ class Ui_MainWindow(object):
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.btn_tela_atividade_clique_na_imagem.setFont(font)
-        self.btn_tela_atividade_clique_na_imagem.setStyleSheet("border-image: url(:/atvimg/app_imagens/clique na figura off.png);")
+        self.btn_tela_atividade_clique_na_imagem.setStyleSheet("QPushButton{\n"
+"    border-image: url(:/atvimg/app_imagens/clique na figura off.png);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-image: url(:/atvimg/app_imagens/clique na figura on.png);\n"
+"}")
         self.btn_tela_atividade_clique_na_imagem.setText("")
         self.btn_tela_atividade_clique_na_imagem.setObjectName("btn_tela_atividade_clique_na_imagem")
         self.btn_tela_atividade_digt_nome_imagem = QtWidgets.QPushButton(self.frame_9)
@@ -607,17 +616,36 @@ class Ui_MainWindow(object):
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.btn_tela_atividade_digt_nome_imagem.setFont(font)
-        self.btn_tela_atividade_digt_nome_imagem.setStyleSheet("border-image: url(:/atvimg/app_imagens/digite o nome da figura off.png);")
+        self.btn_tela_atividade_digt_nome_imagem.setStyleSheet("QPushButton  {\n"
+"    border-image: url(:/atvimg/app_imagens/digite o nome da figura off.png);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-image: url(:/atvimg/app_imagens/digite o nome da figura on.png);\n"
+"}")
         self.btn_tela_atividade_digt_nome_imagem.setText("")
         self.btn_tela_atividade_digt_nome_imagem.setObjectName("btn_tela_atividade_digt_nome_imagem")
         self.btn_tela_atividade_clique_na_letra = QtWidgets.QPushButton(self.frame_9)
-        self.btn_tela_atividade_clique_na_letra.setGeometry(QtCore.QRect(130, 240, 203, 144))
+        self.btn_tela_atividade_clique_na_letra.setGeometry(QtCore.QRect(10, 210, 203, 144))
         self.btn_tela_atividade_clique_na_letra.setMaximumSize(QtCore.QSize(16777215, 200))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.btn_tela_atividade_clique_na_letra.setFont(font)
-        self.btn_tela_atividade_clique_na_letra.setStyleSheet("border-image: url(:/atvimg/app_imagens/clique na letra que falta off.png);")
+        self.btn_tela_atividade_clique_na_letra.setStyleSheet("QPushButton{\n"
+"    border-image: url(:/atvimg/app_imagens/clique na letra que falta off.png);\n"
+"}\n"
+"QPushButton:hover {\n"
+"    border: 2px solid rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-image: url(:/atvimg/app_imagens/clique na letra que falta on.png);\n"
+"}")
         self.btn_tela_atividade_clique_na_letra.setText("")
         self.btn_tela_atividade_clique_na_letra.setObjectName("btn_tela_atividade_clique_na_letra")
         self.btn_tela_editar_aluno = QtWidgets.QPushButton(self.frame_9)

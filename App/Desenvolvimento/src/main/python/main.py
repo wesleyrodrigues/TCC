@@ -14,6 +14,7 @@ import sys
 import time
 
 
+
 class AlfaEdu(QMainWindow):
     """
     Aplicação principal...
@@ -120,6 +121,7 @@ class AlfaEdu(QMainWindow):
             f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
+
     def onTimeout(self):
         self._seconds -= 1
         self.displayTime()
@@ -139,11 +141,14 @@ class AlfaEdu(QMainWindow):
         return self._text
 
     def fazer_atividade(self) -> None:
-        self.ui.lcd_atvtempo.show()
-        self._seconds = int(self.ui.timeEdit.text()) * 60
-        self.tempo_proposto = self._seconds
-        self.mudar_tela("tela_atividade_clique_na_letra")
-        self._timer.start()
+        tela = self.atividades.get_atividade_escolhida()
+        
+        if(tela != ""):
+            self.ui.lcd_atvtempo.show()
+            self._seconds = int(self.ui.timeEdit.text()) * 60
+            self.tempo_proposto = self._seconds
+            self.mudar_tela(tela)
+            self._timer.start()
 
     def pularfun(self):  # TODO APAGAR
         self.stack.setCurrentIndex(self.pular)
@@ -153,6 +158,7 @@ class AlfaEdu(QMainWindow):
 
     def hide_widgets(self, stack_name: str):
         if(stack_name == "tela_inicial"):
+            self.atividades.atividade_escolhida_fun(self, "")
             self.ui.btn_voltar_tela_inicial.hide()
             self.usuario = ""
             self.ui.lnome_aluno_logado.setText("")
@@ -194,18 +200,16 @@ class AlfaEdu(QMainWindow):
         self.ui.lnome_aluno_logado.setText("")
 
     def mudar_telas_acoes(self, stack_name):
+        self.atividades.reset_atividades(self)
+        self.atividades.set_max_atividades(self.total_atividades)
+        # self.atividades.atividade_escolhida_fun(self, "")
+
         if(stack_name == "tela_atividade_digt_nome_imagem"):
-            self.atividades.reset_atividades(self)
-            self.atividades.set_max_atividades(self.total_atividades)
             self.atividades.atv_digite_nome(self)
         elif(stack_name == "tela_atividade_clique_na_imagem"):
-            self.atividades.reset_atividades(self)
-            self.atividades.set_max_atividades(self.total_atividades)
             self.atividades.set_posic_imagem()
             self.atividades.atv_clique_na_imagem(self, 0)
         elif(stack_name == "tela_atividade_clique_na_letra"):
-            self.atividades.reset_atividades(self)
-            self.atividades.set_max_atividades(self.total_atividades)
             self.atividades.set_posic_letra()
             self.atividades.atv_clique_na_letra(self, 0)
 
@@ -214,13 +218,18 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_cadastrar.setText("Editar")
             self.editar_aluno()
             # print("Here")
+    
+
+    def atv_escolhida(self, nome_atividade):    
+        self.atividades.atividade_escolhida_fun(self, nome_atividade)
 
     def mudar_tela(self, stack_name):
         # TODO Melhorar
-        stack_passado = self.stack.findChild(QWidget, stack_name)
-        self.stack.setCurrentWidget(stack_passado)
-        self.hide_widgets(stack_name)
-        self.mudar_telas_acoes(stack_name)
+        if(stack_name != ""):
+            stack_passado = self.stack.findChild(QWidget, stack_name)
+            self.stack.setCurrentWidget(stack_passado)
+            self.hide_widgets(stack_name)
+            self.mudar_telas_acoes(stack_name)
         # self.stack.setCurrentIndex(index)
 
     def get_input_cadastro(self, nome_line="tudo"):
@@ -315,12 +324,12 @@ class AlfaEdu(QMainWindow):
             lambda: self.mudar_tela("tela_inicial"))
 
         self.ui.btn_tela_atividade_digt_nome_imagem.clicked.connect(
-            lambda: self.mudar_tela("tela_atividade_digt_nome_imagem"))
+            lambda: self.atv_escolhida("tela_atividade_digt_nome_imagem"))
         self.ui.btn_tela_atividade_clique_na_imagem.clicked.connect(
-            lambda: self.mudar_tela("tela_atividade_clique_na_imagem")
+            lambda: self.atv_escolhida("tela_atividade_clique_na_imagem")
         )
         self.ui.btn_tela_atividade_clique_na_letra.clicked.connect(
-            lambda: self.mudar_tela("tela_atividade_clique_na_letra")
+            lambda: self.atv_escolhida("tela_atividade_clique_na_letra")
         )
 
         self.ui.btn_pular.clicked.connect(lambda: self.pularfun())

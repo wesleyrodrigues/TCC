@@ -1,6 +1,5 @@
 from random import choice, randint, shuffle
 
-
 class Atividades():
     def __init__(self) -> None:
         self.contador_index = 0
@@ -10,6 +9,13 @@ class Atividades():
         self.fim = False
         self.posic_imagem = 0
         self.posic_letra = 0
+        self.atividade_escolhida = ""
+    
+    def set_atividade_escolhida(self, nome_tela_atividade) -> None:
+        self.atividade_escolhida = nome_tela_atividade
+    
+    def get_atividade_escolhida(self) -> str:
+        return self.atividade_escolhida
 
     def get_acertos(self) -> int:
         atividades = list(self.atividade_feitas.values())
@@ -213,3 +219,30 @@ class Atividades():
                 self.set_atividades_feitas(posic_letra[1])
             else:
                 self.set_atividades_feitas(posic_letra[1])
+    
+    def style_thr(self, btn, atividade):
+        btn.setStyleSheet(atividade)
+
+    def atividade_escolhida_fun(self, main_app, nome_atividade):
+        # self.set_atividade_escolhida(nome_atividade)
+        self.atividade_escolhida = nome_atividade
+
+        style = """
+        QPushButton:hover {
+            border: 2px solid rgb(0, 0, 0);
+        }
+        QPushButton{
+            border-image: url(:/atvimg/app_imagens/"""
+
+        # TODO verificar isso
+        main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura off.png);}")
+        main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")  
+        main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura off.png);}")
+        
+        if(nome_atividade == "tela_atividade_digt_nome_imagem"):
+            main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura on.png);}")
+        elif(nome_atividade == "tela_atividade_clique_na_imagem"):
+            main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura on.png);}")
+        elif(nome_atividade == "tela_atividade_clique_na_letra"):
+            main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta on.png);}")
+          

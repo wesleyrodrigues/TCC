@@ -1274,7 +1274,16 @@ border: 2px solid rgb(0, 255, 0);
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border-image: url(:/atvimg/app_imagens/clique na figura off.png);</string>
+                  <string notr="true">QPushButton{
+	border-image: url(:/atvimg/app_imagens/clique na figura off.png);
+}
+QPushButton:hover {
+	border: 2px solid rgb(0, 0, 0);
+}
+
+QPushButton:pressed {
+	border-image: url(:/atvimg/app_imagens/clique na figura on.png);
+}</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -1302,7 +1311,17 @@ border: 2px solid rgb(0, 255, 0);
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border-image: url(:/atvimg/app_imagens/digite o nome da figura off.png);</string>
+                  <string notr="true">QPushButton  {
+	border-image: url(:/atvimg/app_imagens/digite o nome da figura off.png);
+}
+
+QPushButton:hover {
+	border: 2px solid rgb(0, 0, 0);
+}
+
+QPushButton:pressed {
+	border-image: url(:/atvimg/app_imagens/digite o nome da figura on.png);
+}</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -1311,8 +1330,8 @@ border: 2px solid rgb(0, 255, 0);
                 <widget class="QPushButton" name="btn_tela_atividade_clique_na_letra">
                  <property name="geometry">
                   <rect>
-                   <x>130</x>
-                   <y>240</y>
+                   <x>10</x>
+                   <y>210</y>
                    <width>203</width>
                    <height>144</height>
                   </rect>
@@ -1330,7 +1349,16 @@ border: 2px solid rgb(0, 255, 0);
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border-image: url(:/atvimg/app_imagens/clique na letra que falta off.png);</string>
+                  <string notr="true">QPushButton{
+	border-image: url(:/atvimg/app_imagens/clique na letra que falta off.png);
+}
+QPushButton:hover {
+	border: 2px solid rgb(0, 0, 0);
+}
+
+QPushButton:pressed {
+	border-image: url(:/atvimg/app_imagens/clique na letra que falta on.png);
+}</string>
                  </property>
                  <property name="text">
                   <string/>
