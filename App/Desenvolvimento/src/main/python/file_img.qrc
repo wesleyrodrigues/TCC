@@ -1,8 +1,11 @@
 <RCC>
   <qresource prefix="atvimg">
-    <file>../app_imagens/ok2.png</file>
-    <file>../app_imagens/letra.png</file>
-    <file>../app_imagens/clique.png</file>
+    <file>../app_imagens/clique na letra que falta off.png</file>
+    <file>../app_imagens/clique na letra que falta on.png</file>
+    <file>../app_imagens/digite o nome da figura off.png</file>
+    <file>../app_imagens/digite o nome da figura on.png</file>
+    <file>../app_imagens/clique na figura off.png</file>
+    <file>../app_imagens/clique na figura on.png</file>
   </qresource>
   <qresource prefix="botao">
     <file>button-156707_1280.png</file>

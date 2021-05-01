@@ -12,12 +12,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1034, 764)
-        MainWindow.setStyleSheet("QMainWindow {\n"
-"                \n"
-"    background-image: url(:/tela/app_imagens/kawaii-1546834.png);\n"
-"                background-repeat: no-repeat; \n"
-"                background-position: center;\n"
-" }")
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
@@ -25,10 +20,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setStyleSheet("QFrame {\n"
-"selection-background-color: rgb(85, 255, 255);\n"
-"background-color: rgb(85, 255, 255);\n"
-"}")
+        self.frame.setStyleSheet("")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -38,6 +30,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.Cabecalho = QtWidgets.QFrame(self.frame)
         self.Cabecalho.setMinimumSize(QtCore.QSize(0, 90))
+        self.Cabecalho.setStyleSheet("")
         self.Cabecalho.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.Cabecalho.setFrameShadow(QtWidgets.QFrame.Raised)
         self.Cabecalho.setObjectName("Cabecalho")
@@ -74,6 +67,9 @@ class Ui_MainWindow(object):
         self.btn_voltar_tela_inicial.setMaximumSize(QtCore.QSize(16777215, 40))
         self.btn_voltar_tela_inicial.setObjectName("btn_voltar_tela_inicial")
         self.verticalLayout_9.addWidget(self.btn_voltar_tela_inicial)
+        self.lineEdit = QtWidgets.QLineEdit(self.direita)
+        self.lineEdit.setObjectName("lineEdit")
+        self.verticalLayout_9.addWidget(self.lineEdit)
         self.btn_pular = QtWidgets.QPushButton(self.direita)
         self.btn_pular.setMaximumSize(QtCore.QSize(16777215, 40))
         self.btn_pular.setObjectName("btn_pular")
@@ -84,7 +80,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setObjectName("stackedWidget")
         self.tela_inicial = QtWidgets.QWidget()
-        self.tela_inicial.setStyleSheet("background-image: url(:/newPrefix/app_imagens/MainWindow.png);")
+        self.tela_inicial.setStyleSheet("")
         self.tela_inicial.setObjectName("tela_inicial")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.tela_inicial)
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -191,7 +187,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.frame_3 = QtWidgets.QFrame(self.tela_cadastro)
-        self.frame_3.setStyleSheet("background-color: rgb(170, 255, 255);")
+        self.frame_3.setStyleSheet("")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
@@ -199,7 +195,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.frame_4 = QtWidgets.QFrame(self.frame_3)
         self.frame_4.setMaximumSize(QtCore.QSize(350, 700))
-        self.frame_4.setStyleSheet("background-color: rgb(5, 155, 255);")
+        self.frame_4.setStyleSheet("")
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_4.setObjectName("frame_4")
@@ -465,7 +461,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setSpacing(0)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.frame_5 = QtWidgets.QFrame(self.tela_login)
-        self.frame_5.setStyleSheet("background-color: rgb(170, 255, 255);")
+        self.frame_5.setStyleSheet("")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
@@ -473,7 +469,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.frame_6 = QtWidgets.QFrame(self.frame_5)
         self.frame_6.setMaximumSize(QtCore.QSize(400, 400))
-        self.frame_6.setStyleSheet("background-color: rgb(5, 155, 255);")
+        self.frame_6.setStyleSheet("")
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
@@ -573,7 +569,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_31.setSpacing(0)
         self.verticalLayout_31.setObjectName("verticalLayout_31")
         self.frame_8 = QtWidgets.QFrame(self.tela_escolher_atividades)
-        self.frame_8.setStyleSheet("background-color: rgb(170, 255, 255);")
+        self.frame_8.setStyleSheet("")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName("frame_8")
@@ -581,100 +577,51 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_9 = QtWidgets.QFrame(self.frame_8)
         self.frame_9.setMinimumSize(QtCore.QSize(50, 70))
-        self.frame_9.setMaximumSize(QtCore.QSize(300, 450))
-        self.frame_9.setStyleSheet("background-color: rgb(170, 85, 127);")
+        self.frame_9.setMaximumSize(QtCore.QSize(500, 700))
+        self.frame_9.setStyleSheet("")
         self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_9.setObjectName("frame_9")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.frame_9)
-        self.verticalLayout.setObjectName("verticalLayout")
         self.label = QtWidgets.QLabel(self.frame_9)
+        self.label.setGeometry(QtCore.QRect(10, 10, 491, 41))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.label.setFont(font)
         self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
         self.btn_tela_atividade_clique_na_imagem = QtWidgets.QPushButton(self.frame_9)
         self.btn_tela_atividade_clique_na_imagem.setEnabled(True)
-        self.btn_tela_atividade_clique_na_imagem.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.btn_tela_atividade_clique_na_imagem.setGeometry(QtCore.QRect(10, 60, 203, 144))
+        self.btn_tela_atividade_clique_na_imagem.setMaximumSize(QtCore.QSize(16777215, 400))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.btn_tela_atividade_clique_na_imagem.setFont(font)
-        self.btn_tela_atividade_clique_na_imagem.setStyleSheet("QPushButton {\n"
-"\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"border-radius:10px;\n"
-"background-color: rgb(255, 249, 71);\n"
-"\n"
-"\n"
-"}\n"
-"QPushButton:hover {\n"
-"background-color:rgb(192, 207, 52);\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"\n"
-"}\n"
-"QPushButton:pressed {\n"
-"background-color: rgb(58, 255, 48);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
-"\n"
-"}")
+        self.btn_tela_atividade_clique_na_imagem.setStyleSheet("border-image: url(:/atvimg/app_imagens/clique na figura off.png);")
+        self.btn_tela_atividade_clique_na_imagem.setText("")
         self.btn_tela_atividade_clique_na_imagem.setObjectName("btn_tela_atividade_clique_na_imagem")
-        self.verticalLayout.addWidget(self.btn_tela_atividade_clique_na_imagem)
         self.btn_tela_atividade_digt_nome_imagem = QtWidgets.QPushButton(self.frame_9)
-        self.btn_tela_atividade_digt_nome_imagem.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.btn_tela_atividade_digt_nome_imagem.setGeometry(QtCore.QRect(220, 60, 203, 144))
+        self.btn_tela_atividade_digt_nome_imagem.setMaximumSize(QtCore.QSize(16777215, 200))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.btn_tela_atividade_digt_nome_imagem.setFont(font)
-        self.btn_tela_atividade_digt_nome_imagem.setStyleSheet("QPushButton {\n"
-"\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"border-radius:10px;\n"
-"background-color: rgb(255, 249, 71);\n"
-"\n"
-"\n"
-"}\n"
-"QPushButton:hover {\n"
-"background-color:rgb(192, 207, 52);\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"\n"
-"}\n"
-"QPushButton:pressed {\n"
-"background-color: rgb(58, 255, 48);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
-"\n"
-"}")
+        self.btn_tela_atividade_digt_nome_imagem.setStyleSheet("border-image: url(:/atvimg/app_imagens/digite o nome da figura off.png);")
+        self.btn_tela_atividade_digt_nome_imagem.setText("")
         self.btn_tela_atividade_digt_nome_imagem.setObjectName("btn_tela_atividade_digt_nome_imagem")
-        self.verticalLayout.addWidget(self.btn_tela_atividade_digt_nome_imagem)
         self.btn_tela_atividade_clique_na_letra = QtWidgets.QPushButton(self.frame_9)
-        self.btn_tela_atividade_clique_na_letra.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.btn_tela_atividade_clique_na_letra.setGeometry(QtCore.QRect(130, 240, 203, 144))
+        self.btn_tela_atividade_clique_na_letra.setMaximumSize(QtCore.QSize(16777215, 200))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(30)
         self.btn_tela_atividade_clique_na_letra.setFont(font)
-        self.btn_tela_atividade_clique_na_letra.setStyleSheet("QPushButton {\n"
-"\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"border-radius:10px;\n"
-"background-color: rgb(255, 249, 71);\n"
-"\n"
-"\n"
-"}\n"
-"QPushButton:hover {\n"
-"background-color:rgb(192, 207, 52);\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"\n"
-"}\n"
-"QPushButton:pressed {\n"
-"background-color: rgb(58, 255, 48);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
-"\n"
-"}")
+        self.btn_tela_atividade_clique_na_letra.setStyleSheet("border-image: url(:/atvimg/app_imagens/clique na letra que falta off.png);")
+        self.btn_tela_atividade_clique_na_letra.setText("")
         self.btn_tela_atividade_clique_na_letra.setObjectName("btn_tela_atividade_clique_na_letra")
-        self.verticalLayout.addWidget(self.btn_tela_atividade_clique_na_letra)
         self.btn_tela_editar_aluno = QtWidgets.QPushButton(self.frame_9)
+        self.btn_tela_editar_aluno.setGeometry(QtCore.QRect(310, 430, 153, 35))
         self.btn_tela_editar_aluno.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
@@ -699,8 +646,8 @@ class Ui_MainWindow(object):
 "\n"
 "}")
         self.btn_tela_editar_aluno.setObjectName("btn_tela_editar_aluno")
-        self.verticalLayout.addWidget(self.btn_tela_editar_aluno)
         self.btn_fazer_atividade = QtWidgets.QPushButton(self.frame_9)
+        self.btn_fazer_atividade.setGeometry(QtCore.QRect(300, 530, 69, 35))
         self.btn_fazer_atividade.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
@@ -725,15 +672,15 @@ class Ui_MainWindow(object):
 "\n"
 "}")
         self.btn_fazer_atividade.setObjectName("btn_fazer_atividade")
-        self.verticalLayout.addWidget(self.btn_fazer_atividade)
         self.label_6 = QtWidgets.QLabel(self.frame_9)
+        self.label_6.setGeometry(QtCore.QRect(10, 441, 268, 27))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(26)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.verticalLayout.addWidget(self.label_6)
         self.timeEdit = QtWidgets.QSpinBox(self.frame_9)
+        self.timeEdit.setGeometry(QtCore.QRect(30, 520, 241, 40))
         self.timeEdit.setMaximumSize(QtCore.QSize(16777215, 40))
         self.timeEdit.setStyleSheet("QSpinBox {\n"
 "\n"
@@ -746,7 +693,10 @@ class Ui_MainWindow(object):
         self.timeEdit.setMinimum(1)
         self.timeEdit.setMaximum(59)
         self.timeEdit.setObjectName("timeEdit")
-        self.verticalLayout.addWidget(self.timeEdit)
+        self.horizontalSlider = QtWidgets.QSlider(self.frame_9)
+        self.horizontalSlider.setGeometry(QtCore.QRect(10, 610, 261, 16))
+        self.horizontalSlider.setOrientation(QtCore.Qt.Horizontal)
+        self.horizontalSlider.setObjectName("horizontalSlider")
         self.horizontalLayout_3.addWidget(self.frame_9)
         self.verticalLayout_31.addWidget(self.frame_8)
         self.stackedWidget.addWidget(self.tela_escolher_atividades)
@@ -755,7 +705,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.tela_atividade_clique_na_letra)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.organizador = QtWidgets.QFrame(self.tela_atividade_clique_na_letra)
-        self.organizador.setStyleSheet("background-color: rgb(170, 255, 255);")
+        self.organizador.setStyleSheet("")
         self.organizador.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.organizador.setFrameShadow(QtWidgets.QFrame.Raised)
         self.organizador.setObjectName("organizador")
@@ -769,7 +719,7 @@ class Ui_MainWindow(object):
         self.organizador_meio.setSizePolicy(sizePolicy)
         self.organizador_meio.setMinimumSize(QtCore.QSize(405, 405))
         self.organizador_meio.setMaximumSize(QtCore.QSize(400, 400))
-        self.organizador_meio.setStyleSheet("background-color: rgb(247, 255, 208);")
+        self.organizador_meio.setStyleSheet("")
         self.organizador_meio.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.organizador_meio.setFrameShadow(QtWidgets.QFrame.Raised)
         self.organizador_meio.setObjectName("organizador_meio")
@@ -813,7 +763,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.addWidget(self.organizador)
         self.stackedWidget.addWidget(self.tela_atividade_clique_na_letra)
         self.tela_atividade_digt_nome_imagem = QtWidgets.QWidget()
-        self.tela_atividade_digt_nome_imagem.setStyleSheet("background-color: rgb(170, 255, 255);")
         self.tela_atividade_digt_nome_imagem.setObjectName("tela_atividade_digt_nome_imagem")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.tela_atividade_digt_nome_imagem)
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -827,7 +776,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_31 = QtWidgets.QFrame(self.frame_21)
         self.frame_31.setMaximumSize(QtCore.QSize(450, 550))
-        self.frame_31.setStyleSheet("background-color: rgb(247, 255, 208);")
         self.frame_31.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_31.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_31.setObjectName("frame_31")
@@ -860,7 +808,6 @@ class Ui_MainWindow(object):
         self.latv_digt_nome_imagem = QtWidgets.QLabel(self.frame_31)
         self.latv_digt_nome_imagem.setGeometry(QtCore.QRect(45, 20, 360, 360))
         self.latv_digt_nome_imagem.setMaximumSize(QtCore.QSize(360, 360))
-        self.latv_digt_nome_imagem.setStyleSheet("background-color: rgb(247, 255, 208);")
         self.latv_digt_nome_imagem.setText("")
         self.latv_digt_nome_imagem.setPixmap(QtGui.QPixmap(":/atvimg/imagens_atividades/ARVORE.png"))
         self.latv_digt_nome_imagem.setScaledContents(True)
@@ -875,8 +822,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.tela_fundo = QtWidgets.QFrame(self.tela_atividade_clique_na_imagem)
-        self.tela_fundo.setStyleSheet("\n"
-"background-color: rgb(170, 255, 255);")
+        self.tela_fundo.setStyleSheet("")
         self.tela_fundo.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.tela_fundo.setFrameShadow(QtWidgets.QFrame.Raised)
         self.tela_fundo.setObjectName("tela_fundo")
@@ -884,7 +830,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.centralizador = QtWidgets.QFrame(self.tela_fundo)
         self.centralizador.setMaximumSize(QtCore.QSize(610, 500))
-        self.centralizador.setStyleSheet("background-color: rgb(247, 255, 208);")
+        self.centralizador.setStyleSheet("")
         self.centralizador.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.centralizador.setFrameShadow(QtWidgets.QFrame.Raised)
         self.centralizador.setObjectName("centralizador")
@@ -921,7 +867,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.frame_7 = QtWidgets.QFrame(self.tela_feedback)
-        self.frame_7.setStyleSheet("background-color: rgb(225, 246, 255);")
+        self.frame_7.setStyleSheet("")
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
@@ -940,7 +886,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(3)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -965,13 +911,10 @@ class Ui_MainWindow(object):
         self.lsenha.setText(_translate("MainWindow", "Senha"))
         self.btn_login.setText(_translate("MainWindow", "Login"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Atividades</p></body></html>"))
-        self.btn_tela_atividade_clique_na_imagem.setText(_translate("MainWindow", "Clique na imagem"))
-        self.btn_tela_atividade_digt_nome_imagem.setText(_translate("MainWindow", "Digite nome da imagem"))
-        self.btn_tela_atividade_clique_na_letra.setText(_translate("MainWindow", "Clique na letra"))
         self.btn_tela_editar_aluno.setText(_translate("MainWindow", "Editar Aluno"))
         self.btn_fazer_atividade.setText(_translate("MainWindow", "Fazer"))
         self.label_6.setText(_translate("MainWindow", "Digite o Tempo em minutos"))
-        self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt;\">Clique no (a)</span></p></body></html>"))
+        self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt;\">CLIQUE NO (A)</span></p></body></html>"))
         self.l_nome_imagem.setText(_translate("MainWindow", "<html><head/><body><p>CASA</p></body></html>"))
 
 import file_img_rc
