@@ -12,7 +12,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1034, 764)
-        MainWindow.setStyleSheet("")
+        MainWindow.setStyleSheet("QMainWindow{\n"
+"    background-image: url(:/tela/Projetos corel/background.png)\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
@@ -68,6 +70,7 @@ class Ui_MainWindow(object):
         self.btn_voltar_tela_inicial.setObjectName("btn_voltar_tela_inicial")
         self.verticalLayout_9.addWidget(self.btn_voltar_tela_inicial)
         self.lineEdit = QtWidgets.QLineEdit(self.direita)
+        self.lineEdit.setEnabled(True)
         self.lineEdit.setObjectName("lineEdit")
         self.verticalLayout_9.addWidget(self.lineEdit)
         self.btn_pular = QtWidgets.QPushButton(self.direita)
@@ -904,11 +907,13 @@ class Ui_MainWindow(object):
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.frame_7)
+        self.horizontalLayout_10.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_10.setSpacing(0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.l_img_feedback = QtWidgets.QLabel(self.frame_7)
         self.l_img_feedback.setText("")
+        self.l_img_feedback.setScaledContents(True)
         self.l_img_feedback.setObjectName("l_img_feedback")
         self.horizontalLayout_10.addWidget(self.l_img_feedback)
         self.verticalLayout_10.addWidget(self.frame_7)
@@ -918,7 +923,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         self.horizontalSlider.sliderMoved['int'].connect(self.timeEdit.setValue)

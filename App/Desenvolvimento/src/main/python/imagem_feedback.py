@@ -6,7 +6,7 @@ from pathlib import Path
 class Feedback():
     def __init__(self) -> None:
         self.img = Image.new("RGBA", (1280, 720), "white")
-        self.font = ImageFont.truetype("arial.ttf", 40)
+        self.font = ImageFont.truetype("arial.ttf", 30)
         self.draw = ImageDraw.Draw(self.img)
         self.img.save("feedback.bmp")
 
@@ -28,14 +28,21 @@ class Feedback():
         acertos = "Acertos: " + dict_feedback["acertos"]
         erros = "Erros: " + dict_feedback["erros"]
 
-        self.draw.text((100, 2), "Feedback", font=self.font, fill="black")
-        self.draw.text((100, 52), nome_aluno, font=self.font, fill="black")
-        self.draw.text((100, 102), nome_professor, font=self.font, fill="black")
-        self.draw.text((100, 152), tempo_proposto, font=self.font, fill="black")
-        self.draw.text((100, 202), tempo_executado, font=self.font, fill="black")
-        self.draw.text((100, 252), total_questoes, font=self.font, fill="black")
-        self.draw.text((100, 300), acertos, font=self.font, fill="black")
-        self.draw.text((100, 352), erros, font=self.font, fill="black")
+        lista = ["Feedback", nome_aluno, nome_professor, tempo_proposto, 
+                  tempo_executado, total_questoes, acertos, erros]
+        posit = 10
+
+        for str_nome in lista:
+            self.draw.text((100, posit), str_nome, font=self.font, fill="black")
+            posit += 50
+
+        # self.draw.text((100, 52), nome_aluno, font=self.font, fill="black")
+        # self.draw.text((100, 102), nome_professor, font=self.font, fill="black")
+        # self.draw.text((100, 152), tempo_proposto, font=self.font, fill="black")
+        # self.draw.text((100, 202), tempo_executado, font=self.font, fill="black")
+        # self.draw.text((100, 252), total_questoes, font=self.font, fill="black")
+        # self.draw.text((100, 300), acertos, font=self.font, fill="black")
+        # self.draw.text((100, 352), erros, font=self.font, fill="black")
         self.img.save("feedback.bmp")
 
 

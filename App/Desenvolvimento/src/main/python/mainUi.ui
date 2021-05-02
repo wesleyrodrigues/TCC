@@ -14,7 +14,9 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow{
+	background-image: url(:/tela/Projetos corel/background.png)
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -155,7 +157,11 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit"/>
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+              </widget>
              </item>
              <item>
               <widget class="QPushButton" name="btn_pular">
@@ -182,7 +188,7 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1971,6 +1977,9 @@ background-color: rgb(255, 255, 255);
               <property name="spacing">
                <number>0</number>
               </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMaximumSize</enum>
+              </property>
               <property name="leftMargin">
                <number>0</number>
               </property>
@@ -1987,6 +1996,9 @@ background-color: rgb(255, 255, 255);
                <widget class="QLabel" name="l_img_feedback">
                 <property name="text">
                  <string/>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
