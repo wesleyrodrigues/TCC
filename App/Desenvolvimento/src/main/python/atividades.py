@@ -220,8 +220,6 @@ class Atividades():
             else:
                 self.set_atividades_feitas(posic_letra[1])
     
-    def style_thr(self, btn, atividade):
-        btn.setStyleSheet(atividade)
 
     def atividade_escolhida_fun(self, main_app, nome_atividade):
         # self.set_atividade_escolhida(nome_atividade)
@@ -235,9 +233,9 @@ class Atividades():
             border-image: url(:/atvimg/app_imagens/"""
 
         # TODO verificar isso
-        main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura off.png);}")
-        main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")  
-        main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura off.png);}")
+        # main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura off.png);}")
+        # main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")  
+        # main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura off.png);}")
         
         if(nome_atividade == "tela_atividade_digt_nome_imagem"):
             main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura on.png);}")

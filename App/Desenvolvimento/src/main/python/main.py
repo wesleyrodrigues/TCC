@@ -158,7 +158,8 @@ class AlfaEdu(QMainWindow):
 
     def hide_widgets(self, stack_name: str):
         if(stack_name == "tela_inicial"):
-            self.atividades.atividade_escolhida_fun(self, "")
+            self.atv_escolhida("")
+            # self.atividades.atividade_escolhida_fun(self, "")
             self.ui.btn_voltar_tela_inicial.hide()
             self.usuario = ""
             self.ui.lnome_aluno_logado.setText("")
@@ -220,7 +221,24 @@ class AlfaEdu(QMainWindow):
             # print("Here")
     
 
-    def atv_escolhida(self, nome_atividade):    
+    def atv_escolhida(self, nome_atividade):
+        style = """
+        QPushButton:hover {
+            border: 2px solid rgb(0, 0, 0);
+        }
+        QPushButton{
+            border-image: url(:/atvimg/app_imagens/"""
+
+        # TODO verificar isso
+        # QApplication.processEvents()
+        #Gambiarra
+        self.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura off.png);}")
+        QApplication.processEvents()
+        self.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")  
+        QApplication.processEvents()
+        self.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura off.png);}")    
+        QApplication.processEvents()
+        
         self.atividades.atividade_escolhida_fun(self, nome_atividade)
 
     def mudar_tela(self, stack_name):
