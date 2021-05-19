@@ -20,12 +20,14 @@ class EmailFeedback():
         # TODO criptografar senha
 
         # TODO Acessar BD
+        print("Colocar senha ao executar.")
         self.password = ''
 
-        self._email_professor = ''
+        self._dict_aluno = {}
 
-    def set_email_professor(self, email):
-        self._email_professor = email
+    def set_dict_aluno(self, dictA):
+        self._dict_aluno = dictA
+    
 
     def send_email(self):
         try:
@@ -48,7 +50,7 @@ class EmailFeedback():
             email_msg['From'] = self.user
 
             # TODO acessar BD
-            email_msg['To'] = self._email_professor
+            email_msg['To'] = self._dict_aluno["email_professor"]
             email_msg['Subject'] = 'enviando imagem'
             print('Adicionando texto...')
             email_msg.attach(MIMEText(message, 'plain'))

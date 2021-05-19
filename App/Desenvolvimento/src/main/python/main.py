@@ -8,6 +8,7 @@ from criptografia import Cript
 from atividades import Atividades
 from mensagens import mensagens_erros_cadastro
 from imagem_feedback import Feedback
+from email_feedback_aluno import EmailFeedback
 from random import shuffle
 from os import environ
 import sys
@@ -24,6 +25,7 @@ class AlfaEdu(QMainWindow):
         super(AlfaEdu, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        print("Colocar senha ao executar, email ao executar.")
 
         self.stack = self.ui.stackedWidget  # paginas das interface
         self.ui.btn_voltar_tela_inicial.hide()
@@ -57,6 +59,7 @@ class AlfaEdu(QMainWindow):
         # TODO mover depois para mudar tela ações
         # self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atividades = Atividades()
+        self.email = EmailFeedback()
         self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
         shuffle(self.atv_imagens_bd)
         # self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
@@ -79,6 +82,7 @@ class AlfaEdu(QMainWindow):
 
     def tela_feedback(self):
         aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
+        self.email.set_dict_aluno(aluno)
         self.ui.lcd_atvtempo.hide()
         self.feedback = Feedback()
         self.feedback.set_feedback_imagem(
@@ -97,6 +101,10 @@ class AlfaEdu(QMainWindow):
         self.ui.l_img_feedback.setPixmap(pixmap)
         self._timer.stop()
         self.mudar_tela("tela_feedback")
+        #TODO travando a tela de feedback usar thread.
+        QApplication.processEvents()
+        self.email.send_email()
+        QApplication.processEvents()
 
     def get_QPixmap_image(self, image):
         return QPixmap(self.appctxt.get_resource(image))
