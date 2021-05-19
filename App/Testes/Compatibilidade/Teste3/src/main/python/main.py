@@ -4,6 +4,7 @@ from Test3 import Ui_MainWindow
 
 import sys
 
+
 class ApplicationWindow(QMainWindow):
     def __init__(self):
         super(ApplicationWindow, self).__init__()
@@ -18,9 +19,9 @@ def main():
     application.show()
     sys.exit(app.exec_())
 
+
 if __name__ == "__main__":
     main()
-
 
 
 # if __name__ == '__main__':

@@ -12,11 +12,11 @@ host = 'smtp.gmail.com'
 port = 465
 
 # username ou email para logar no servidor
-user = 'alfaedu001@gmail.com'
+user = 'exemplo@gmail.com'
 # TODO criptografar senha
 
 #TODO Acessar BD
-password = ''
+password = 'exemplosenha'
 
 try:
     # Criando objeto

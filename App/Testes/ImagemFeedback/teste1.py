@@ -11,3 +11,4 @@ draw = ImageDraw.Draw(img)
 draw.text((100, 2), titulo, font=font,fill="black")
 img.save("testando.bmp")
 # img.show()
+
