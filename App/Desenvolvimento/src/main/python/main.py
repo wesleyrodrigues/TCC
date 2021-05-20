@@ -1,6 +1,7 @@
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget
 from PyQt5 import QtCore
+from PyQt5.QtCore import QObject, QRunnable, QThreadPool
 from PyQt5.QtGui import QPixmap, QFontDatabase
 from mainUi import Ui_MainWindow
 from alfaeduDB import AlfaEduDB
@@ -12,8 +13,80 @@ from email_feedback_aluno import EmailFeedback
 from random import shuffle
 from os import environ
 import sys
+import traceback
 import time
+# import time
 
+
+class WorkerSignals(QObject):
+    '''
+    Defines the signals available from a running worker thread.
+
+    Supported signals are:
+
+    finished
+        No data
+
+    error
+        tuple (exctype, value, traceback.format_exc() )
+
+    result
+        object data returned from processing, anything
+
+    progress
+        int indicating % progress
+
+    '''
+    finished = QtCore.pyqtSignal()
+    error = QtCore.pyqtSignal(tuple)
+    result = QtCore.pyqtSignal(object)
+    progress = QtCore.pyqtSignal(int)
+
+
+class Worker(QRunnable):
+    '''
+    Worker thread
+
+    Inherits from QRunnable to handler worker thread setup, signals and wrap-up.
+
+    :param callback: The function callback to run on this worker thread. Supplied args and
+                     kwargs will be passed through to the runner.
+    :type callback: function
+    :param args: Arguments to pass to the callback function
+    :param kwargs: Keywords to pass to the callback function
+
+    '''
+
+    def __init__(self, fn, *args, **kwargs):
+        super(Worker, self).__init__()
+
+        # Store constructor arguments (re-used for processing)
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+        self.signals = WorkerSignals()
+
+        # Add the callback to our kwargs
+        self.kwargs['progress_callback'] = self.signals.progress
+
+    @QtCore.pyqtSlot()
+    def run(self):
+        '''
+        Initialise the runner function with passed args, kwargs.
+        '''
+
+        # Retrieve args/kwargs here; and fire processing using them
+        try:
+            result = self.fn(*self.args, **self.kwargs)
+        except:
+            traceback.print_exc()
+            exctype, value = sys.exc_info()[:2]
+            self.signals.error.emit((exctype, value, traceback.format_exc()))
+        else:
+            # Return the result of the processing
+            self.signals.result.emit(result)
+        finally:
+            self.signals.finished.emit()  # Done
 
 
 class AlfaEdu(QMainWindow):
@@ -26,6 +99,9 @@ class AlfaEdu(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         print("Colocar senha ao executar, email ao executar.")
+
+        self.threadpool = QThreadPool()
+        print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
 
         self.stack = self.ui.stackedWidget  # paginas das interface
         self.ui.btn_voltar_tela_inicial.hide()
@@ -48,6 +124,7 @@ class AlfaEdu(QMainWindow):
         # TODO apagar depois essa linha pular.
         self.pular = 1
         self.alfa_edu_db = AlfaEduDB()
+        #TODO 
         self.alfa_edu_db.createDB()
         # adiciona os nomes no combo box de login
         self.ui.cb_nome_aluno.addItems(self.alfa_edu_db.seleciona_nomes())
@@ -73,6 +150,7 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_pular.hide()
         self.buttons()
         self.line_edits()
+
 
     def set_appctxt(self, appctxt):
         self.appctxt = appctxt
@@ -101,7 +179,7 @@ class AlfaEdu(QMainWindow):
         self.ui.l_img_feedback.setPixmap(pixmap)
         self._timer.stop()
         self.mudar_tela("tela_feedback")
-        #TODO travando a tela de feedback usar thread.
+        # TODO travando a tela de feedback usar thread.
         QApplication.processEvents()
         self.email.send_email()
         QApplication.processEvents()
@@ -129,7 +207,6 @@ class AlfaEdu(QMainWindow):
             f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
-
     def onTimeout(self):
         self._seconds -= 1
         self.displayTime()
@@ -150,7 +227,7 @@ class AlfaEdu(QMainWindow):
 
     def fazer_atividade(self) -> None:
         tela = self.atividades.get_atividade_escolhida()
-        
+
         if(tela != ""):
             self.ui.lcd_atvtempo.show()
             self._seconds = int(self.ui.timeEdit.text()) * 60
@@ -227,7 +304,6 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_cadastrar.setText("Editar")
             self.editar_aluno()
             # print("Here")
-    
 
     def atv_escolhida(self, nome_atividade):
         style = """
@@ -239,14 +315,17 @@ class AlfaEdu(QMainWindow):
 
         # TODO verificar isso
         # QApplication.processEvents()
-        #Gambiarra
-        self.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura off.png);}")
+        # Gambiarra
+        self.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(
+            style + "clique na figura off.png);}")
         QApplication.processEvents()
-        self.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")  
+        self.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(
+            style + "clique na letra que falta off.png);}")
         QApplication.processEvents()
-        self.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura off.png);}")    
+        self.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(
+            style + "digite o nome da figura off.png);}")
         QApplication.processEvents()
-        
+
         self.atividades.atividade_escolhida_fun(self, nome_atividade)
 
     def mudar_tela(self, stack_name):
