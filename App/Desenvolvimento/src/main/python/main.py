@@ -67,7 +67,7 @@ class Worker(QRunnable):
         self.signals = WorkerSignals()
 
         # Add the callback to our kwargs
-        self.kwargs['progress_callback'] = self.signals.progress
+        # self.kwargs['progress_callback'] = self.signals.progress
 
     @QtCore.pyqtSlot()
     def run(self):
@@ -137,7 +137,7 @@ class AlfaEdu(QMainWindow):
         # self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atividades = Atividades()
         self.email = EmailFeedback()
-        self.atv_imagens_bd = self.alfa_edu_db.seleciona_tudo_imagens()
+        self.atv_imagens_bd = self.atividades.get_imagens_nomes()
         shuffle(self.atv_imagens_bd)
         # self.atv_nome_imagem.set_max_contador(len(self.atv_imagens_bd))
         self.total_atividades = len(self.atv_imagens_bd)
@@ -180,9 +180,11 @@ class AlfaEdu(QMainWindow):
         self._timer.stop()
         self.mudar_tela("tela_feedback")
         # TODO travando a tela de feedback usar thread.
-        QApplication.processEvents()
-        self.email.send_email()
-        QApplication.processEvents()
+        # QApplication.processEvents()
+        feedbackWorker = Worker(self.email.send_email)
+        self.threadpool.start(feedbackWorker)
+        
+        # QApplication.processEvents()
 
     def get_QPixmap_image(self, image):
         return QPixmap(self.appctxt.get_resource(image))
@@ -203,8 +205,10 @@ class AlfaEdu(QMainWindow):
         nome_imagem = imagem[:-4]
         # print(nome_imagem)
         # TODO na aplicação final alterar caminho dessa pasta
-        btn.setStyleSheet(
-            f"border-image: url('src/main/resources/base/{imagem}');")
+        print("Mudar pasta na aplicação final")
+        btn.setStyleSheet(f"border-image: url('{imagem}');")
+        #btn.setStyleSheet(
+        #    f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
     def onTimeout(self):

@@ -1,78 +1,76 @@
-from PyQt5 import QtSql, QtWidgets, QtCore
-from PyQt5.QtCore import QObject, QRunnable, QThreadPool
+from PyQt5 import QtSql, QtWidgets
 from os import environ
 import sys
-import traceback
 
-class WorkerSignals(QObject):
-    '''
-    Defines the signals available from a running worker thread.
+# class WorkerSignals(QObject):
+#     '''
+#     Defines the signals available from a running worker thread.
 
-    Supported signals are:
+#     Supported signals are:
 
-    finished
-        No data
+#     finished
+#         No data
 
-    error
-        tuple (exctype, value, traceback.format_exc() )
+#     error
+#         tuple (exctype, value, traceback.format_exc() )
 
-    result
-        object data returned from processing, anything
+#     result
+#         object data returned from processing, anything
 
-    progress
-        int indicating % progress
+#     progress
+#         int indicating % progress
 
-    '''
-    finished = QtCore.pyqtSignal()
-    error = QtCore.pyqtSignal(tuple)
-    result = QtCore.pyqtSignal(object)
-    progress = QtCore.pyqtSignal(int)
+#     '''
+#     finished = QtCore.pyqtSignal()
+#     error = QtCore.pyqtSignal(tuple)
+#     result = QtCore.pyqtSignal(object)
+#     progress = QtCore.pyqtSignal(int)
 
 
-class Worker(QRunnable):
-    '''
-    Worker thread
+# class Worker(QRunnable):
+#     '''
+#     Worker thread
 
-    Inherits from QRunnable to handler worker thread setup, signals and wrap-up.
+#     Inherits from QRunnable to handler worker thread setup, signals and wrap-up.
 
-    :param callback: The function callback to run on this worker thread. Supplied args and
-                     kwargs will be passed through to the runner.
-    :type callback: function
-    :param args: Arguments to pass to the callback function
-    :param kwargs: Keywords to pass to the callback function
+#     :param callback: The function callback to run on this worker thread. Supplied args and
+#                      kwargs will be passed through to the runner.
+#     :type callback: function
+#     :param args: Arguments to pass to the callback function
+#     :param kwargs: Keywords to pass to the callback function
 
-    '''
+#     '''
 
-    def __init__(self, fn, *args, **kwargs):
-        super(Worker, self).__init__()
+#     def __init__(self, fn, *args, **kwargs):
+#         super(Worker, self).__init__()
 
-        # Store constructor arguments (re-used for processing)
-        self.fn = fn
-        self.args = args
-        self.kwargs = kwargs
-        self.signals = WorkerSignals()
+#         # Store constructor arguments (re-used for processing)
+#         self.fn = fn
+#         self.args = args
+#         self.kwargs = kwargs
+#         self.signals = WorkerSignals()
 
-        # Add the callback to our kwargs
-        # self.kwargs['progress_callback'] = self.signals.progress
+#         # Add the callback to our kwargs
+#         # self.kwargs['progress_callback'] = self.signals.progress
 
-    @QtCore.pyqtSlot()
-    def run(self):
-        '''
-        Initialise the runner function with passed args, kwargs.
-        '''
+#     @QtCore.pyqtSlot()
+#     def run(self):
+#         '''
+#         Initialise the runner function with passed args, kwargs.
+#         '''
 
-        # Retrieve args/kwargs here; and fire processing using them
-        try:
-            result = self.fn(*self.args, **self.kwargs)
-        except:
-            traceback.print_exc()
-            exctype, value = sys.exc_info()[:2]
-            self.signals.error.emit((exctype, value, traceback.format_exc()))
-        else:
-            # Return the result of the processing
-            self.signals.result.emit(result)
-        finally:
-            self.signals.finished.emit()  # Done
+#         # Retrieve args/kwargs here; and fire processing using them
+#         try:
+#             result = self.fn(*self.args, **self.kwargs)
+#         except:
+#             traceback.print_exc()
+#             exctype, value = sys.exc_info()[:2]
+#             self.signals.error.emit((exctype, value, traceback.format_exc()))
+#         else:
+#             # Return the result of the processing
+#             self.signals.result.emit(result)
+#         finally:
+#             self.signals.finished.emit()  # Done
 
 class AlfaEduDB(QtSql.QSqlDatabase):
 
@@ -81,8 +79,6 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         self.db = self.addDatabase('QSQLITE')
         self.db.setDatabaseName('alfa_edu.db')
         self.query = QtSql.QSqlQuery()
-        self.threadpool = QThreadPool()
-        print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
 
     def createDB(self) -> bool:
 
@@ -98,13 +94,13 @@ class AlfaEduDB(QtSql.QSqlDatabase):
 
             return False
 
-        # TODO BLOB não funciona salvar pasta imagens, por enquanto.
-        self.query.exec(
-            """CREATE TABLE IF NOT EXISTS imagens_atividades(
-                id_imagem INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
-                nome_imagem varchar UNIQUE NOT NULL
-                )"""
-        )
+        # # TODO BLOB não funciona salvar pasta imagens, por enquanto.
+        # self.query.exec(
+        #     """CREATE TABLE IF NOT EXISTS imagens_atividades(
+        #         id_imagem INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+        #         nome_imagem varchar UNIQUE NOT NULL
+        #         )"""
+        # )
 
         print(self.query.lastError().text())
 
@@ -118,109 +114,109 @@ class AlfaEduDB(QtSql.QSqlDatabase):
                 )"""
         )
 
-        query = QtSql.QSqlQuery(
-            f"SELECT id_imagem FROM imagens_atividades WHERE id_imagem = 1")
-        t = query.next()
+        # query = QtSql.QSqlQuery(
+        #     f"SELECT id_imagem FROM imagens_atividades WHERE id_imagem = 1")
+        # t = query.next()
 
-        if(not(t)):
-            self.workerdb = Worker(self.add_imagens)
-            self.threadpool.start(self.workerdb)
-            # self.add_imagens()
+        # if(not(t)):
+        #     self.workerdb = Worker(self.add_imagens)
+        #     self.threadpool.start(self.workerdb)
+        #     # self.add_imagens()
 
         self.db.close()
         return True
 
-    def add_imagem(self, input_conta):
+    # def add_imagem(self, input_conta):
 
-        self.db.open()
-        t = self.query.exec(
-            f"""INSERT INTO imagens_atividades (nome_imagem)
-             VALUES ('{input_conta["nome_imagem"]}')"""
-        )
-        # self.query.prepare("INSERT INTO imagens_atividades (nome_imagem) VALUES :nome_imagem")
+    #     self.db.open()
+    #     t = self.query.exec(
+    #         f"""INSERT INTO imagens_atividades (nome_imagem)
+    #          VALUES ('{input_conta["nome_imagem"]}')"""
+    #     )
+    #     # self.query.prepare("INSERT INTO imagens_atividades (nome_imagem) VALUES :nome_imagem")
 
-        # self.query.bindValue("?nome_imagem", input_conta["nome_imagem"])
-        # t = self.query.exec_()
+    #     # self.query.bindValue("?nome_imagem", input_conta["nome_imagem"])
+    #     # t = self.query.exec_()
 
-        print(f"""Resultado {input_conta["nome_imagem"]} = {t}""")
-        print(self.query.lastError().text())
-        self.db.close()
-        return t
+    #     print(f"""Resultado {input_conta["nome_imagem"]} = {t}""")
+    #     print(self.query.lastError().text())
+    #     self.db.close()
+    #     return t
 
-    # TODO verificar o que fazer com essa função depois
-    def add_imagens(self):
-        # import pathlib
-        # pasta = str(pathlib.Path().absolute())
+    # # TODO verificar o que fazer com essa função depois
+    # def add_imagens(self):
+    #     # import pathlib
+    #     # pasta = str(pathlib.Path().absolute())
 
-        # caminhos = [path.join(pasta, nome) for nome in listdir(pasta)]
-        # arquivos = [arq for arq in caminhos if path.isfile(
-        #     arq) and arq.lower().endswith(".png")]
-        # # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
-        # arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
-        arquivos = ['ABELHA.png',
-                    'ARCO-ÍRIS.png',
-                    'AVIÃO.png',
-                    'BICICLETA.png',
-                    'BOLA.png',
-                    'BOLO.png',
-                    'BORRACHA.png',
-                    'CACHORRO.png',
-                    'CADEADO.png',
-                    'CAIXA.png',
-                    'CAMA.png',
-                    'CANECA.png',
-                    'CARRO.png',
-                    'CASA.png',
-                    'CAVALO.png',
-                    'CHINELO.png',
-                    'COCO.png',
-                    'COELHO.png',
-                    'COLHER.png',
-                    'COROA.png',
-                    'DADO.png',
-                    'BIGODE.png',
-                    'FLOR.png',
-                    'FOLHA.png',
-                    'GALO.png',
-                    'GARFO.png',
-                    'GATO.png',
-                    'JANELA.png',
-                    'LIVRO.png',
-                    'LIXO.png',
-                    'LUA.png',
-                    'LÁPIS.png',
-                    'MACACO.png',
-                    'MAÇÃ.png',
-                    'MESA.png',
-                    'MOEDA.png',
-                    'PORTA.png',
-                    'PRATO.png',
-                    'PÃO.png',
-                    'SALADA.png',
-                    'SAPO.png',
-                    'SOL.png',
-                    'SORVETE.png',
-                    'TESOURA.png',
-                    'TREM.png',
-                    'TÊNIS.png',
-                    'URSO.png',
-                    'ÁRVORE.png']
-        #TODO tentar adicionar por meio de thread 
-        for arq in arquivos:
-            # TODO not working
-            self.add_imagem(
-                {"nome_imagem": arq})
-            # print(arq[77:][:-4])
+    #     # caminhos = [path.join(pasta, nome) for nome in listdir(pasta)]
+    #     # arquivos = [arq for arq in caminhos if path.isfile(
+    #     #     arq) and arq.lower().endswith(".png")]
+    #     # # pngs = [arq for arq in arquivos if arq.lower().endswith(".png")]
+    #     # arquivos_nomes = [arq[77:][:-4] for arq in arquivos]
+    #     arquivos = ['ABELHA.png',
+    #                 'ARCO-ÍRIS.png',
+    #                 'AVIÃO.png',
+    #                 'BICICLETA.png',
+    #                 'BOLA.png',
+    #                 'BOLO.png',
+    #                 'BORRACHA.png',
+    #                 'CACHORRO.png',
+    #                 'CADEADO.png',
+    #                 'CAIXA.png',
+    #                 'CAMA.png',
+    #                 'CANECA.png',
+    #                 'CARRO.png',
+    #                 'CASA.png',
+    #                 'CAVALO.png',
+    #                 'CHINELO.png',
+    #                 'COCO.png',
+    #                 'COELHO.png',
+    #                 'COLHER.png',
+    #                 'COROA.png',
+    #                 'DADO.png',
+    #                 'BIGODE.png',
+    #                 'FLOR.png',
+    #                 'FOLHA.png',
+    #                 'GALO.png',
+    #                 'GARFO.png',
+    #                 'GATO.png',
+    #                 'JANELA.png',
+    #                 'LIVRO.png',
+    #                 'LIXO.png',
+    #                 'LUA.png',
+    #                 'LÁPIS.png',
+    #                 'MACACO.png',
+    #                 'MAÇÃ.png',
+    #                 'MESA.png',
+    #                 'MOEDA.png',
+    #                 'PORTA.png',
+    #                 'PRATO.png',
+    #                 'PÃO.png',
+    #                 'SALADA.png',
+    #                 'SAPO.png',
+    #                 'SOL.png',
+    #                 'SORVETE.png',
+    #                 'TESOURA.png',
+    #                 'TREM.png',
+    #                 'TÊNIS.png',
+    #                 'URSO.png',
+    #                 'ÁRVORE.png']
+    #     #TODO tentar adicionar por meio de thread 
+    #     for arq in arquivos:
+    #         # TODO not working
+    #         self.add_imagem(
+    #             {"nome_imagem": arq})
+    #         # print(arq[77:][:-4])
 
-    def seleciona_imagem_por(self, id_i):
-        self.db.open()
-        query = QtSql.QSqlQuery(
-            f"SELECT * FROM imagens_atividades WHERE id_imagem = '{id_i}'")
-        query.next()
-        imagem = {
-            "nome_imagem": query.value("nome_imagem")}
-        self.db.close()
-        return imagem
+    # # def seleciona_imagem_por(self, id_i):
+    # #     self.db.open()
+    # #     query = QtSql.QSqlQuery(
+    # #         f"SELECT * FROM imagens_atividades WHERE id_imagem = '{id_i}'")
+    # #     query.next()
+    # #     imagem = {
+    # #         "nome_imagem": query.value("nome_imagem")}
+    # #     self.db.close()
+    # #     return imagem
 
     def add_conta(self, input_conta):
 
@@ -302,16 +298,16 @@ class AlfaEduDB(QtSql.QSqlDatabase):
         return nomes
         # print(query.value(0))
 
-    def seleciona_tudo_imagens(self):
-        self.db.open()
-        query = QtSql.QSqlQuery("SELECT * FROM imagens_atividades")
-        # print("contas")
-        imagens = []
-        while(query.next()):
-            imagens.append(query.value("nome_imagem"))
-        # print(query.value(0))
-        self.db.close()
-        return imagens
+    # def seleciona_tudo_imagens(self):
+    #     self.db.open()
+    #     query = QtSql.QSqlQuery("SELECT * FROM imagens_atividades")
+    #     # print("contas")
+    #     imagens = []
+    #     while(query.next()):
+    #         imagens.append(query.value("nome_imagem"))
+    #     # print(query.value(0))
+    #     self.db.close()
+    #     return imagens
 
 
 def suppress_qt_warnings():
