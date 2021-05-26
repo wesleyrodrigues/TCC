@@ -172,6 +172,7 @@ class AlfaEdu(QMainWindow):
                 "total_questoes": str(self.atividades.get_contador()),
                 "acertos": str(self.atividades.get_acertos()),
                 "erros": str(self.atividades.get_erros()),
+                "atividade_dificuldade": self.atividades.get_atividades_com_dificuldade()
             }
         )
         imagem = self.feedback.get_imagem()
@@ -206,9 +207,9 @@ class AlfaEdu(QMainWindow):
         # print(nome_imagem)
         # TODO na aplicação final alterar caminho dessa pasta
         print("Mudar pasta na aplicação final")
-        btn.setStyleSheet(f"border-image: url('{imagem}');")
-        #btn.setStyleSheet(
-        #    f"border-image: url('src/main/resources/base/{imagem}');")
+        # btn.setStyleSheet(f"border-image: url('{imagem}');")
+        btn.setStyleSheet(
+           f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
     def onTimeout(self):

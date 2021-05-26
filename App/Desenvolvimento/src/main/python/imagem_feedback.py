@@ -22,18 +22,20 @@ class Feedback():
     def set_feedback_imagem(self, dict_feedback):
         nome_aluno = "Aluno: " + dict_feedback["nome_aluno"]
         nome_professor = "Professor: " + dict_feedback["nome_professor"]
-        tempo_proposto = "Tempo proposto pelo Professor ou Responsável: " + dict_feedback["tempo_proposto"]
+        tempo_proposto = "Tempo proposto pelo Professor: " + dict_feedback["tempo_proposto"]
         tempo_executado = "Tempo executado pelo Aluno: " +  dict_feedback["tempo_executado"]
         total_questoes = "Total de questões respondidas: " + dict_feedback["total_questoes"]
         acertos = "Acertos: " + dict_feedback["acertos"]
         erros = "Erros: " + dict_feedback["erros"]
+        atividades_dificuldade = "Palavras com dificuldade: " + dict_feedback["atividade_dificuldade"]
 
         lista = ["Feedback", nome_aluno, nome_professor, tempo_proposto, 
-                  tempo_executado, total_questoes, acertos, erros]
+                  tempo_executado, total_questoes, acertos, erros, atividades_dificuldade]
         posit = 10
 
         for str_nome in lista:
             self.draw.text((100, posit), str_nome, font=self.font, fill="black")
+            # self.draw.line((0,posit+1, 0, 500), fill=128, width=1)
             posit += 50
 
         # self.draw.text((100, 52), nome_aluno, font=self.font, fill="black")

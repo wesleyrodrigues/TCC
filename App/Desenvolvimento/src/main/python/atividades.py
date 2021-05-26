@@ -111,10 +111,20 @@ class Atividades():
     def set_ativades_com_dificulade(self, dict_nome) -> None:
         self.atividade_com_dificuldade.update(dict_nome)
 
-    def get_3_atividades_com_dificuldade(self) -> None:
-        dic = self.atividade_com_dificuldade
-        list_atividade = sorted(dic, key=dic.get, reverse=True)
-        return list_atividade[:3]
+    def get_atividades_com_dificuldade(self) -> None:
+        dic = self.atividade_feitas
+        newdic = {}
+        for i in dic:
+            if(dic[i] != 1):
+                newdic.update({i: dic[i]})
+            
+        list_atividade = sorted(newdic, key=newdic.get, reverse=True)
+        atvs = ""
+        
+        for i in list_atividade:
+            atvs += i + ", "
+
+        return atvs[:-2]
 
     def set_posic_imagem(self) -> None:
         self.posic_imagem = randint(1, 3)
