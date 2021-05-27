@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1034</width>
+    <width>1218</width>
     <height>764</height>
    </rect>
   </property>
@@ -112,6 +112,12 @@
             <layout class="QVBoxLayout" name="verticalLayout_8">
              <item>
               <widget class="QLabel" name="lnome_aluno_logado">
+               <property name="minimumSize">
+                <size>
+                 <width>500</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>20</pointsize>
@@ -130,9 +136,15 @@
           </item>
           <item>
            <widget class="QFrame" name="direita">
+            <property name="minimumSize">
+             <size>
+              <width>304</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>200</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -144,35 +156,30 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_9">
              <item>
-              <widget class="QPushButton" name="btn_voltar_tela_inicial">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>40</height>
-                </size>
-               </property>
+              <widget class="QLabel" name="lsenha_voltar_tela">
                <property name="text">
-                <string>tela inicial</string>
+                <string>Digite senha para voltar para tela inicial</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit">
+              <widget class="QLineEdit" name="input_senha_voltar_tela_inicial">
                <property name="enabled">
                 <bool>true</bool>
                </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="btn_pular">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>40</height>
-                </size>
+               <property name="font">
+                <font>
+                 <kerning>true</kerning>
+                </font>
+               </property>
+               <property name="inputMask">
+                <string/>
                </property>
                <property name="text">
-                <string>pular</string>
+                <string/>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
                </property>
               </widget>
              </item>
@@ -188,7 +195,7 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -1884,6 +1891,9 @@ background-color: rgb(255, 255, 255);
                    <height>150</height>
                   </rect>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -1897,6 +1907,12 @@ background-color: rgb(255, 255, 255);
                    <height>150</height>
                   </rect>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton:hover {
+	border: 2px solid rgb(0, 0, 0);
+}
+</string>
+                 </property>
                  <property name="text">
                   <string/>
                  </property>
@@ -1909,6 +1925,12 @@ background-color: rgb(255, 255, 255);
                    <width>150</width>
                    <height>150</height>
                   </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton:hover {
+	border: 2px solid rgb(0, 0, 0);
+}
+</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -2027,8 +2049,8 @@ background-color: rgb(255, 255, 255);
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>251</x>
-     <y>431</y>
+     <x>592</x>
+     <y>507</y>
     </hint>
     <hint type="destinationlabel">
      <x>461</x>
@@ -2043,12 +2065,12 @@ background-color: rgb(255, 255, 255);
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>430</x>
-     <y>609</y>
+     <x>271</x>
+     <y>596</y>
     </hint>
     <hint type="destinationlabel">
-     <x>431</x>
-     <y>649</y>
+     <x>271</x>
+     <y>650</y>
     </hint>
    </hints>
   </connection>
@@ -2059,12 +2081,12 @@ background-color: rgb(255, 255, 255);
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>333</x>
-     <y>646</y>
+     <x>271</x>
+     <y>650</y>
     </hint>
     <hint type="destinationlabel">
-     <x>324</x>
-     <y>607</y>
+     <x>271</x>
+     <y>596</y>
     </hint>
    </hints>
   </connection>

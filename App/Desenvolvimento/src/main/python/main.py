@@ -101,10 +101,10 @@ class AlfaEdu(QMainWindow):
         print("Colocar senha ao executar, email ao executar.")
 
         self.threadpool = QThreadPool()
-        print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
+        print("Multithreading with maximum %d threads" %
+              self.threadpool.maxThreadCount())
 
         self.stack = self.ui.stackedWidget  # paginas das interface
-        self.ui.btn_voltar_tela_inicial.hide()
         self.ui.lcd_atvtempo.setNumDigits(5)
         self._text = "00:00"
         self.lcd_setText(self._text)
@@ -121,10 +121,8 @@ class AlfaEdu(QMainWindow):
             self.stack.findChild(QWidget, "tela_inicial"))
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
-        # TODO apagar depois essa linha pular.
-        self.pular = 1
         self.alfa_edu_db = AlfaEduDB()
-        #TODO 
+        # TODO
         self.alfa_edu_db.createDB()
         # adiciona os nomes no combo box de login
         self.ui.cb_nome_aluno.addItems(self.alfa_edu_db.seleciona_nomes())
@@ -147,10 +145,8 @@ class AlfaEdu(QMainWindow):
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
-        self.ui.btn_pular.hide()
         self.buttons()
         self.line_edits()
-
 
     def set_appctxt(self, appctxt):
         self.appctxt = appctxt
@@ -184,7 +180,7 @@ class AlfaEdu(QMainWindow):
         # QApplication.processEvents()
         feedbackWorker = Worker(self.email.send_email)
         self.threadpool.start(feedbackWorker)
-        
+
         # QApplication.processEvents()
 
     def get_QPixmap_image(self, image):
@@ -209,7 +205,7 @@ class AlfaEdu(QMainWindow):
         print("Mudar pasta na aplicação final")
         # btn.setStyleSheet(f"border-image: url('{imagem}');")
         btn.setStyleSheet(
-           f"border-image: url('src/main/resources/base/{imagem}');")
+            f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
     def onTimeout(self):
@@ -240,22 +236,20 @@ class AlfaEdu(QMainWindow):
             self.mudar_tela(tela)
             self._timer.start()
 
-    def pularfun(self):  # TODO APAGAR
-        self.stack.setCurrentIndex(self.pular)
-        self.pular += 1
-        if(self.pular == self.stack.count()):
-            self.pular = 0
-
     def hide_widgets(self, stack_name: str):
         if(stack_name == "tela_inicial"):
+            self.ui.lsenha_voltar_tela.hide()
+            self.ui.input_senha_voltar_tela_inicial.hide()
+            self.ui.input_senha_voltar_tela_inicial.setText("")
+        
             self.atv_escolhida("")
             # self.atividades.atividade_escolhida_fun(self, "")
-            self.ui.btn_voltar_tela_inicial.hide()
             self.usuario = ""
             self.ui.lnome_aluno_logado.setText("")
             self.ui.lcd_atvtempo.hide()
         else:
-            self.ui.btn_voltar_tela_inicial.show()
+            self.ui.lsenha_voltar_tela.show()
+            self.ui.input_senha_voltar_tela_inicial.show()
             self.ui.lverifica_senha.setText("")
             self.ui.lverifica_email.setText("")
             self.ui.lcampos.setText("")
@@ -357,6 +351,15 @@ class AlfaEdu(QMainWindow):
         else:
             return nomes_dict[nome_line]
 
+    def voltar_tela_inicial(self):
+        nome = str(self.ui.cb_nome_aluno.currentText())
+        senha = str(self.ui.input_senha_voltar_tela_inicial.text())
+        senha_cript = self.alfa_edu_db.seleciona_aluno_por_nome(nome)[
+            "senha"]
+        retorno = Cript.verifica_usuario_e_senha(senha_cript, senha)
+        if(retorno):
+            self.mudar_tela("tela_inicial")
+
     def login(self):
         self.ui.lerro_login.setText("")
         nome = str(self.ui.cb_nome_aluno.currentText())
@@ -430,8 +433,6 @@ class AlfaEdu(QMainWindow):
         self.ui.btn_tela_login.clicked.connect(
             lambda: self.mudar_tela("tela_login"))
         self.ui.btn_login.clicked.connect(lambda: self.login())
-        self.ui.btn_voltar_tela_inicial.clicked.connect(
-            lambda: self.mudar_tela("tela_inicial"))
 
         self.ui.btn_tela_atividade_digt_nome_imagem.clicked.connect(
             lambda: self.atv_escolhida("tela_atividade_digt_nome_imagem"))
@@ -442,7 +443,6 @@ class AlfaEdu(QMainWindow):
             lambda: self.atv_escolhida("tela_atividade_clique_na_letra")
         )
 
-        self.ui.btn_pular.clicked.connect(lambda: self.pularfun())
         self.ui.btn_cadastrar.clicked.connect(lambda: self.input_conta())
         self.ui.btn_fazer_atividade.clicked.connect(
             lambda: self.fazer_atividade())
@@ -470,6 +470,8 @@ class AlfaEdu(QMainWindow):
         )
 
     def line_edits(self):
+        self.ui.lsenha_voltar_tela.hide()
+        self.ui.input_senha_voltar_tela_inicial.hide()
         self.ui.input_conf_email.returnPressed.connect(
             self.ui.btn_cadastrar.click)
         self.ui.input_senha_login.returnPressed.connect(
@@ -489,6 +491,9 @@ class AlfaEdu(QMainWindow):
             lambda: mensagens_erros_cadastro(self, "conf_email"))
         self.ui.input_email.textChanged.connect(
             lambda: mensagens_erros_cadastro(self, "email"))
+        self.ui.input_senha_voltar_tela_inicial.textChanged.connect(
+            lambda: self.voltar_tela_inicial()
+        )
 
     # TODO melhorar depois
 
