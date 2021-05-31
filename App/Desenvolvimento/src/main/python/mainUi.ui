@@ -240,7 +240,7 @@ border: 2px solid rgb(0, 255, 0);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -314,7 +314,7 @@ border: 2px solid rgb(0, 255, 0);
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
-background-color: rgb(172, 0, 0);
+background-color: rgb(255, 32, 32);
 
 }
 QPushButton:hover {
@@ -358,7 +358,7 @@ border: 2px solid rgb(0, 0, 0);
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
-background-color: rgb(0, 0, 255);
+background-color: rgb(79, 185, 255);
 
 
 }
@@ -403,7 +403,7 @@ border: 2px solid rgb(0, 0, 0);
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
-background-color: rgb(0, 0, 255);
+background-color: rgb(79, 185, 255);
 
 
 }
