@@ -79,59 +79,56 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_9">
-          <property name="spacing">
-           <number>700</number>
+         <widget class="QFrame" name="esquerda">
+          <property name="geometry">
+           <rect>
+            <x>11</x>
+            <y>1</y>
+            <width>500</width>
+            <height>88</height>
+           </rect>
           </property>
-          <property name="leftMargin">
-           <number>10</number>
+          <property name="maximumSize">
+           <size>
+            <width>500</width>
+            <height>100</height>
+           </size>
           </property>
-          <property name="topMargin">
-           <number>0</number>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
           </property>
-          <property name="rightMargin">
-           <number>0</number>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
           </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QFrame" name="esquerda">
-            <property name="maximumSize">
-             <size>
-              <width>200</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
-             <item>
-              <widget class="QPushButton" name="btn_tela_editar_aluno">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>100</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Schoolwork</family>
-                 <pointsize>30</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton {
+          <widget class="QPushButton" name="btn_tela_editar_aluno">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>180</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Schoolwork</family>
+             <pointsize>30</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 
 border: 2px solid rgb(0, 0, 0);
 border-radius:10px;
@@ -149,89 +146,171 @@ background-color: rgb(58, 255, 48);
 border: 2px solid rgb(0, 255, 0);
 
 }</string>
-               </property>
-               <property name="text">
-                <string>Editar Aluno</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="lnome_aluno_logado">
-               <property name="minimumSize">
-                <size>
-                 <width>500</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>20</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLCDNumber" name="lcd_atvtempo"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item>
-           <widget class="QFrame" name="direita">
-            <property name="minimumSize">
-             <size>
-              <width>304</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_9">
-             <item>
-              <widget class="QLabel" name="lsenha_voltar_tela">
-               <property name="text">
-                <string>Digite senha para voltar para tela inicial</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="input_senha_voltar_tela_inicial">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="font">
-                <font>
-                 <kerning>true</kerning>
-                </font>
-               </property>
-               <property name="inputMask">
-                <string/>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
+           </property>
+           <property name="text">
+            <string>Editar Aluno</string>
+           </property>
+          </widget>
+          <widget class="QLCDNumber" name="lcd_atvtempo">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>50</y>
+             <width>111</width>
+             <height>31</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QFrame" name="direita">
+          <property name="geometry">
+           <rect>
+            <x>774</x>
+            <y>1</y>
+            <width>441</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>304</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QLabel" name="lsenha_voltar_tela">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>10</y>
+             <width>441</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <family>Schoolwork</family>
+             <pointsize>26</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Digite senha para voltar para tela inicial</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="input_senha_voltar_tela_inicial">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>50</y>
+             <width>231</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>15</pointsize>
+             <kerning>true</kerning>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+           </property>
+           <property name="inputMask">
+            <string/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="lnome_aluno_logado">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>30</y>
+            <width>311</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton">
+          <property name="geometry">
+           <rect>
+            <x>540</x>
+            <y>30</y>
+            <width>191</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Schoolwork</family>
+            <pointsize>25</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+
+border: 2px solid rgb(0, 0, 0);
+border-radius:10px;
+background-color: rgb(255, 249, 71);
+
+
+}
+QPushButton:hover {
+background-color:rgb(192, 207, 52);
+border: 2px solid rgb(0, 0, 0);
+
+}
+QPushButton:pressed {
+background-color: rgb(58, 255, 48);
+border: 2px solid rgb(0, 255, 0);
+
+}</string>
+          </property>
+          <property name="text">
+           <string>Tela Inicial</string>
+          </property>
+         </widget>
         </widget>
        </item>
        <item>
@@ -240,7 +319,7 @@ border: 2px solid rgb(0, 255, 0);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
