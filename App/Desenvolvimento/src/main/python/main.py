@@ -145,6 +145,7 @@ class AlfaEdu(QMainWindow):
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
+        QMainWindow.setStyleSheet(self, self.return_stylesheet("background.png"))
         self.buttons()
         self.line_edits()
 
@@ -241,6 +242,7 @@ class AlfaEdu(QMainWindow):
             self.ui.lsenha_voltar_tela.hide()
             self.ui.input_senha_voltar_tela_inicial.hide()
             self.ui.input_senha_voltar_tela_inicial.setText("")
+            QMainWindow.setStyleSheet(self, self.return_stylesheet("background.png"))
         
             self.atv_escolhida("")
             # self.atividades.atividade_escolhida_fun(self, "")
@@ -248,6 +250,7 @@ class AlfaEdu(QMainWindow):
             self.ui.lnome_aluno_logado.setText("")
             self.ui.lcd_atvtempo.hide()
         else:
+            QMainWindow.setStyleSheet(self, self.return_stylesheet("background 2.png"))
             self.ui.lsenha_voltar_tela.show()
             self.ui.input_senha_voltar_tela_inicial.show()
             self.ui.lverifica_senha.setText("")
@@ -302,6 +305,10 @@ class AlfaEdu(QMainWindow):
             self.ui.btn_excluir.show()
             self.ui.btn_cadastrar.setText("Editar")
             self.editar_aluno()
+        elif(stack_name == "tela_escolher_atividades"):
+            self.ui.btn_tela_editar_aluno.show()
+        else:
+            self.ui.btn_tela_editar_aluno.hide()
             # print("Here")
 
     def atv_escolhida(self, nome_atividade):
@@ -422,8 +429,7 @@ class AlfaEdu(QMainWindow):
                 self.ui.lcampos.setText(msg)
 
     def buttons(self):
-        # telas
-        print("Passou aqui")
+        self.ui.btn_tela_editar_aluno.hide()
         self.ui.btn_tela_cadastro.clicked.connect(
             lambda: self.mudar_tela("tela_cadastro"))
         self.ui.btn_excluir.clicked.connect(
@@ -497,15 +503,8 @@ class AlfaEdu(QMainWindow):
 
     # TODO melhorar depois
 
-    def return_stylesheet(self):
-        return """
-            QMainWindow {
-                background-image: url("MainWindow.png");
-                background-color: "#add8e6";
-            border-image: url("MainWindow.png") 0 0 0 0 stretch stretch;
-                background-repeat: no-repeat;
-                background-position: center;
-            }"""
+    def return_stylesheet(self, image):
+        return "QMainWindow {" + f"background-image: url(':/tela/Projetos corel/{image}');" + "}"
 
 
 def suppress_qt_warnings():

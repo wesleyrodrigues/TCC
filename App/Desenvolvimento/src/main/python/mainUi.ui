@@ -7,16 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>1218</width>
-    <height>593</height>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow{
-	background-image: url(:/tela/Projetos corel/background.png)
-}</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -319,7 +317,7 @@ border: 2px solid rgb(0, 255, 0);
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tela_inicial">
           <property name="styleSheet">
@@ -2139,12 +2137,12 @@ background-color: rgb(255, 255, 255);
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>592</x>
-     <y>507</y>
+     <x>704</x>
+     <y>470</y>
     </hint>
     <hint type="destinationlabel">
      <x>461</x>
-     <y>766</y>
+     <y>610</y>
     </hint>
    </hints>
   </connection>

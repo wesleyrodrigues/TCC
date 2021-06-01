@@ -1,9 +1,9 @@
 <RCC>
   <qresource prefix="tela">
     <file>../app_imagens/certta.jpg</file>
-    <file>abct.png</file>
     <file>../../../../../Projetos corel/background.png</file>
     <file>../app_imagens/kawaii-1546834.png</file>
+    <file>../../../../../Projetos corel/background 2.png</file>
     <file>../app_imagens/tentativa.png</file>
   </qresource>
 </RCC>

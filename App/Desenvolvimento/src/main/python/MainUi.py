@@ -11,10 +11,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1218, 764)
-        MainWindow.setStyleSheet("QMainWindow{\n"
-"    background-image: url(:/tela/Projetos corel/background.png)\n"
-"}")
+        MainWindow.resize(1218, 611)
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
@@ -36,51 +34,109 @@ class Ui_MainWindow(object):
         self.Cabecalho.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.Cabecalho.setFrameShadow(QtWidgets.QFrame.Raised)
         self.Cabecalho.setObjectName("Cabecalho")
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.Cabecalho)
-        self.horizontalLayout_9.setContentsMargins(10, 0, 0, 0)
-        self.horizontalLayout_9.setSpacing(700)
-        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.esquerda = QtWidgets.QFrame(self.Cabecalho)
-        self.esquerda.setMaximumSize(QtCore.QSize(200, 100))
+        self.esquerda.setGeometry(QtCore.QRect(11, 1, 500, 88))
+        self.esquerda.setMaximumSize(QtCore.QSize(500, 100))
         self.esquerda.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.esquerda.setFrameShadow(QtWidgets.QFrame.Raised)
         self.esquerda.setObjectName("esquerda")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.esquerda)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.lnome_aluno_logado = QtWidgets.QLabel(self.esquerda)
-        self.lnome_aluno_logado.setMinimumSize(QtCore.QSize(500, 0))
+        self.btn_tela_editar_aluno = QtWidgets.QPushButton(self.esquerda)
+        self.btn_tela_editar_aluno.setGeometry(QtCore.QRect(10, 10, 180, 30))
+        self.btn_tela_editar_aluno.setMinimumSize(QtCore.QSize(0, 30))
+        self.btn_tela_editar_aluno.setMaximumSize(QtCore.QSize(16777215, 100))
         font = QtGui.QFont()
-        font.setPointSize(20)
-        self.lnome_aluno_logado.setFont(font)
-        self.lnome_aluno_logado.setText("")
-        self.lnome_aluno_logado.setObjectName("lnome_aluno_logado")
-        self.verticalLayout_8.addWidget(self.lnome_aluno_logado)
+        font.setFamily("Schoolwork")
+        font.setPointSize(30)
+        self.btn_tela_editar_aluno.setFont(font)
+        self.btn_tela_editar_aluno.setStyleSheet("QPushButton {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 249, 71);\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color:rgb(192, 207, 52);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"background-color: rgb(58, 255, 48);\n"
+"border: 2px solid rgb(0, 255, 0);\n"
+"\n"
+"}")
+        self.btn_tela_editar_aluno.setObjectName("btn_tela_editar_aluno")
         self.lcd_atvtempo = QtWidgets.QLCDNumber(self.esquerda)
+        self.lcd_atvtempo.setGeometry(QtCore.QRect(40, 50, 111, 31))
         self.lcd_atvtempo.setObjectName("lcd_atvtempo")
-        self.verticalLayout_8.addWidget(self.lcd_atvtempo)
-        self.horizontalLayout_9.addWidget(self.esquerda)
         self.direita = QtWidgets.QFrame(self.Cabecalho)
+        self.direita.setGeometry(QtCore.QRect(774, 1, 441, 91))
         self.direita.setMinimumSize(QtCore.QSize(304, 0))
         self.direita.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.direita.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.direita.setFrameShadow(QtWidgets.QFrame.Raised)
         self.direita.setObjectName("direita")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.direita)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.lsenha_voltar_tela = QtWidgets.QLabel(self.direita)
+        self.lsenha_voltar_tela.setGeometry(QtCore.QRect(0, 10, 441, 41))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(26)
+        self.lsenha_voltar_tela.setFont(font)
         self.lsenha_voltar_tela.setObjectName("lsenha_voltar_tela")
-        self.verticalLayout_9.addWidget(self.lsenha_voltar_tela)
         self.input_senha_voltar_tela_inicial = QtWidgets.QLineEdit(self.direita)
         self.input_senha_voltar_tela_inicial.setEnabled(True)
+        self.input_senha_voltar_tela_inicial.setGeometry(QtCore.QRect(10, 50, 231, 31))
         font = QtGui.QFont()
+        font.setPointSize(15)
         font.setKerning(True)
         self.input_senha_voltar_tela_inicial.setFont(font)
+        self.input_senha_voltar_tela_inicial.setStyleSheet("QLineEdit {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"\n"
+"}")
         self.input_senha_voltar_tela_inicial.setInputMask("")
         self.input_senha_voltar_tela_inicial.setText("")
         self.input_senha_voltar_tela_inicial.setEchoMode(QtWidgets.QLineEdit.Password)
         self.input_senha_voltar_tela_inicial.setObjectName("input_senha_voltar_tela_inicial")
-        self.verticalLayout_9.addWidget(self.input_senha_voltar_tela_inicial)
-        self.horizontalLayout_9.addWidget(self.direita)
+        self.lnome_aluno_logado = QtWidgets.QLabel(self.Cabecalho)
+        self.lnome_aluno_logado.setGeometry(QtCore.QRect(200, 30, 311, 50))
+        self.lnome_aluno_logado.setMinimumSize(QtCore.QSize(0, 50))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.lnome_aluno_logado.setFont(font)
+        self.lnome_aluno_logado.setText("")
+        self.lnome_aluno_logado.setObjectName("lnome_aluno_logado")
+        self.pushButton = QtWidgets.QPushButton(self.Cabecalho)
+        self.pushButton.setGeometry(QtCore.QRect(540, 30, 191, 31))
+        font = QtGui.QFont()
+        font.setFamily("Schoolwork")
+        font.setPointSize(25)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"border-radius:10px;\n"
+"background-color: rgb(255, 249, 71);\n"
+"\n"
+"\n"
+"}\n"
+"QPushButton:hover {\n"
+"background-color:rgb(192, 207, 52);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
+"\n"
+"}\n"
+"QPushButton:pressed {\n"
+"background-color: rgb(58, 255, 48);\n"
+"border: 2px solid rgb(0, 255, 0);\n"
+"\n"
+"}")
+        self.pushButton.setObjectName("pushButton")
         self.verticalLayout_4.addWidget(self.Cabecalho)
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame)
         self.stackedWidget.setStyleSheet("")
@@ -104,7 +160,7 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
         self.btn_sair = QtWidgets.QPushButton(self.frame_2)
-        self.btn_sair.setGeometry(QtCore.QRect(110, 290, 141, 41))
+        self.btn_sair.setGeometry(QtCore.QRect(60, 330, 211, 41))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(26)
@@ -113,23 +169,23 @@ class Ui_MainWindow(object):
 "\n"
 "border: 2px solid rgb(0, 0, 0);\n"
 "border-radius:10px;\n"
-"background-color: rgb(181, 181, 181);\n"
-"\n"
+"background-color: rgb(255, 32, 32);\n"
 "\n"
 "}\n"
 "QPushButton:hover {\n"
-"background-color: rgb(71, 71, 71);\n"
-"border: 2px solid rgb(117, 117, 117);\n"
+"background-color:rgb(120, 0, 0);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
 "\n"
 "}\n"
 "QPushButton:pressed {\n"
-"background-color: rgb(0, 255, 8);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
+"background-color: rgb(255, 0, 0);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
 "\n"
 "}")
         self.btn_sair.setObjectName("btn_sair")
         self.btn_tela_cadastro = QtWidgets.QPushButton(self.frame_2)
-        self.btn_tela_cadastro.setGeometry(QtCore.QRect(110, 170, 141, 41))
+        self.btn_tela_cadastro.setGeometry(QtCore.QRect(60, 210, 211, 41))
+        self.btn_tela_cadastro.setMinimumSize(QtCore.QSize(100, 0))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(26)
@@ -138,23 +194,24 @@ class Ui_MainWindow(object):
 "\n"
 "border: 2px solid rgb(0, 0, 0);\n"
 "border-radius:10px;\n"
-"background-color: rgb(181, 181, 181);\n"
+"background-color: rgb(79, 185, 255);\n"
 "\n"
 "\n"
 "}\n"
 "QPushButton:hover {\n"
-"background-color: rgb(71, 71, 71);\n"
-"border: 2px solid rgb(117, 117, 117);\n"
+"background-color:rgb(0, 85, 255);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
 "\n"
 "}\n"
 "QPushButton:pressed {\n"
 "background-color: rgb(0, 255, 8);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
 "\n"
 "}")
         self.btn_tela_cadastro.setObjectName("btn_tela_cadastro")
         self.btn_tela_login = QtWidgets.QPushButton(self.frame_2)
-        self.btn_tela_login.setGeometry(QtCore.QRect(110, 230, 141, 41))
+        self.btn_tela_login.setGeometry(QtCore.QRect(60, 270, 211, 41))
+        self.btn_tela_login.setMinimumSize(QtCore.QSize(100, 0))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(26)
@@ -163,23 +220,23 @@ class Ui_MainWindow(object):
 "\n"
 "border: 2px solid rgb(0, 0, 0);\n"
 "border-radius:10px;\n"
-"background-color: rgb(181, 181, 181);\n"
+"background-color: rgb(79, 185, 255);\n"
 "\n"
 "\n"
 "}\n"
 "QPushButton:hover {\n"
-"background-color: rgb(71, 71, 71);\n"
-"border: 2px solid rgb(117, 117, 117);\n"
+"background-color:rgb(0, 85, 255);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
 "\n"
 "}\n"
 "QPushButton:pressed {\n"
 "background-color: rgb(0, 255, 8);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
+"border: 2px solid rgb(0, 0, 0);\n"
 "\n"
 "}")
         self.btn_tela_login.setObjectName("btn_tela_login")
         self.label_3 = QtWidgets.QLabel(self.frame_2)
-        self.label_3.setGeometry(QtCore.QRect(75, 50, 200, 61))
+        self.label_3.setGeometry(QtCore.QRect(10, 20, 321, 141))
         self.label_3.setText("")
         self.label_3.setPixmap(QtGui.QPixmap(":/tela/app_imagens/tentativa.png"))
         self.label_3.setScaledContents(True)
@@ -654,32 +711,6 @@ class Ui_MainWindow(object):
 "}")
         self.btn_tela_atividade_clique_na_letra.setText("")
         self.btn_tela_atividade_clique_na_letra.setObjectName("btn_tela_atividade_clique_na_letra")
-        self.btn_tela_editar_aluno = QtWidgets.QPushButton(self.frame_9)
-        self.btn_tela_editar_aluno.setGeometry(QtCore.QRect(310, 430, 153, 35))
-        self.btn_tela_editar_aluno.setMaximumSize(QtCore.QSize(16777215, 40))
-        font = QtGui.QFont()
-        font.setFamily("Schoolwork")
-        font.setPointSize(30)
-        self.btn_tela_editar_aluno.setFont(font)
-        self.btn_tela_editar_aluno.setStyleSheet("QPushButton {\n"
-"\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"border-radius:10px;\n"
-"background-color: rgb(255, 249, 71);\n"
-"\n"
-"\n"
-"}\n"
-"QPushButton:hover {\n"
-"background-color:rgb(192, 207, 52);\n"
-"border: 2px solid rgb(0, 0, 0);\n"
-"\n"
-"}\n"
-"QPushButton:pressed {\n"
-"background-color: rgb(58, 255, 48);\n"
-"border: 2px solid rgb(0, 255, 0);\n"
-"\n"
-"}")
-        self.btn_tela_editar_aluno.setObjectName("btn_tela_editar_aluno")
         self.btn_fazer_atividade = QtWidgets.QPushButton(self.frame_9)
         self.btn_fazer_atividade.setGeometry(QtCore.QRect(300, 530, 69, 35))
         self.btn_fazer_atividade.setMaximumSize(QtCore.QSize(16777215, 40))
@@ -935,7 +966,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(0)
         self.cb_nome_aluno.setCurrentIndex(-1)
         self.btn_sair.clicked.connect(MainWindow.close)
         self.horizontalSlider.sliderMoved['int'].connect(self.timeEdit.setValue)
@@ -945,7 +976,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.btn_tela_editar_aluno.setText(_translate("MainWindow", "Editar Aluno"))
         self.lsenha_voltar_tela.setText(_translate("MainWindow", "Digite senha para voltar para tela inicial"))
+        self.pushButton.setText(_translate("MainWindow", "Tela Inicial"))
         self.btn_sair.setText(_translate("MainWindow", "Sair"))
         self.btn_tela_cadastro.setText(_translate("MainWindow", "Cadastro"))
         self.btn_tela_login.setText(_translate("MainWindow", "Login"))
@@ -961,7 +994,6 @@ class Ui_MainWindow(object):
         self.lsenha.setText(_translate("MainWindow", "Senha"))
         self.btn_login.setText(_translate("MainWindow", "Login"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Atividades</p></body></html>"))
-        self.btn_tela_editar_aluno.setText(_translate("MainWindow", "Editar Aluno"))
         self.btn_fazer_atividade.setText(_translate("MainWindow", "Fazer"))
         self.label_6.setText(_translate("MainWindow", "Digite o Tempo em minutos"))
         self.l_texto.setText(_translate("MainWindow", "<html><head/><body><p align=\"right\"><span style=\" font-size:24pt;\">CLIQUE NO (A)</span></p></body></html>"))
