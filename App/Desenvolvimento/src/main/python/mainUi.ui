@@ -82,13 +82,13 @@
            <rect>
             <x>11</x>
             <y>1</y>
-            <width>500</width>
+            <width>561</width>
             <height>88</height>
            </rect>
           </property>
           <property name="maximumSize">
            <size>
-            <width>500</width>
+            <width>1000</width>
             <height>100</height>
            </size>
           </property>
@@ -158,14 +158,21 @@ border: 2px solid rgb(0, 255, 0);
              <height>31</height>
             </rect>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QLCDNumber{
+background-color: rgb(255, 255, 0);
+border: 1px solid rgb(0, 0, 0);
+
+}</string>
+           </property>
           </widget>
          </widget>
          <widget class="QFrame" name="direita">
           <property name="geometry">
            <rect>
-            <x>774</x>
+            <x>784</x>
             <y>1</y>
-            <width>441</width>
+            <width>431</width>
             <height>91</height>
            </rect>
           </property>
@@ -273,7 +280,7 @@ background-color: rgb(255, 255, 255);
          <widget class="QPushButton" name="pushButton">
           <property name="geometry">
            <rect>
-            <x>540</x>
+            <x>580</x>
             <y>30</y>
             <width>191</width>
             <height>31</height>
