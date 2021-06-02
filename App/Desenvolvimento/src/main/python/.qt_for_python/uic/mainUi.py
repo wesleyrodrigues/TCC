@@ -35,8 +35,8 @@ class Ui_MainWindow(object):
         self.Cabecalho.setFrameShadow(QtWidgets.QFrame.Raised)
         self.Cabecalho.setObjectName("Cabecalho")
         self.esquerda = QtWidgets.QFrame(self.Cabecalho)
-        self.esquerda.setGeometry(QtCore.QRect(11, 1, 500, 88))
-        self.esquerda.setMaximumSize(QtCore.QSize(500, 100))
+        self.esquerda.setGeometry(QtCore.QRect(11, 1, 561, 88))
+        self.esquerda.setMaximumSize(QtCore.QSize(1000, 100))
         self.esquerda.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.esquerda.setFrameShadow(QtWidgets.QFrame.Raised)
         self.esquerda.setObjectName("esquerda")
@@ -69,9 +69,14 @@ class Ui_MainWindow(object):
         self.btn_tela_editar_aluno.setObjectName("btn_tela_editar_aluno")
         self.lcd_atvtempo = QtWidgets.QLCDNumber(self.esquerda)
         self.lcd_atvtempo.setGeometry(QtCore.QRect(40, 50, 111, 31))
+        self.lcd_atvtempo.setStyleSheet("QLCDNumber{\n"
+"background-color: rgb(255, 255, 0);\n"
+"border: 1px solid rgb(0, 0, 0);\n"
+"\n"
+"}")
         self.lcd_atvtempo.setObjectName("lcd_atvtempo")
         self.direita = QtWidgets.QFrame(self.Cabecalho)
-        self.direita.setGeometry(QtCore.QRect(774, 1, 441, 91))
+        self.direita.setGeometry(QtCore.QRect(784, 1, 431, 91))
         self.direita.setMinimumSize(QtCore.QSize(304, 0))
         self.direita.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.direita.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -112,13 +117,13 @@ class Ui_MainWindow(object):
         self.lnome_aluno_logado.setFont(font)
         self.lnome_aluno_logado.setText("")
         self.lnome_aluno_logado.setObjectName("lnome_aluno_logado")
-        self.pushButton = QtWidgets.QPushButton(self.Cabecalho)
-        self.pushButton.setGeometry(QtCore.QRect(540, 30, 191, 31))
+        self.btn_tela_inicial = QtWidgets.QPushButton(self.Cabecalho)
+        self.btn_tela_inicial.setGeometry(QtCore.QRect(580, 30, 191, 31))
         font = QtGui.QFont()
         font.setFamily("Schoolwork")
         font.setPointSize(25)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
+        self.btn_tela_inicial.setFont(font)
+        self.btn_tela_inicial.setStyleSheet("QPushButton {\n"
 "\n"
 "border: 2px solid rgb(0, 0, 0);\n"
 "border-radius:10px;\n"
@@ -136,7 +141,7 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(0, 255, 0);\n"
 "\n"
 "}")
-        self.pushButton.setObjectName("pushButton")
+        self.btn_tela_inicial.setObjectName("btn_tela_inicial")
         self.verticalLayout_4.addWidget(self.Cabecalho)
         self.stackedWidget = QtWidgets.QStackedWidget(self.frame)
         self.stackedWidget.setStyleSheet("")
@@ -978,7 +983,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.btn_tela_editar_aluno.setText(_translate("MainWindow", "Editar Aluno"))
         self.lsenha_voltar_tela.setText(_translate("MainWindow", "Digite senha para voltar para tela inicial"))
-        self.pushButton.setText(_translate("MainWindow", "Tela Inicial"))
+        self.btn_tela_inicial.setText(_translate("MainWindow", "Tela Inicial"))
         self.btn_sair.setText(_translate("MainWindow", "Sair"))
         self.btn_tela_cadastro.setText(_translate("MainWindow", "Cadastro"))
         self.btn_tela_login.setText(_translate("MainWindow", "Login"))

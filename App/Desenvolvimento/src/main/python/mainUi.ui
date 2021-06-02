@@ -277,7 +277,7 @@ background-color: rgb(255, 255, 255);
            <string/>
           </property>
          </widget>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="btn_tela_inicial">
           <property name="geometry">
            <rect>
             <x>580</x>

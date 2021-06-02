@@ -121,7 +121,7 @@ class Atividades():
         list_atividade = sorted(newdic, key=newdic.get, reverse=True)
         atvs = ""
         
-        for i in list_atividade:
+        for i in list_atividade[:3]:
             atvs += i + ", "
 
         return atvs[:-2]

@@ -145,9 +145,14 @@ class AlfaEdu(QMainWindow):
         # imagem = self.atv_imagens_bd[0]
         # pixmap = self.get_QPixmap_image(imagem)
         # self.ui.latv_digt_nome_imagem.setPixmap(pixmap)
-        QMainWindow.setStyleSheet(self, self.return_stylesheet("background.png"))
+        self.mudar_background("background.png")
+        # QMainWindow.setStyleSheet(self, self.return_stylesheet("background.png"))
         self.buttons()
         self.line_edits()
+    
+    def mudar_background(self, image):
+        QMainWindow.setStyleSheet(self, self.return_stylesheet(image))
+        QApplication.processEvents()
 
     def set_appctxt(self, appctxt):
         self.appctxt = appctxt
@@ -229,8 +234,10 @@ class AlfaEdu(QMainWindow):
 
     def fazer_atividade(self) -> None:
         tela = self.atividades.get_atividade_escolhida()
-
+        
         if(tela != ""):
+            self.ui.direita.show()
+            self.ui.btn_tela_inicial.hide()
             self.ui.lcd_atvtempo.show()
             self._seconds = int(self.ui.timeEdit.text()) * 60
             self.tempo_proposto = self._seconds
@@ -239,18 +246,22 @@ class AlfaEdu(QMainWindow):
 
     def hide_widgets(self, stack_name: str):
         if(stack_name == "tela_inicial"):
+            self.ui.btn_tela_inicial.hide()
             self.ui.lsenha_voltar_tela.hide()
             self.ui.input_senha_voltar_tela_inicial.hide()
             self.ui.input_senha_voltar_tela_inicial.setText("")
-            QMainWindow.setStyleSheet(self, self.return_stylesheet("background.png"))
+            self.mudar_background("background.png")
+            # QMainWindow.setStyleSheet(self, self.return_stylesheet("background.png"))
         
             self.atv_escolhida("")
             # self.atividades.atividade_escolhida_fun(self, "")
             self.usuario = ""
             self.ui.lnome_aluno_logado.setText("")
+            self._timer.stop()
             self.ui.lcd_atvtempo.hide()
         else:
-            QMainWindow.setStyleSheet(self, self.return_stylesheet("background 2.png"))
+            self.mudar_background("background 2.png")
+            # QMainWindow.setStyleSheet(self, self.return_stylesheet("background 2.png"))
             self.ui.lsenha_voltar_tela.show()
             self.ui.input_senha_voltar_tela_inicial.show()
             self.ui.lverifica_senha.setText("")
@@ -300,11 +311,21 @@ class AlfaEdu(QMainWindow):
         elif(stack_name == "tela_atividade_clique_na_letra"):
             self.atividades.set_posic_letra()
             self.atividades.atv_clique_na_letra(self, 0)
+        
 
         elif(stack_name == "tela_cadastro" and self.usuario):
+            self.ui.btn_tela_inicial.show()
+            self.ui.direita.hide()
             self.ui.btn_excluir.show()
             self.ui.btn_cadastrar.setText("Editar")
             self.editar_aluno()
+        
+        elif(stack_name == "tela_cadastro"):
+            self.ui.btn_tela_inicial.show()
+            self.ui.direita.hide()
+        elif(stack_name == "tela_login"):
+            self.ui.btn_tela_inicial.show()
+            self.ui.direita.hide()
         elif(stack_name == "tela_escolher_atividades"):
             self.ui.btn_tela_editar_aluno.show()
         else:
@@ -430,12 +451,16 @@ class AlfaEdu(QMainWindow):
 
     def buttons(self):
         self.ui.btn_tela_editar_aluno.hide()
+        self.ui.btn_tela_inicial.hide()
         self.ui.btn_tela_cadastro.clicked.connect(
             lambda: self.mudar_tela("tela_cadastro"))
         self.ui.btn_excluir.clicked.connect(
             lambda: self.deletar_aluno())
         self.ui.btn_tela_editar_aluno.clicked.connect(
             lambda: self.mudar_tela("tela_cadastro"))
+        self.ui.btn_tela_inicial.clicked.connect(
+            lambda: self.mudar_tela("tela_inicial")
+        )
         self.ui.btn_tela_login.clicked.connect(
             lambda: self.mudar_tela("tela_login"))
         self.ui.btn_login.clicked.connect(lambda: self.login())
@@ -476,8 +501,7 @@ class AlfaEdu(QMainWindow):
         )
 
     def line_edits(self):
-        self.ui.lsenha_voltar_tela.hide()
-        self.ui.input_senha_voltar_tela_inicial.hide()
+        self.ui.direita.hide()
         self.ui.input_conf_email.returnPressed.connect(
             self.ui.btn_cadastrar.click)
         self.ui.input_senha_login.returnPressed.connect(

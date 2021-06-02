@@ -6,6 +6,8 @@ from pathlib import Path
 class Feedback():
     def __init__(self) -> None:
         self.img = Image.new("RGBA", (1280, 720), "white")
+        self.back = Image.open("backFeed.png")
+        self.img.paste(self.back)
         self.font = ImageFont.truetype("arial.ttf", 30)
         self.draw = ImageDraw.Draw(self.img)
         self.img.save("feedback.bmp")
@@ -31,12 +33,12 @@ class Feedback():
 
         lista = ["Feedback", nome_aluno, nome_professor, tempo_proposto, 
                   tempo_executado, total_questoes, acertos, erros, atividades_dificuldade]
-        posit = 10
+        posit = 158
 
         for str_nome in lista:
-            self.draw.text((100, posit), str_nome, font=self.font, fill="black")
+            self.draw.text((250, posit), str_nome, font=self.font, fill="black")
             # self.draw.line((0,posit+1, 0, 500), fill=128, width=1)
-            posit += 50
+            posit += 40
 
         # self.draw.text((100, 52), nome_aluno, font=self.font, fill="black")
         # self.draw.text((100, 102), nome_professor, font=self.font, fill="black")
