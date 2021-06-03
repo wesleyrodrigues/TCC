@@ -1,5 +1,6 @@
 from random import choice, randint, shuffle
 
+
 class Atividades():
     def __init__(self) -> None:
         self.contador_index = 0
@@ -10,60 +11,28 @@ class Atividades():
         self.posic_imagem = 0
         self.posic_letra = 0
         self.atividade_escolhida = ""
-    
+
     def get_imagens_nomes(self) -> list:
-        return ['ABELHA.png',
-                    'ARCO-ÍRIS.png',
-                    'AVIÃO.png',
-                    'BICICLETA.png',
-                    'BOLA.png',
-                    'BOLO.png',
-                    'BORRACHA.png',
-                    'CACHORRO.png',
-                    'CADEADO.png',
-                    'CAIXA.png',
-                    'CAMA.png',
-                    'CANECA.png',
-                    'CARRO.png',
-                    'CASA.png',
-                    'CAVALO.png',
-                    'CHINELO.png',
-                    'COCO.png',
-                    'COELHO.png',
-                    'COLHER.png',
-                    'COROA.png',
-                    'DADO.png',
-                    'BIGODE.png',
-                    'FLOR.png',
-                    'FOLHA.png',
-                    'GALO.png',
-                    'GARFO.png',
-                    'GATO.png',
-                    'JANELA.png',
-                    'LIVRO.png',
-                    'LIXO.png',
-                    'LUA.png',
-                    'LÁPIS.png',
-                    'MACACO.png',
-                    'MAÇÃ.png',
-                    'MESA.png',
-                    'MOEDA.png',
-                    'PORTA.png',
-                    'PRATO.png',
-                    'PÃO.png',
-                    'SALADA.png',
-                    'SAPO.png',
-                    'SOL.png',
-                    'SORVETE.png',
-                    'TESOURA.png',
-                    'TREM.png',
-                    'TÊNIS.png',
-                    'URSO.png',
-                    'ÁRVORE.png']
-    
+        return ['ABELHA.png', 'ARCO-ÍRIS.png', 'AVIÃO.png',
+                'BICICLETA.png', 'BOLA.png', 'BOLO.png',
+                'BORRACHA.png', 'CACHORRO.png', 'CADEADO.png',
+                'CAIXA.png', 'CAMA.png', 'CANECA.png',
+                'CARRO.png', 'CASA.png', 'CAVALO.png',
+                'CHINELO.png', 'COCO.png', 'COELHO.png',
+                'COLHER.png', 'COROA.png', 'DADO.png',
+                'BIGODE.png', 'FLOR.png', 'FOLHA.png',
+                'GALO.png', 'GARFO.png', 'GATO.png',
+                'JANELA.png', 'LIVRO.png', 'LIXO.png',
+                'LUA.png', 'LÁPIS.png', 'MACACO.png',
+                'MAÇÃ.png', 'MESA.png', 'MOEDA.png',
+                'PORTA.png', 'PRATO.png', 'PÃO.png',
+                'SALADA.png', 'SAPO.png', 'SOL.png',
+                'SORVETE.png', 'TESOURA.png', 'TREM.png',
+                'TÊNIS.png', 'URSO.png', 'ÁRVORE.png']
+
     def set_atividade_escolhida(self, nome_tela_atividade) -> None:
         self.atividade_escolhida = nome_tela_atividade
-    
+
     def get_atividade_escolhida(self) -> str:
         return self.atividade_escolhida
 
@@ -117,10 +86,10 @@ class Atividades():
         for i in dic:
             if(dic[i] != 1):
                 newdic.update({i: dic[i]})
-            
+
         list_atividade = sorted(newdic, key=newdic.get, reverse=True)
         atvs = ""
-        
+
         for i in list_atividade[:3]:
             atvs += i + ", "
 
@@ -279,7 +248,6 @@ class Atividades():
                 self.set_atividades_feitas(posic_letra[1])
             else:
                 self.set_atividades_feitas(posic_letra[1])
-    
 
     def atividade_escolhida_fun(self, main_app, nome_atividade):
         # self.set_atividade_escolhida(nome_atividade)
@@ -294,13 +262,15 @@ class Atividades():
 
         # TODO verificar isso
         # main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura off.png);}")
-        # main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")  
+        # main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta off.png);}")
         # main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura off.png);}")
-        
+
         if(nome_atividade == "tela_atividade_digt_nome_imagem"):
-            main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(style + "digite o nome da figura on.png);}")
+            main_app.ui.btn_tela_atividade_digt_nome_imagem.setStyleSheet(
+                style + "digite o nome da figura on.png);}")
         elif(nome_atividade == "tela_atividade_clique_na_imagem"):
-            main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(style + "clique na figura on.png);}")
+            main_app.ui.btn_tela_atividade_clique_na_imagem.setStyleSheet(
+                style + "clique na figura on.png);}")
         elif(nome_atividade == "tela_atividade_clique_na_letra"):
-            main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(style + "clique na letra que falta on.png);}")
-          
+            main_app.ui.btn_tela_atividade_clique_na_letra.setStyleSheet(
+                style + "clique na letra que falta on.png);}")

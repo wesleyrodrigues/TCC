@@ -101,8 +101,6 @@ class AlfaEdu(QMainWindow):
         print("Colocar senha ao executar, email ao executar.")
 
         self.threadpool = QThreadPool()
-        print("Multithreading with maximum %d threads" %
-              self.threadpool.maxThreadCount())
 
         self.stack = self.ui.stackedWidget  # paginas das interface
         self.ui.lcd_atvtempo.setNumDigits(5)
@@ -555,8 +553,8 @@ if __name__ == '__main__':
     QFontDatabase.addApplicationFont(
         appctxt.get_resource("Schoolwork-Regular.ttf"))
 
-    alfa_edu_app.show()
-    # alfa_edu_app.showFullScreen()
+    # alfa_edu_app.show()
+    alfa_edu_app.showFullScreen()
 
     exit_code = appctxt.app.exec_()      # 2. Invoke appctxt.app.exec_()
     sys.exit(exit_code)
