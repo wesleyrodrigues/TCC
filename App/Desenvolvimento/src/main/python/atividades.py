@@ -28,7 +28,7 @@ class Atividades():
                 'PORTA.png', 'PRATO.png', 'PÃO.png',
                 'SALADA.png', 'SAPO.png', 'SOL.png',
                 'SORVETE.png', 'TESOURA.png', 'TREM.png',
-                'TÊNIS.png', 'URSO.png', 'ÁRVORE.png']
+                'TÊNIS.png', 'URSO.png', 'ÁRVORE.png', 'PEIXE.png']
 
     def set_atividade_escolhida(self, nome_tela_atividade) -> None:
         self.atividade_escolhida = nome_tela_atividade

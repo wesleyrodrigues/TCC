@@ -98,7 +98,7 @@ class AlfaEdu(QMainWindow):
         super(AlfaEdu, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        print("Colocar senha ao executar, email ao executar.")
+        # print("Colocar senha ao executar, email ao executar.")
 
         self.threadpool = QThreadPool()
 
@@ -112,7 +112,6 @@ class AlfaEdu(QMainWindow):
         self._timer.timeout.connect(self.onTimeout)
         self.ui.lcd_atvtempo.hide()
         self.tempo_proposto = ""
-        # TODO verificar depois background app
         # self.background_imagem = "MainWindow.png"
         # self.background_cor = "#add8e6"
         self.stack.setCurrentWidget(
@@ -120,7 +119,6 @@ class AlfaEdu(QMainWindow):
         # self.ui.stackedWidget.setCurrentIndex(0)
         # self.ui.btnProfessor
         self.alfa_edu_db = AlfaEduDB()
-        # TODO
         self.alfa_edu_db.createDB()
         # adiciona os nomes no combo box de login
         self.ui.cb_nome_aluno.addItems(self.alfa_edu_db.seleciona_nomes())
@@ -129,8 +127,6 @@ class AlfaEdu(QMainWindow):
         # self.senha_cript = ""
         # self.ui.label_3.setPixmap(QPixmap(ApplicationContext().get_resource("dialog1.png")))
 
-        # TODO mover depois para mudar tela ações
-        # self.atv_nome_imagem = DigiteNomeDaImagem()
         self.atividades = Atividades()
         self.email = EmailFeedback()
         self.atv_imagens_bd = self.atividades.get_imagens_nomes()
@@ -180,8 +176,6 @@ class AlfaEdu(QMainWindow):
         self.ui.l_img_feedback.setPixmap(pixmap)
         self._timer.stop()
         self.mudar_tela("tela_feedback")
-        # TODO travando a tela de feedback usar thread.
-        # QApplication.processEvents()
         feedbackWorker = Worker(self.email.send_email)
         self.threadpool.start(feedbackWorker)
 
@@ -192,10 +186,10 @@ class AlfaEdu(QMainWindow):
 
     def change_label_image(self, label):
         # imagem = self.atv_imagens_bd[self.atv_nome_imagem.get_contador()]
-        print(self.atividades.get_contador())
+        # print(self.atividades.get_contador())
         imagem = self.atv_imagens_bd[self.atividades.get_contador()]
         nome_imagem = imagem[:-4]
-        print(nome_imagem)
+        # print(nome_imagem)
         pixmap = self.get_QPixmap_image(imagem)
         label.setPixmap(pixmap)
         return nome_imagem
@@ -206,10 +200,9 @@ class AlfaEdu(QMainWindow):
         nome_imagem = imagem[:-4]
         # print(nome_imagem)
         # TODO na aplicação final alterar caminho dessa pasta
-        print("Mudar pasta na aplicação final")
-        # btn.setStyleSheet(f"border-image: url('{imagem}');")
-        btn.setStyleSheet(
-            f"border-image: url('src/main/resources/base/{imagem}');")
+        btn.setStyleSheet(f"border-image: url('{imagem}');")
+        # btn.setStyleSheet(
+        #     f"border-image: url('src/main/resources/base/{imagem}');")
         return nome_imagem
 
     def onTimeout(self):
@@ -420,7 +413,7 @@ class AlfaEdu(QMainWindow):
                 break
 
         if(msg_erros and campos):
-            print("adicionado")
+            # print("adicionado")
             t = False
             aluno = self.alfa_edu_db.seleciona_aluno_por_nome(self.usuario)
 
@@ -552,6 +545,9 @@ if __name__ == '__main__':
 
     QFontDatabase.addApplicationFont(
         appctxt.get_resource("Schoolwork-Regular.ttf"))
+    QFontDatabase.addApplicationFont(
+        appctxt.get_resource("Letters for Learners.ttf"))
+        
 
     # alfa_edu_app.show()
     alfa_edu_app.showFullScreen()
