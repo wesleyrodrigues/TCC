@@ -84,22 +84,22 @@ class EmailFeedback():
             internetError = "[Errno 11001] getaddrinfo failed"
             passwordError = "Username and Password not accepted."
 
-            if internetError in e:
-                QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Sem internet!!"),
-                                           QtWidgets.qApp.tr(
-                f"Não foi possivel enviar o e-email.\nVerifique se o computador tem internet!!"),
-                QtWidgets.QMessageBox.Cancel)
-                # print("Erro de internet")
-            elif passwordError in e:
-                QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Erro na conta!!"),
-                                           QtWidgets.qApp.tr(
-                f"Não foi possivel enviar o e-email.\nErro na conta AlfaEdu, contate suporte!!"),
-                QtWidgets.QMessageBox.Cancel)
-                # print("Erro na conta AlfaEdu, contate suporte")
-            else:
-                QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Erro desconhecido!!"),
-                                           QtWidgets.qApp.tr(
-                f"Erro desconhecido, contate suporte!!\n{e}"),
-                QtWidgets.QMessageBox.Cancel)
-                print(e)
-                # print("outro erro")
+            # if internetError in e:
+            #     QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Sem internet!!"),
+            #                                QtWidgets.qApp.tr(
+            #     f"Não foi possivel enviar o e-email.\nVerifique se o computador tem internet!!"),
+            #     QtWidgets.QMessageBox.Cancel)
+            #     # print("Erro de internet")
+            # elif passwordError in e:
+            #     QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Erro na conta!!"),
+            #                                QtWidgets.qApp.tr(
+            #     f"Não foi possivel enviar o e-email.\nErro na conta AlfaEdu, contate suporte!!"),
+            #     QtWidgets.QMessageBox.Cancel)
+            #     # print("Erro na conta AlfaEdu, contate suporte")
+            # else:
+            #     QtWidgets.QMessageBox.critical(None, QtWidgets.qApp.tr("Erro desconhecido!!"),
+            #                                QtWidgets.qApp.tr(
+            #     f"Erro desconhecido, contate suporte!!\n{e}"),
+            #     QtWidgets.QMessageBox.Cancel)
+            #     print(e)
+            #     # print("outro erro")
